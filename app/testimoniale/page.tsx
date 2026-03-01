@@ -13,10 +13,14 @@ export const metadata: Metadata = {
 export default function TestimonialsPage() {
   return (
     <section className="section-container">
-      <SectionHeading title="Testimoniale" subtitle="Păreri de la clienți mulțumiți din diferite industrii." />
-      <div className="grid gap-5 md:grid-cols-3">{testimonials.map((item) => <TestimonialCard key={item.id} item={item} />)}</div>
-      <div className="mt-10 grid grid-cols-2 gap-3 opacity-60 md:grid-cols-5">
-        {Array.from({ length: 5 }).map((_, i) => <div key={i} className="rounded-lg border border-slate-700 p-4 text-center text-sm">Logo {i + 1}</div>)}
+      <SectionHeading
+        title="Testimoniale"
+        subtitle="Păreri de la clienți mulțumiți din diferite industrii."
+      />
+      <div className="grid gap-5 md:grid-cols-3">
+        {testimonials.map((item) => (
+          <TestimonialCard key={item.id} item={item} />
+        ))}
       </div>
     </section>
   );

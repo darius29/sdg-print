@@ -3,10 +3,10 @@ import Link from 'next/link';
 export function HomeHero() {
   return (
     <section
-      className="relative isolate flex min-h-[520px] items-center overflow-hidden px-4 py-16 md:min-h-[70vh] md:px-8 md:py-20 lg:min-h-[78vh]"
+      className="relative isolate flex min-h-[520px] items-center overflow-hidden px-4 py-16 md:min-h-[70vh] md:px-8 md:py-20 lg:min-h-[100vh]"
       style={{
         backgroundImage:
-          "linear-gradient(115deg, rgba(11, 15, 20, 0.86) 10%, rgba(11, 15, 20, 0.62) 55%, rgba(11, 15, 20, 0.9) 100%), radial-gradient(circle at center, rgba(11, 15, 20, 0.06) 35%, rgba(11, 15, 20, 0.6) 100%), url('/images/home/hero-printing.svg')",
+          "linear-gradient(115deg, rgba(11, 15, 20, 0.86) 10%, rgba(11, 15, 20, 0.62) 55%, rgba(11, 15, 20, 0.9) 100%), radial-gradient(circle at center, rgba(11, 15, 20, 0.06) 35%, rgba(11, 15, 20, 0.6) 100%), url('/images/home/hero.png')",
         backgroundPosition: 'center',
         backgroundSize: 'cover',
       }}
@@ -17,11 +17,15 @@ export function HomeHero() {
             Print premium care transformă orice spațiu într-o experiență vizuală
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-            Livrăm proiecte de wall print și personalizare industrială cu finisaj impecabil,
-            montaj rapid și impact memorabil pentru brandul tău.
+            Livrăm proiecte de wall print și personalizare industrială cu
+            finisaj impecabil, montaj rapid și impact memorabil pentru brandul
+            tău.
           </p>
           <div className="mt-8 flex justify-center">
-            <Link href="/contact" className="btn-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg">
+            <Link
+              href="/contact"
+              className="btn-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+            >
               Cere ofertă personalizată
             </Link>
           </div>
