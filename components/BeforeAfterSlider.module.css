@@ -1,0 +1,114 @@
+.comparison {
+  --radius: 20px;
+  --primary: rgb(248 250 252);
+  --surface: rgb(15 23 42 / 78%);
+  --shadow: 0 24px 48px rgb(2 6 23 / 45%);
+
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.reveal {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  will-change: width;
+}
+
+.badge {
+  position: absolute;
+  top: 1rem;
+  z-index: 5;
+  border-radius: 999px;
+  border: 1px solid rgb(148 163 184 / 35%);
+  background: rgb(2 6 23 / 52%);
+  padding: 0.35rem 0.75rem;
+  color: rgb(241 245 249);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+}
+
+.badgeLeft {
+  left: 1rem;
+}
+
+.badgeRight {
+  right: 1rem;
+}
+
+.divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 6;
+  width: 2px;
+  background: rgb(248 250 252 / 95%);
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 8%),
+    0 0 20px rgb(15 23 42 / 45%);
+  transform: translateX(-1px);
+  pointer-events: none;
+}
+
+.handle {
+  position: absolute;
+  top: 50%;
+  z-index: 7;
+  display: inline-flex;
+  height: 60px;
+  width: 60px;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgb(148 163 184 / 55%);
+  background: var(--primary);
+  box-shadow: 0 16px 30px rgb(2 6 23 / 38%);
+  cursor: ew-resize;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+  touch-action: none;
+}
+
+.handle::before {
+  content: '';
+  position: absolute;
+  inset: -24px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgb(248 250 252 / 20%), transparent 70%);
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+.handle:hover {
+  transform: translate(-50%, -50%) scale(1.03);
+  box-shadow: 0 20px 34px rgb(2 6 23 / 45%);
+}
+
+.handle:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 4px rgb(14 165 233 / 45%),
+    0 16px 30px rgb(2 6 23 / 38%);
+}
+
+.chevrons {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 0.2rem;
+  color: rgb(51 65 85);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .handle {
+    transition: none;
+  }
+}
