@@ -4,37 +4,41 @@ export const services: Service[] = [
   {
     id: 'wall-print',
     icon: '🧱',
-    title: 'Print pe perete (Wall Print)',
-    shortDescription: 'Transformăm pereții în puncte de atracție cu print UV direct.',
+    title: 'Printare pe perete',
+    shortDescription:
+      'Muraluri HD direct pe pereți, pentru spații care impresionează instant.',
     description:
-      'Ideal pentru HoReCa, birouri, clinici, locuințe și showroom-uri. Fără tapet sau folie, cu culori vibrante și durabilitate excelentă.',
-    applications: ['lemn natural', 'MDF', 'acril', 'piele', 'plastic', 'placaj', 'materiale speciale'],
+      'Print UV direct pe perete pentru spații comerciale și rezidențiale, cu rezoluție ridicată, culori durabile și aplicare rapidă.',
+    applications: ['rezoluție ridicată', 'culori durabile', 'aplicare rapidă', 'suprafețe multiple'],
   },
   {
-    id: 'tricouri-hanorace',
+    id: 'obiecte-personalizate',
+    icon: '🎁',
+    title: 'Obiecte personalizate',
+    shortDescription:
+      'Căni, huse și cadouri corporate cu branding clar și finisaj premium.',
+    description:
+      'Personalizare pentru serii mici sau mari, ideale pentru activări de brand, pachete promoționale și cadouri memorabile.',
+    applications: ['serii mici/mari', 'culori vibrante', 'mockup rapid', 'branding corporate'],
+  },
+  {
+    id: 'print-textile',
     icon: '👕',
-    title: 'Tricouri & Hanorace',
-    shortDescription: 'Personalizare textile pentru branduri, echipe și cadouri unice.',
+    title: 'Print textile',
+    shortDescription:
+      'Tricouri, hanorace și uniforme cu print clar, rezistent și confortabil.',
     description:
-      'Lucrăm atât cu designul clientului, cât și cu design creat de echipa SDG. Acceptăm serii mici și volume mari pentru companii.',
-    applications: ['comenzi individuale', 'uniforme business', 'merchandising', 'evenimente'],
+      'Soluții textile pentru echipe, evenimente și merchandising, cu atenție la detalii fine și rezistență în timp.',
+    applications: ['calitate pe termen lung', 'fără compromisuri', 'detalii fine', 'merchandising'],
   },
   {
-    id: 'cani-obiecte',
-    icon: '☕',
-    title: 'Căni & Obiecte promoționale',
-    shortDescription: 'Branding memorabil pentru campanii, cadouri corporate sau personale.',
+    id: 'design-personalizat',
+    icon: '🎨',
+    title: 'Design personalizat',
+    shortDescription:
+      'Concept + execuție pentru vizualuri care respectă identitatea brandului.',
     description:
-      'Personalizăm căni și obiecte promoționale pentru vizibilitate de brand, pachete promo și cadouri de impact.',
-    applications: ['branding corporate', 'cadouri', 'campanii promo', 'kit-uri onboarding'],
-  },
-  {
-    id: 'sepci-textile',
-    icon: '🧢',
-    title: 'Șepci & Textile',
-    shortDescription: 'Textile personalizate pentru evenimente, echipe și merchandising.',
-    description:
-      'Soluții versatile pentru uniforme, evenimente și colecții personalizate, cu focus pe calitate și consistență.',
-    applications: ['uniforme', 'event kits', 'merch', 'echipe sportive'],
+      'Pornim de la brief și direcție vizuală clară, apoi livrăm design complet adaptat suprafeței și obiectivelor de business.',
+    applications: ['brief & direcție', 'concept vizual', 'adaptare pe suport', 'coerență de brand'],
   },
 ];
