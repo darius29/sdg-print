@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import { HomeHero } from '@/components/HomeHero';
 import { CTASection } from '@/components/CTASection';
-import { Reveal } from '@/components/Reveal';
 import { SectionHeading } from '@/components/SectionHeading';
 import { ServiceCard, TestimonialCard } from '@/components/cards';
 import { BeforeAfterCard } from '@/components/BeforeAfterSlider';
@@ -71,39 +71,7 @@ const executionSteps = ['Consultare', 'Design personalizat', 'Print', 'Predare &
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-hero-overlay" aria-hidden />
-        <div className="section-container relative py-24 md:py-32">
-          <Reveal>
-            <h1 className="max-w-4xl font-heading text-4xl font-bold md:text-6xl">
-              Transformăm orice suprafață în experiență vizuală.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg text-muted">
-              Servicii premium de print pe perete, obiecte personalizate și design
-              unicat pentru branduri care vor impact.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-primary">
-                Cere ofertă personalizată
-              </Link>
-              <Link href="/portofoliu" className="btn-secondary">
-                Vezi portofoliul
-              </Link>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-3 text-sm text-muted">
-              <span className="rounded-full border border-slate-700 px-4 py-2">
-                Timișoara & RO
-              </span>
-              <span className="rounded-full border border-slate-700 px-4 py-2">
-                Design inclus
-              </span>
-              <span className="rounded-full border border-slate-700 px-4 py-2">
-                Execuție rapidă
-              </span>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <HomeHero />
 
       <section className="section-container">
         <SectionHeading
