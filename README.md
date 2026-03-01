@@ -13,3 +13,8 @@ Site de prezentare construit cu Next.js App Router + TypeScript + Tailwind.
 - Formul de contact trimite email prin SMTP (`/api/contact`).
 - Upload fișier este planificat pentru următoarea versiune.
 - Structura conținutului este data-driven în `content/*`, pregătită pentru migrare CMS.
+
+## Imagini demo (regenerabile)
+
+- Rulează `npm run generate:images` pentru a regenera setul de imagini SVG din `public/images/*`.
+- Imaginile sunt folosite în secțiunile Portofoliu, Before/After și Despre Noi.
