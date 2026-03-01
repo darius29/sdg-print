@@ -7,7 +7,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: 'Commercial',
     location: 'Timișoara',
     description: 'Identitate vizuală imprimată direct pe peretele recepției.',
-    images: ['/images/portfolio-1.jpg', '/images/portfolio-2.jpg'],
+    images: ['/images/portfolio/receptie-corporate-1.svg', '/images/portfolio/receptie-corporate-2.svg'],
   },
   {
     id: 'p2',
@@ -15,7 +15,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: 'Residential',
     location: 'Arad',
     description: 'Print decorativ pe perete pentru un spațiu personalizat.',
-    images: ['/images/portfolio-3.jpg', '/images/portfolio-4.jpg'],
+    images: ['/images/portfolio/dormitor-artistic-1.svg', '/images/portfolio/dormitor-artistic-2.svg'],
   },
   {
     id: 'p3',
@@ -23,7 +23,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: 'Textile',
     location: 'Cluj-Napoca',
     description: 'Seria completă de tricouri personalizate pentru eveniment.',
-    images: ['/images/portfolio-5.jpg', '/images/portfolio-6.jpg'],
+    images: ['/images/portfolio/tricouri-eveniment-1.svg', '/images/portfolio/tricouri-eveniment-2.svg'],
   },
   {
     id: 'p4',
@@ -31,6 +31,6 @@ export const portfolioItems: PortfolioItem[] = [
     category: 'Custom',
     location: 'București',
     description: 'Mix de produse promo pentru lansare de brand.',
-    images: ['/images/portfolio-7.jpg', '/images/portfolio-8.jpg'],
+    images: ['/images/portfolio/pachet-promo-1.svg', '/images/portfolio/pachet-promo-2.svg'],
   },
 ];

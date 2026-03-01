@@ -42,7 +42,7 @@ export default function AboutPage() {
         <SectionHeading title="Galerie echipamente & proces" />
         <div className="grid gap-5 md:grid-cols-3">
           {[1, 2, 3].map((img) => (
-            <Image key={img} src={`/images/process-${img}.jpg`} alt={`Proces ${img}`} width={700} height={500} className="card-premium h-60 w-full object-cover" />
+            <Image key={img} src={`/images/process/process-${img}.svg`} alt={`Proces ${img}`} width={700} height={500} className="card-premium h-60 w-full object-cover" />
           ))}
         </div>
       </section>

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "generate:images": "node scripts/generate-images.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
