@@ -4,6 +4,11 @@ import { Reveal } from '@/components/Reveal';
 import { SectionHeading } from '@/components/SectionHeading';
 import { ServiceCard, TestimonialCard } from '@/components/cards';
 import { BeforeAfterCard } from '@/components/BeforeAfterSlider';
+import {
+  HowItWorksSection,
+  ProductShowcaseSection,
+  TechFeatureSplitSection,
+} from '@/components/sections/PageSections';
 import { beforeAfterItems } from '@/content/beforeAfter';
 import { services } from '@/content/services';
 import { testimonials } from '@/content/testimonials';
@@ -126,6 +131,12 @@ export default function HomePage() {
           Vezi toate transformările
         </Link>
       </section>
+
+      <TechFeatureSplitSection />
+
+      <HowItWorksSection />
+
+      <ProductShowcaseSection />
 
       <section className="section-container">
         <SectionHeading

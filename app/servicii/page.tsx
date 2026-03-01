@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { CTASection } from '@/components/CTASection';
 import { SectionHeading } from '@/components/SectionHeading';
+import { ServicesFilterSection, ServiceHighlightsSection } from '@/components/sections/PageSections';
 import { services } from '@/content/services';
 import { canonical } from '@/lib/site';
 
@@ -25,6 +26,10 @@ export default function ServicesPage() {
           ))}
         </div>
       </section>
+
+      <ServiceHighlightsSection />
+
+      <ServicesFilterSection />
 
       <section className="section-container">
         <SectionHeading title="Proces detaliat în 4 pași" />
