@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { HomeHero } from '@/components/HomeHero';
+import { AboutHero } from '@/components/sections/AboutHero';
 import { CTASection } from '@/components/CTASection';
 import { SectionHeading } from '@/components/SectionHeading';
 import { ServiceCard, TestimonialCard } from '@/components/cards';
@@ -78,7 +78,7 @@ const executionSteps = [
 export default function HomePage() {
   return (
     <>
-      <HomeHero />
+      <AboutHero />
 
       <section className="section-container">
         <div className="section-surface section-bloom">
