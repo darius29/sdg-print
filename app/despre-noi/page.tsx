@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { CTASection } from '@/components/CTASection';
 import { SectionHeading } from '@/components/SectionHeading';
+import { TypeLoopWord } from '@/components/TypeLoopWord';
 import { canonical } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -11,10 +12,35 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const heroWords = ['spații', 'tricouri', 'obiecte', 'căni', 'spații'];
+
   return (
     <>
       <section className="section-container">
-        <SectionHeading title="Despre SDG PRINT & Design" subtitle="Suntem o echipă din Timișoara care transformă idei în suprafețe cu impact vizual real." />
+        <div className="relative mb-10 max-w-3xl">
+          <span
+            className="bg-primary/10 pointer-events-none absolute -left-6 -top-6 h-20 w-20 rounded-full blur-2xl"
+            aria-hidden
+          />
+          <h1
+            className="relative font-heading text-3xl font-semibold md:text-4xl"
+            aria-label="Print care transformă spații în experiențe memorabile"
+          >
+            <span className="bg-gradient-to-r from-text via-cyan-100 to-text bg-clip-text text-transparent">
+              Print care transformă{' '}
+              <span className="inline-block text-primary">
+                <TypeLoopWord words={heroWords} />
+              </span>{' '}
+              în experiențe memorabile
+            </span>
+          </h1>
+          <div className="bg-primary/20 relative mt-3 h-1 w-24 overflow-hidden rounded" aria-hidden>
+            <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary-2" />
+          </div>
+          <p className="mt-4 text-muted">
+            Suntem o echipă din Timișoara care transformă idei în suprafețe cu impact vizual real.
+          </p>
+        </div>
         <p className="max-w-4xl text-muted">Construim proiecte de print premium pentru persoane fizice și companii din toată România. Punem accent pe calitatea execuției, design personalizat și suport rapid de la idee la implementare.</p>
       </section>
 
