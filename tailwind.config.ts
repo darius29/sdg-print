@@ -9,11 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: '#0B0F14',
-        surface: '#10151C',
-        text: '#FFFFFF',
-        muted: '#B8C2CC',
-        accent: '#00E5FF',
+        bg: 'var(--bg)',
+        surface: 'var(--surface)',
+        text: 'var(--text)',
+        muted: 'var(--muted)',
+        accent: 'var(--accent)',
+        border: 'var(--border)',
+        primary: 'var(--primary)',
+        'primary-2': 'var(--primary-2)',
+        'surface-2': 'var(--surface-2)',
       },
       fontFamily: {
         heading: ['var(--font-sora)'],
@@ -21,6 +25,8 @@ const config: Config = {
       },
       boxShadow: {
         glow: '0 0 20px rgba(0,229,255,0.35)',
+        soft: 'var(--shadow-soft)',
+        md: 'var(--shadow-md)',
       },
       backgroundImage: {
         'hero-overlay':
