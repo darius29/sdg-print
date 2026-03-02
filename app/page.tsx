@@ -33,7 +33,8 @@ const wallPrintCapabilities = [
   },
   {
     title: 'Low-odor, non-toxic',
-    description: 'Potrivit pentru spații interioare comerciale sau rezidențiale.',
+    description:
+      'Potrivit pentru spații interioare comerciale sau rezidențiale.',
   },
   {
     title: 'Flux eficient',
@@ -67,126 +68,155 @@ const objectAndTextileProducts = [
   },
 ];
 
-const executionSteps = ['Consultare', 'Design personalizat', 'Print', 'Predare & montaj'];
+const executionSteps = [
+  'Consultare',
+  'Design personalizat',
+  'Print',
+  'Predare & montaj',
+];
 
 export default function HomePage() {
   return (
     <>
       <HomeHero />
 
-      <section className="section-container section-bloom">
-        <SectionHeading
-          title="Serviciile noastre"
-          subtitle="Alege categoria potrivită proiectului tău și vezi rapid soluțiile noastre de personalizare."
-        />
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {services.map((service) => (
-            <Reveal key={service.id}>
-              <ServiceCard service={service} />
-            </Reveal>
-          ))}
+      <section className="section-container">
+        <div className="section-surface section-bloom">
+          <SectionHeading
+            title="Serviciile noastre"
+            subtitle="Alege categoria potrivită proiectului tău și vezi rapid soluțiile noastre de personalizare."
+          />
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {services.map((service, index) => (
+              <Reveal key={service.id} delayMs={index * 60}>
+                <ServiceCard service={service} />
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="section-container">
-        <SectionHeading
-          title="Înainte / După"
-          subtitle="Transformări reale pentru spații comerciale, birouri și locații premium."
-        />
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {beforeAfterItems.map((item) => (
-            <Reveal key={item.id}>
-              <BeforeAfterCard item={item} />
-            </Reveal>
-          ))}
+        <div className="section-surface">
+          <SectionHeading
+            title="Înainte / După"
+            subtitle="Transformări reale pentru spații comerciale, birouri și locații premium."
+          />
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {beforeAfterItems.map((item, index) => (
+              <Reveal key={item.id} delayMs={index * 70}>
+                <BeforeAfterCard item={item} />
+              </Reveal>
+            ))}
+          </div>
+          <Link href="/before-after" className="btn-secondary mt-8">
+            Vezi toate transformările
+          </Link>
         </div>
-        <Link href="/before-after" className="btn-secondary mt-8">
-          Vezi toate transformările
-        </Link>
       </section>
 
       <TechFeatureSplitSection />
-
       <HowItWorksSection />
-
       <ProductShowcaseSection />
 
-      <section className="section-container section-bloom">
-        <SectionHeading
-          title="Precizie, viteză și culori care rămân impecabile"
-          subtitle="Tehnologie wall print cu cerneluri UV durabile, optimizată pentru multiple suprafețe."
-        />
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {wallPrintCapabilities.map((feature) => (
-            <Reveal key={feature.title}>
-              <article className="card-premium p-5">
-                <h3 className="font-heading text-lg font-semibold">{feature.title}</h3>
-                <p className="mt-2 text-sm text-muted">{feature.description}</p>
-              </article>
-            </Reveal>
-          ))}
+      <section className="section-container">
+        <div className="section-surface section-bloom">
+          <SectionHeading
+            title="Precizie, viteză și culori care rămân impecabile"
+            subtitle="Tehnologie wall print cu cerneluri UV durabile, optimizată pentru multiple suprafețe."
+          />
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {wallPrintCapabilities.map((feature, index) => (
+              <Reveal key={feature.title} delayMs={index * 60}>
+                <article className="card-premium p-5">
+                  <h3 className="font-heading text-lg font-semibold">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted">
+                    {feature.description}
+                  </p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="section-container">
-        <SectionHeading title="Cum funcționează" />
-        <div className="grid gap-4 md:grid-cols-4">
-          {executionSteps.map((step, index) => (
-            <Reveal key={step}>
-              <article className="card-premium p-5">
-                <p className="text-sm text-primary">Pasul {index + 1}</p>
-                <h3 className="mt-2 font-medium">{step}</h3>
-              </article>
-            </Reveal>
-          ))}
+        <div className="section-surface">
+          <SectionHeading title="Cum funcționează" />
+          <div className="grid gap-4 md:grid-cols-4">
+            {executionSteps.map((step, index) => (
+              <Reveal key={step} delayMs={index * 60}>
+                <article className="card-premium p-5">
+                  <p className="text-sm text-primary">Pasul {index + 1}</p>
+                  <h3 className="mt-2 font-medium">{step}</h3>
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="section-container">
-        <SectionHeading
-          title="Gravură laser personalizată"
-          subtitle="Realizăm gravură de înaltă precizie pe lemn, MDF, acril, piele și alte materiale compatibile."
-        />
-        <div className="grid gap-4 md:grid-cols-2">
-          <article className="card-premium p-6">
-            <h3 className="font-heading text-lg font-semibold">Materiale compatibile</h3>
-            <p className="mt-2 text-sm text-muted">
-              Lemn, MDF, acril, piele, placaj și materiale speciale pentru
-              semnalistică, gifting și branding premium.
-            </p>
-          </article>
-          <article className="card-premium p-6">
-            <h3 className="font-heading text-lg font-semibold">De ce gravură laser?</h3>
-            <ul className="mt-3 space-y-2 text-sm text-muted">
-              {laserEngravingBenefits.map((benefit) => (
-                <li key={benefit}>• {benefit}</li>
-              ))}
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section className="section-container">
-        <SectionHeading
-          title="Print personalizat pe obiecte & textile"
-          subtitle="Produse ideale pentru branding, echipe, evenimente și cadouri corporate."
-        />
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {objectAndTextileProducts.map((product) => (
-            <article key={product.title} className="card-premium p-5">
-              <h3 className="font-heading text-lg font-semibold">{product.title}</h3>
-              <p className="mt-2 text-sm text-muted">{product.useCases}</p>
+        <div className="section-surface">
+          <SectionHeading
+            title="Gravură laser personalizată"
+            subtitle="Realizăm gravură de înaltă precizie pe lemn, MDF, acril, piele și alte materiale compatibile."
+          />
+          <div className="grid gap-4 md:grid-cols-2">
+            <article className="card-premium p-6">
+              <h3 className="font-heading text-lg font-semibold">
+                Materiale compatibile
+              </h3>
+              <p className="mt-2 text-sm text-muted">
+                Lemn, MDF, acril, piele, placaj și materiale speciale pentru
+                semnalistică, gifting și branding premium.
+              </p>
             </article>
-          ))}
+            <article className="card-premium p-6">
+              <h3 className="font-heading text-lg font-semibold">
+                De ce gravură laser?
+              </h3>
+              <ul className="mt-3 space-y-2 text-sm text-muted">
+                {laserEngravingBenefits.map((benefit) => (
+                  <li key={benefit}>• {benefit}</li>
+                ))}
+              </ul>
+            </article>
+          </div>
         </div>
       </section>
 
       <section className="section-container">
-        <SectionHeading title="Ce spun clienții" />
-        <div className="grid gap-5 md:grid-cols-3">
-          {testimonials.map((item) => (
-            <TestimonialCard key={item.id} item={item} />
-          ))}
+        <div className="section-surface">
+          <SectionHeading
+            title="Print personalizat pe obiecte & textile"
+            subtitle="Produse ideale pentru branding, echipe, evenimente și cadouri corporate."
+          />
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {objectAndTextileProducts.map((product) => (
+              <article key={product.title} className="card-premium p-5">
+                <h3 className="font-heading text-lg font-semibold">
+                  {product.title}
+                </h3>
+                <p className="mt-2 text-sm text-muted">{product.useCases}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-container">
+        <div className="section-surface">
+          <SectionHeading title="Ce spun clienții" />
+          <div className="grid gap-5 md:grid-cols-3">
+            {testimonials.map((item, index) => (
+              <Reveal key={item.id} delayMs={index * 60}>
+                <TestimonialCard item={item} />
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
