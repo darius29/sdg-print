@@ -2,7 +2,15 @@
 
 import { ReactNode, useEffect, useRef, useState } from 'react';
 
-export const Reveal = ({ children, className = '' }: { children: ReactNode; className?: string }) => {
+export const Reveal = ({
+  children,
+  className = '',
+  delayMs = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  delayMs?: number;
+}) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -10,7 +18,9 @@ export const Reveal = ({ children, className = '' }: { children: ReactNode; clas
     const element = containerRef.current;
     if (!element) return;
 
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
     if (reduceMotion) {
       setIsVisible(true);
       return;
@@ -32,5 +42,13 @@ export const Reveal = ({ children, className = '' }: { children: ReactNode; clas
     return () => observer.disconnect();
   }, []);
 
-  return <div ref={containerRef} className={`reveal-up ${isVisible ? 'is-visible' : ''} ${className}`}>{children}</div>;
+  return (
+    <div
+      ref={containerRef}
+      className={`reveal-up ${isVisible ? 'is-visible' : ''} ${className}`}
+      style={{ transitionDelay: `${delayMs}ms` }}
+    >
+      {children}
+    </div>
+  );
 };

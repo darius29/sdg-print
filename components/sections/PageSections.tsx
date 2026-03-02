@@ -18,17 +18,47 @@ import { SectionHeading } from '@/components/sections/SectionHeading';
 import { ShowcaseCard, ShowcaseRow } from '@/components/sections/ShowcaseCard';
 
 const serviceCategories = [
-  { label: 'Semnalistică', icon: <LayersIcon className="h-4 w-4" aria-hidden /> },
-  { label: 'Gifting premium', icon: <SparkIcon className="h-4 w-4" aria-hidden /> },
-  { label: 'Retail branding', icon: <PaletteIcon className="h-4 w-4" aria-hidden /> },
-  { label: 'Corporate kits', icon: <ShieldIcon className="h-4 w-4" aria-hidden /> },
-  { label: 'Prototipare rapidă', icon: <BoltIcon className="h-4 w-4" aria-hidden /> },
+  {
+    label: 'Semnalistică',
+    icon: <LayersIcon className="h-4 w-4" aria-hidden />,
+  },
+  {
+    label: 'Gifting premium',
+    icon: <SparkIcon className="h-4 w-4" aria-hidden />,
+  },
+  {
+    label: 'Retail branding',
+    icon: <PaletteIcon className="h-4 w-4" aria-hidden />,
+  },
+  {
+    label: 'Corporate kits',
+    icon: <ShieldIcon className="h-4 w-4" aria-hidden />,
+  },
+  {
+    label: 'Prototipare rapidă',
+    icon: <BoltIcon className="h-4 w-4" aria-hidden />,
+  },
   { label: 'Serii scurte', icon: <CogIcon className="h-4 w-4" aria-hidden /> },
-  { label: 'Cutii personalizate', icon: <LayersIcon className="h-4 w-4" aria-hidden /> },
-  { label: 'Ediții limitate', icon: <SparkIcon className="h-4 w-4" aria-hidden /> },
+  {
+    label: 'Cutii personalizate',
+    icon: <LayersIcon className="h-4 w-4" aria-hidden />,
+  },
+  {
+    label: 'Ediții limitate',
+    icon: <SparkIcon className="h-4 w-4" aria-hidden />,
+  },
 ];
 
-const materials = ['Lemn', 'MDF', 'Acril', 'Sticlă', 'Piele', 'Anodizat', 'Plută', 'Aluminiu'];
+const materials = [
+  'Lemn',
+  'MDF',
+  'Acril',
+  'Sticlă',
+  'Piele',
+  'Anodizat',
+  'Plută',
+  'Aluminiu',
+];
 
 const engravingBenefits = [
   'Fiabilitate pentru producție repetată',
@@ -45,12 +75,14 @@ const techFeatures = [
   },
   {
     title: 'Fidelitate cromatică',
-    description: 'Profilare culoare pentru reproducere consistentă în campanii.',
+    description:
+      'Profilare culoare pentru reproducere consistentă în campanii.',
     icon: <PaletteIcon className="h-5 w-5" aria-hidden />,
   },
   {
     title: 'Protecție UV',
-    description: 'Rezistență la soare și umiditate pentru spații cu trafic intens.',
+    description:
+      'Rezistență la soare și umiditate pentru spații cu trafic intens.',
     icon: <ShieldIcon className="h-5 w-5" aria-hidden />,
   },
   {
@@ -60,12 +92,14 @@ const techFeatures = [
   },
   {
     title: 'Adaptare suprafețe',
-    description: 'Rezultate stabile pe zidărie, metal, lemn sau materiale mixte.',
+    description:
+      'Rezultate stabile pe zidărie, metal, lemn sau materiale mixte.',
     icon: <LayersIcon className="h-5 w-5" aria-hidden />,
   },
   {
     title: 'Validare înainte de print',
-    description: 'Revizie vizuală în pre-producție pentru livrare fără surprize.',
+    description:
+      'Revizie vizuală în pre-producție pentru livrare fără surprize.',
     icon: <SparkIcon className="h-5 w-5" aria-hidden />,
   },
 ];
@@ -73,15 +107,18 @@ const techFeatures = [
 const processSteps = [
   {
     title: 'Discuție & obiective',
-    description: 'Colectăm dimensiuni, context și direcția vizuală dorită pentru proiect.',
+    description:
+      'Colectăm dimensiuni, context și direcția vizuală dorită pentru proiect.',
   },
   {
     title: 'Propunere creativă',
-    description: 'Pregătim variante de design și recomandăm materialele potrivite.',
+    description:
+      'Pregătim variante de design și recomandăm materialele potrivite.',
   },
   {
     title: 'Execuție & predare',
-    description: 'Programăm producția și livrăm cu verificare finală a calității.',
+    description:
+      'Programăm producția și livrăm cu verificare finală a calității.',
   },
 ];
 
@@ -99,7 +136,11 @@ const filterServices = [
     title: 'Wall Print',
     description: 'Grafici de impact pentru birouri, retail și HoReCa.',
     category: 'walls',
-    benefits: ['Aplicare fără folii', 'Detalii precise pe suprafețe mari', 'Cerneluri cu uscare UV'],
+    benefits: [
+      'Aplicare fără folii',
+      'Detalii precise pe suprafețe mari',
+      'Cerneluri cu uscare UV',
+    ],
     icon: <LayersIcon className="h-5 w-5" aria-hidden />,
   },
   {
@@ -107,7 +148,11 @@ const filterServices = [
     title: 'Promo Objects',
     description: 'Produse personalizate pentru campanii și onboarding.',
     category: 'objects',
-    benefits: ['Loturi flexibile', 'Branding consistent', 'Ambalare gata de livrare'],
+    benefits: [
+      'Loturi flexibile',
+      'Branding consistent',
+      'Ambalare gata de livrare',
+    ],
     icon: <SparkIcon className="h-5 w-5" aria-hidden />,
   },
   {
@@ -115,7 +160,11 @@ const filterServices = [
     title: 'Textile Print',
     description: 'Tricouri, hanorace și accesorii pentru echipe sau merch.',
     category: 'textiles',
-    benefits: ['Texturi plăcute la purtare', 'Rezistență la spălări repetate', 'Culori vibrante'],
+    benefits: [
+      'Texturi plăcute la purtare',
+      'Rezistență la spălări repetate',
+      'Culori vibrante',
+    ],
     icon: <ShieldIcon className="h-5 w-5" aria-hidden />,
   },
   {
@@ -123,7 +172,11 @@ const filterServices = [
     title: 'Visual Design',
     description: 'Concept, adaptare și layout pentru print fizic.',
     category: 'design',
-    benefits: ['Direcție artistică clară', 'Fișiere pregătite de producție', 'Aliniere cu brand guide'],
+    benefits: [
+      'Direcție artistică clară',
+      'Fișiere pregătite de producție',
+      'Aliniere cu brand guide',
+    ],
     icon: <PaletteIcon className="h-5 w-5" aria-hidden />,
   },
 ];
@@ -156,9 +209,21 @@ const showcaseRows = [
 ];
 
 const statCards = [
-  { label: 'Rezoluție', value: '2880 DPI', icon: <SparkIcon className="h-4 w-4" aria-hidden /> },
-  { label: 'Cerneluri', value: 'UV+ Low Odor', icon: <ShieldIcon className="h-4 w-4" aria-hidden /> },
-  { label: 'Setup', value: '≤ 30 min', icon: <BoltIcon className="h-4 w-4" aria-hidden /> },
+  {
+    label: 'Rezoluție',
+    value: '2880 DPI',
+    icon: <SparkIcon className="h-4 w-4" aria-hidden />,
+  },
+  {
+    label: 'Cerneluri',
+    value: 'UV+ Low Odor',
+    icon: <ShieldIcon className="h-4 w-4" aria-hidden />,
+  },
+  {
+    label: 'Setup',
+    value: '≤ 30 min',
+    icon: <BoltIcon className="h-4 w-4" aria-hidden />,
+  },
 ];
 
 export const ServiceHighlightsSection = () => (
@@ -172,12 +237,19 @@ export const ServiceHighlightsSection = () => (
 
     <div className="mx-auto grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
       {serviceCategories.map((category) => (
-        <PillButton key={category.label} label={category.label} icon={category.icon} className="justify-center" />
+        <PillButton
+          key={category.label}
+          label={category.label}
+          icon={category.icon}
+          className="justify-center"
+        />
       ))}
     </div>
 
-    <div className="mt-10 card-premium p-6">
-      <h3 className="font-heading text-xl font-semibold">Materiale compatibile</h3>
+    <div className="card-premium mt-10 p-6">
+      <h3 className="font-heading text-xl font-semibold">
+        Materiale compatibile
+      </h3>
       <div className="mt-4 flex flex-wrap gap-2">
         {materials.map((material) => (
           <Chip key={material} label={material} />
@@ -187,8 +259,14 @@ export const ServiceHighlightsSection = () => (
 
     <div className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
       {engravingBenefits.map((benefit) => (
-        <article key={benefit} className="card-premium flex items-start gap-2 p-4">
-          <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
+        <article
+          key={benefit}
+          className="card-premium flex items-start gap-2 p-4"
+        >
+          <CheckIcon
+            className="mt-0.5 h-4 w-4 shrink-0 text-accent"
+            aria-hidden
+          />
           <p className="text-sm text-muted">{benefit}</p>
         </article>
       ))}
@@ -197,41 +275,55 @@ export const ServiceHighlightsSection = () => (
 );
 
 export const TechFeatureSplitSection = () => (
-  <SectionContainer className="section-bloom">
-    <div className="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-      <div>
-        <SectionHeading
-          eyebrow="Wall print tech"
-          title="Tehnologie optimizată pentru suprafețe reale"
-          description="Echipamente calibrate pentru detalii curate, timpi rapizi și rezultate consistente în proiecte comerciale."
-        />
-        <div className="grid gap-4 sm:grid-cols-2">
-          {techFeatures.map((feature) => (
-            <FeatureCard key={feature.title} icon={feature.icon} title={feature.title} description={feature.description} />
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <div className="relative overflow-hidden rounded-2xl border border-border bg-surface/60 p-3 shadow-xl">
-          <Image
-            src="/images/process/process-1.svg"
-            alt="Sistem de print calibrat pentru detalii de înaltă rezoluție"
-            width={900}
-            height={640}
-            className="h-auto w-full rounded-xl object-cover"
+  <SectionContainer>
+    <div className="section-surface section-bloom">
+      <div className="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div>
+          <SectionHeading
+            eyebrow="Wall print tech"
+            title="Tehnologie optimizată pentru suprafețe reale"
+            description="Echipamente calibrate pentru detalii curate, timpi rapizi și rezultate consistente în proiecte comerciale."
           />
-          <div className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_0_-90px_120px_rgba(2,6,23,0.4)]" aria-hidden />
+          <div className="grid gap-4 sm:grid-cols-2">
+            {techFeatures.map((feature) => (
+              <FeatureCard
+                key={feature.title}
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+              />
+            ))}
+          </div>
         </div>
 
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
-          {statCards.map((stat) => (
-            <article key={stat.label} className="card-premium p-4">
-              <div className="text-accent">{stat.icon}</div>
-              <p className="mt-2 text-xs uppercase tracking-wider text-muted">{stat.label}</p>
-              <p className="mt-1 font-heading text-lg font-semibold">{stat.value}</p>
-            </article>
-          ))}
+        <div>
+          <div className="bg-surface/60 relative overflow-hidden rounded-2xl border border-border p-3 shadow-xl">
+            <Image
+              src="/images/process/process-1.svg"
+              alt="Sistem de print calibrat pentru detalii de înaltă rezoluție"
+              width={900}
+              height={640}
+              className="h-auto w-full rounded-xl object-cover"
+            />
+            <div
+              className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_0_-90px_120px_rgba(2,6,23,0.4)]"
+              aria-hidden
+            />
+          </div>
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            {statCards.map((stat) => (
+              <article key={stat.label} className="card-premium p-4">
+                <div className="text-accent">{stat.icon}</div>
+                <p className="mt-2 text-xs uppercase tracking-wider text-muted">
+                  {stat.label}
+                </p>
+                <p className="mt-1 font-heading text-lg font-semibold">
+                  {stat.value}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -240,21 +332,32 @@ export const TechFeatureSplitSection = () => (
 
 export const HowItWorksSection = () => (
   <SectionContainer>
-    <SectionHeading
-      eyebrow="How it works"
-      title="Un proces simplu, clar și previzibil"
-      description="Fiecare etapă este documentată, ca să ai control complet de la brief la livrare."
-    />
+    <div className="section-surface">
+      <SectionHeading
+        eyebrow="How it works"
+        title="Un proces simplu, clar și previzibil"
+        description="Fiecare etapă este documentată, ca să ai control complet de la brief la livrare."
+      />
 
-    <ol className="space-y-4">
-      {processSteps.map((step, index) => (
-        <ProcessStep key={step.title} index={index} title={step.title} description={step.description} />
-      ))}
-    </ol>
+      <ol className="space-y-4">
+        {processSteps.map((step, index) => (
+          <ProcessStep
+            key={step.title}
+            index={index}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </ol>
 
-    <Link href="/contact" className="btn-primary mt-8" aria-label="Solicită oferta pentru proiectul tău">
-      Începe proiectul
-    </Link>
+      <Link
+        href="/contact"
+        className="btn-primary mt-8"
+        aria-label="Solicită oferta pentru proiectul tău"
+      >
+        Începe proiectul
+      </Link>
+    </div>
   </SectionContainer>
 );
 
@@ -275,29 +378,41 @@ export const ServicesFilterSection = () => (
 
 export const ProductShowcaseSection = () => (
   <SectionContainer>
-    <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-      <SectionHeading
-        className="mb-0"
-        eyebrow="Objects & textiles"
-        title="Categorii populare pentru obiecte și textile"
-        description="Mixăm funcționalitatea cu designul pentru produse care se remarcă imediat."
-      />
-      <Link href="/contact" className="btn-primary self-start" aria-label="Solicită o ofertă pentru obiecte și textile">
-        Request quote
-      </Link>
-    </div>
+    <div className="section-surface">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <SectionHeading
+          className="mb-0"
+          eyebrow="Objects & textiles"
+          title="Categorii populare pentru obiecte și textile"
+          description="Mixăm funcționalitatea cu designul pentru produse care se remarcă imediat."
+        />
+        <Link
+          href="/contact"
+          className="btn-primary self-start"
+          aria-label="Solicită o ofertă pentru obiecte și textile"
+        >
+          Request quote
+        </Link>
+      </div>
 
-    <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
-      <ShowcaseCard
-        icon={<SparkIcon className="h-5 w-5" aria-hidden />}
-        title="Colecții promoționale complete"
-        description="De la pachete de onboarding la cadouri corporate, fiecare produs este coordonat vizual și livrat rapid."
-        badges={['Fast delivery', 'Durable print', 'Vibrant colors']}
-      />
-      <div className="space-y-3">
-        {showcaseRows.map((row) => (
-          <ShowcaseRow key={row.title} icon={row.icon} title={row.title} description={row.description} tag={row.tag} />
-        ))}
+      <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+        <ShowcaseCard
+          icon={<SparkIcon className="h-5 w-5" aria-hidden />}
+          title="Colecții promoționale complete"
+          description="De la pachete de onboarding la cadouri corporate, fiecare produs este coordonat vizual și livrat rapid."
+          badges={['Fast delivery', 'Durable print', 'Vibrant colors']}
+        />
+        <div className="space-y-3">
+          {showcaseRows.map((row) => (
+            <ShowcaseRow
+              key={row.title}
+              icon={row.icon}
+              title={row.title}
+              description={row.description}
+              tag={row.tag}
+            />
+          ))}
+        </div>
       </div>
     </div>
   </SectionContainer>

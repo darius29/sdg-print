@@ -1,7 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import { KeyboardEvent, PointerEvent, useState } from 'react';
+import {
+  KeyboardEvent,
+  PointerEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { BeforeAfterItem } from '@/lib/types';
 import styles from './BeforeAfterSlider.module.css';
 
@@ -46,6 +52,37 @@ export const BeforeAfterSlider = ({
   description,
 }: BeforeAfterSliderProps) => {
   const [position, setPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const node = containerRef.current;
+    if (!node) return;
+
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+    if (reduceMotion) {
+      setIsReady(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setIsReady(true);
+        setPosition(32);
+        window.setTimeout(() => setPosition(50), 360);
+        observer.disconnect();
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   const updateFromPointer = (clientX: number, container: HTMLElement) => {
     const rect = container.getBoundingClientRect();
     const nextPosition = ((clientX - rect.left) / rect.width) * 100;
@@ -55,6 +92,7 @@ export const BeforeAfterSlider = ({
   const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
     const container = event.currentTarget;
     container.setPointerCapture(event.pointerId);
+    setIsDragging(true);
     updateFromPointer(event.clientX, container);
   };
 
@@ -67,19 +105,22 @@ export const BeforeAfterSlider = ({
     updateFromPointer(event.clientX, container);
   };
 
+  const onPointerUp = () => setIsDragging(false);
+
   const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
     const keyDelta: Record<string, number> = {
       ArrowLeft: -1,
       ArrowRight: 1,
+      PageDown: -10,
+      PageUp: 10,
       Home: -100,
       End: 100,
     };
 
-    if (!(event.key in keyDelta)) {
-      return;
-    }
+    if (!(event.key in keyDelta)) return;
 
     event.preventDefault();
+
     if (event.key === 'Home') {
       setPosition(0);
       return;
@@ -96,9 +137,11 @@ export const BeforeAfterSlider = ({
   return (
     <article className="card-premium overflow-hidden p-4">
       <div
-        className={`${styles.comparison} relative aspect-[4/3] md:aspect-[16/9]`}
+        ref={containerRef}
+        className={`${styles.comparison} ${isReady ? styles.ready : ''} relative aspect-[4/3] md:aspect-[16/9]`}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
       >
         <Image
           src={beforeImage}
@@ -140,7 +183,7 @@ export const BeforeAfterSlider = ({
           aria-valuemax={100}
           aria-valuenow={Math.round(position)}
           onKeyDown={onKeyDown}
-          className={styles.handle}
+          className={`${styles.handle} ${isDragging ? styles.dragging : ''}`}
           style={{ left: `${position}%` }}
         >
           <span className={styles.chevrons}>
@@ -150,6 +193,9 @@ export const BeforeAfterSlider = ({
         </button>
       </div>
 
+      <p className="mt-3 text-xs uppercase tracking-[0.18em] text-muted">
+        Folosește mouse-ul/touch sau tastele pentru comparație.
+      </p>
       <h3 className="mt-4 font-heading text-xl">{title}</h3>
       <p className="text-sm text-muted">
         Suprafață: {surface} • Durată: {duration}
