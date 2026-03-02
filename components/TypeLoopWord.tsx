@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
 import type { CSSProperties } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 interface TypeLoopWordProps {
   words: string[];
@@ -9,6 +9,7 @@ interface TypeLoopWordProps {
   deletingSpeedMs?: number;
   pauseMs?: number;
   className?: string;
+  caretClassName?: string;
 }
 
 export function TypeLoopWord({
@@ -17,6 +18,7 @@ export function TypeLoopWord({
   deletingSpeedMs = 50,
   pauseMs = 1000,
   className,
+  caretClassName,
 }: TypeLoopWordProps) {
   const [wordIndex, setWordIndex] = useState(0);
   const [displayedWord, setDisplayedWord] = useState(words[0] ?? '');
@@ -25,10 +27,6 @@ export function TypeLoopWord({
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
     const updatePreference = () => setPrefersReducedMotion(media.matches);
 
@@ -64,7 +62,10 @@ export function TypeLoopWord({
     const stepTimer = window.setTimeout(
       () => {
         if (isDeleting) {
-          const nextDisplay = currentWord.slice(0, displayedWord.length - 1);
+          const nextDisplay = currentWord.slice(
+            0,
+            Math.max(displayedWord.length - 1, 0),
+          );
           setDisplayedWord(nextDisplay);
 
           if (nextDisplay.length === 0) {
@@ -97,11 +98,12 @@ export function TypeLoopWord({
   ]);
 
   const longestWordLength = useMemo(
-    () => words.reduce((maxLength, word) => Math.max(maxLength, word.length), 0),
+    () =>
+      words.reduce((maxLength, word) => Math.max(maxLength, word.length), 0),
     [words],
   );
 
-  const currentWord = prefersReducedMotion ? words[0] ?? '' : displayedWord;
+  const currentWord = prefersReducedMotion ? (words[0] ?? '') : displayedWord;
 
   return (
     <span
@@ -111,7 +113,10 @@ export function TypeLoopWord({
     >
       <span>{currentWord}</span>
       {!prefersReducedMotion ? (
-        <span className="ml-0.5 h-[1.1em] w-[2px] animate-type-caret bg-primary" aria-hidden="true" />
+        <span
+          className={`animate-type-caret ml-0.5 h-[1.1em] w-[2px] ${caretClassName ?? 'bg-primary'}`.trim()}
+          aria-hidden="true"
+        />
       ) : null}
     </span>
   );
