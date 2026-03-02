@@ -175,7 +175,7 @@ export const TechFeatureSplitSectionContent = () => {
             />
 
             <div
-              className="from-white/4 pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b via-transparent to-slate-950/40"
+              className="from-white/4 pointer-events-none inset-0 rounded-2xl bg-gradient-to-b via-transparent to-slate-950/40"
               aria-hidden
             />
             <div
@@ -187,18 +187,6 @@ export const TechFeatureSplitSectionContent = () => {
               }}
               aria-hidden
             />
-
-            {!reducedMotion && (
-              <div
-                className="bg-accent/20 absolute bottom-0 right-0 top-0 w-1"
-                aria-hidden
-              >
-                <div
-                  className="w-full bg-accent transition-[height] duration-150"
-                  style={{ height: `${Math.round(progress * 100)}%` }}
-                />
-              </div>
-            )}
           </div>
 
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">

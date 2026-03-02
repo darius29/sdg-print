@@ -63,7 +63,7 @@ body::before {
 }
 
 .section-surface {
-  @apply relative isolate overflow-hidden rounded-3xl border border-white/10 p-6 md:p-8;
+  @apply relative isolate rounded-3xl border border-white/10 p-6 md:p-8;
   background:
     linear-gradient(
       155deg,
