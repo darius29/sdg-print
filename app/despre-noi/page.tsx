@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { CTASection } from '@/components/CTASection';
 import { SectionHeading } from '@/components/SectionHeading';
-import { AboutHero } from '@/components/AboutHero';
+import { HomeHero } from '@/components/sections/HomeHero';
 import { canonical } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <AboutHero />
+      <HomeHero />
 
       <section className="section-container">
         <SectionHeading title="Tehnologie care face diferența" />
