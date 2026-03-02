@@ -197,7 +197,7 @@ export const ServiceHighlightsSection = () => (
 );
 
 export const TechFeatureSplitSection = () => (
-  <SectionContainer>
+  <SectionContainer className="section-bloom">
     <div className="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
       <div>
         <SectionHeading
@@ -213,7 +213,7 @@ export const TechFeatureSplitSection = () => (
       </div>
 
       <div>
-        <div className="relative overflow-hidden rounded-2xl border border-slate-800 bg-surface/60 p-3 shadow-xl">
+        <div className="relative overflow-hidden rounded-2xl border border-border bg-surface/60 p-3 shadow-xl">
           <Image
             src="/images/process/process-1.svg"
             alt="Sistem de print calibrat pentru detalii de înaltă rezoluție"
@@ -259,7 +259,7 @@ export const HowItWorksSection = () => (
 );
 
 export const ServicesFilterSection = () => (
-  <SectionContainer>
+  <SectionContainer className="section-bloom">
     <div className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
       <SectionHeading
         className="mb-0"

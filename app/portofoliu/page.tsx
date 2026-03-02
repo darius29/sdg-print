@@ -11,7 +11,15 @@ export const metadata: Metadata = {
 
 export default function PortfolioPage() {
   return (
-    <section className="section-container">
+    <section
+      className="section-container section-bloom"
+      style={{
+        backgroundImage:
+          "linear-gradient(150deg, rgba(6, 9, 16, 0.82), rgba(6, 9, 16, 0.98)), url('/images/process/process-3.svg')",
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+      }}
+    >
       <SectionHeading title="Portofoliu" subtitle="Exemple reale de proiecte livrate în Timișoara și în țară." />
       <PortfolioGrid />
     </section>

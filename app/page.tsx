@@ -4,6 +4,7 @@ import { CTASection } from '@/components/CTASection';
 import { SectionHeading } from '@/components/SectionHeading';
 import { ServiceCard, TestimonialCard } from '@/components/cards';
 import { BeforeAfterCard } from '@/components/BeforeAfterSlider';
+import { Reveal } from '@/components/Reveal';
 import {
   HowItWorksSection,
   ProductShowcaseSection,
@@ -73,14 +74,16 @@ export default function HomePage() {
     <>
       <HomeHero />
 
-      <section className="section-container">
+      <section className="section-container section-bloom">
         <SectionHeading
           title="Serviciile noastre"
           subtitle="Alege categoria potrivită proiectului tău și vezi rapid soluțiile noastre de personalizare."
         />
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {services.map((service) => (
-            <ServiceCard key={service.id} service={service} />
+            <Reveal key={service.id}>
+              <ServiceCard service={service} />
+            </Reveal>
           ))}
         </div>
       </section>
@@ -92,7 +95,9 @@ export default function HomePage() {
         />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {beforeAfterItems.map((item) => (
-            <BeforeAfterCard key={item.id} item={item} />
+            <Reveal key={item.id}>
+              <BeforeAfterCard item={item} />
+            </Reveal>
           ))}
         </div>
         <Link href="/before-after" className="btn-secondary mt-8">
@@ -106,17 +111,19 @@ export default function HomePage() {
 
       <ProductShowcaseSection />
 
-      <section className="section-container">
+      <section className="section-container section-bloom">
         <SectionHeading
           title="Precizie, viteză și culori care rămân impecabile"
           subtitle="Tehnologie wall print cu cerneluri UV durabile, optimizată pentru multiple suprafețe."
         />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {wallPrintCapabilities.map((feature) => (
-            <article key={feature.title} className="card-premium p-5">
-              <h3 className="font-heading text-lg font-semibold">{feature.title}</h3>
-              <p className="mt-2 text-sm text-muted">{feature.description}</p>
-            </article>
+            <Reveal key={feature.title}>
+              <article className="card-premium p-5">
+                <h3 className="font-heading text-lg font-semibold">{feature.title}</h3>
+                <p className="mt-2 text-sm text-muted">{feature.description}</p>
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -125,10 +132,12 @@ export default function HomePage() {
         <SectionHeading title="Cum funcționează" />
         <div className="grid gap-4 md:grid-cols-4">
           {executionSteps.map((step, index) => (
-            <article key={step} className="card-premium p-5">
-              <p className="text-sm text-accent">Pasul {index + 1}</p>
-              <h3 className="mt-2 font-medium">{step}</h3>
-            </article>
+            <Reveal key={step}>
+              <article className="card-premium p-5">
+                <p className="text-sm text-primary">Pasul {index + 1}</p>
+                <h3 className="mt-2 font-medium">{step}</h3>
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>
