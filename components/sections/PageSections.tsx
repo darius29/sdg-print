@@ -1,9 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Chip, PillButton } from '@/components/sections/Chip';
-import { FeatureCard } from '@/components/sections/FeatureCard';
 import { FilterTabs } from '@/components/sections/FilterTabs';
 import { ProcessStep } from '@/components/sections/ProcessStep';
+import { TechFeatureSplitSectionContent } from '@/components/sections/TechFeatureSplitSection';
 import {
   BoltIcon,
   CheckIcon,
@@ -65,43 +64,6 @@ const engravingBenefits = [
   'Linii curate chiar și la dimensiuni mici',
   'Personalizare eficientă pe loturi mixte',
   'Integrare ușoară în identitatea vizuală',
-];
-
-const techFeatures = [
-  {
-    title: 'Control al densității',
-    description: 'Ajustări fine pentru suprafețe absorbante sau lucioase.',
-    icon: <CogIcon className="h-5 w-5" aria-hidden />,
-  },
-  {
-    title: 'Fidelitate cromatică',
-    description:
-      'Profilare culoare pentru reproducere consistentă în campanii.',
-    icon: <PaletteIcon className="h-5 w-5" aria-hidden />,
-  },
-  {
-    title: 'Protecție UV',
-    description:
-      'Rezistență la soare și umiditate pentru spații cu trafic intens.',
-    icon: <ShieldIcon className="h-5 w-5" aria-hidden />,
-  },
-  {
-    title: 'Ritm de producție',
-    description: 'Setare rapidă și execuție fluidă pentru termene scurte.',
-    icon: <BoltIcon className="h-5 w-5" aria-hidden />,
-  },
-  {
-    title: 'Adaptare suprafețe',
-    description:
-      'Rezultate stabile pe zidărie, metal, lemn sau materiale mixte.',
-    icon: <LayersIcon className="h-5 w-5" aria-hidden />,
-  },
-  {
-    title: 'Validare înainte de print',
-    description:
-      'Revizie vizuală în pre-producție pentru livrare fără surprize.',
-    icon: <SparkIcon className="h-5 w-5" aria-hidden />,
-  },
 ];
 
 const processSteps = [
@@ -208,24 +170,6 @@ const showcaseRows = [
   },
 ];
 
-const statCards = [
-  {
-    label: 'Rezoluție',
-    value: '2880 DPI',
-    icon: <SparkIcon className="h-4 w-4" aria-hidden />,
-  },
-  {
-    label: 'Cerneluri',
-    value: 'UV+ Low Odor',
-    icon: <ShieldIcon className="h-4 w-4" aria-hidden />,
-  },
-  {
-    label: 'Setup',
-    value: '≤ 30 min',
-    icon: <BoltIcon className="h-4 w-4" aria-hidden />,
-  },
-];
-
 export const ServiceHighlightsSection = () => (
   <SectionContainer>
     <SectionHeading
@@ -276,57 +220,7 @@ export const ServiceHighlightsSection = () => (
 
 export const TechFeatureSplitSection = () => (
   <SectionContainer>
-    <div className="section-surface section-bloom">
-      <div className="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-        <div>
-          <SectionHeading
-            eyebrow="Wall print tech"
-            title="Tehnologie optimizată pentru suprafețe reale"
-            description="Echipamente calibrate pentru detalii curate, timpi rapizi și rezultate consistente în proiecte comerciale."
-          />
-          <div className="grid gap-4 sm:grid-cols-2">
-            {techFeatures.map((feature) => (
-              <FeatureCard
-                key={feature.title}
-                icon={feature.icon}
-                title={feature.title}
-                description={feature.description}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <div className="bg-surface/60 relative overflow-hidden rounded-2xl border border-border p-3 shadow-xl">
-            <Image
-              src="/images/process/process-1.svg"
-              alt="Sistem de print calibrat pentru detalii de înaltă rezoluție"
-              width={900}
-              height={640}
-              className="h-auto w-full rounded-xl object-cover"
-            />
-            <div
-              className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_0_-90px_120px_rgba(2,6,23,0.4)]"
-              aria-hidden
-            />
-          </div>
-
-          <div className="mt-4 grid gap-3 sm:grid-cols-3">
-            {statCards.map((stat) => (
-              <article key={stat.label} className="card-premium p-4">
-                <div className="text-accent">{stat.icon}</div>
-                <p className="mt-2 text-xs uppercase tracking-wider text-muted">
-                  {stat.label}
-                </p>
-                <p className="mt-1 font-heading text-lg font-semibold">
-                  {stat.value}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
+    <TechFeatureSplitSectionContent />
   </SectionContainer>
 );
 
