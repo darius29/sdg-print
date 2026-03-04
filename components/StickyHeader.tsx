@@ -26,7 +26,7 @@ export const StickyHeader = () => {
           <Link href="/contact" className="btn-primary text-sm">Cere ofertă personalizată</Link>
         </div>
 
-        <MobileMenu navItems={siteConfig.nav} pathname={pathname} ctaHref="/contact" ctaLabel="Cere ofertă" />
+        <MobileMenu navItems={siteConfig.nav} ctaHref="/contact" ctaLabel="Cere ofertă" />
       </div>
     </header>
   );
