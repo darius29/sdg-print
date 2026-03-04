@@ -1,7 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useId, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 type NavItem = {
   href: string;
@@ -10,7 +12,6 @@ type NavItem = {
 
 type MobileMenuProps = {
   navItems: NavItem[];
-  pathname: string;
   ctaHref?: string;
   ctaLabel?: string;
 };
@@ -20,14 +21,24 @@ const FOCUSABLE_SELECTOR =
 
 export const MobileMenu = ({
   navItems,
-  pathname,
   ctaHref = '/contact',
   ctaLabel = 'Cere ofertă',
 }: MobileMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const pathname = usePathname();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
-  const panelId = useId();
+
+  const closeMenu = () => setIsOpen(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    closeMenu();
+  }, [pathname]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -36,7 +47,8 @@ export const MobileMenu = ({
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        setIsOpen(false);
+        closeMenu();
+        return;
       }
 
       if (event.key !== 'Tab') {
@@ -66,40 +78,16 @@ export const MobileMenu = ({
       }
     };
 
-    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
-      const panel = panelRef.current;
-      const button = buttonRef.current;
-      const target = event.target as Node;
-
-      if (!panel || panel.contains(target) || button?.contains(target)) {
-        return;
-      }
-
-      setIsOpen(false);
-    };
-
     const originalOverflow = document.body.style.overflow;
-    const originalPaddingRight = document.body.style.paddingRight;
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-
     document.body.style.overflow = 'hidden';
-    if (scrollbarWidth > 0) {
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
-    }
 
     document.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('mousedown', handlePointerDown);
-    document.addEventListener('touchstart', handlePointerDown);
-
     const focusableElements = panelRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
     focusableElements?.[0]?.focus();
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('mousedown', handlePointerDown);
-      document.removeEventListener('touchstart', handlePointerDown);
       document.body.style.overflow = originalOverflow;
-      document.body.style.paddingRight = originalPaddingRight;
     };
   }, [isOpen]);
 
@@ -109,7 +97,72 @@ export const MobileMenu = ({
     }
   }, [isOpen]);
 
-  const closeMenu = () => setIsOpen(false);
+  const menuLayer = isMounted
+    ? createPortal(
+        <>
+          <div
+            className={`fixed inset-0 z-40 bg-black/55 backdrop-blur-sm transition-opacity duration-300 ease-out motion-reduce:transition-none ${
+              isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+            }`}
+            aria-hidden="true"
+            onClick={closeMenu}
+          />
+
+          <aside
+            id="mobile-menu"
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigare mobilă"
+            className={`fixed right-0 top-0 z-50 flex h-screen w-[min(90vw,380px)] max-w-full flex-col border-l border-slate-700 bg-bg/95 shadow-2xl transition-transform duration-300 ease-out motion-reduce:transition-none ${
+              isOpen ? 'translate-x-0' : 'translate-x-full'
+            }`}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-slate-800 px-5 py-4">
+              <p className="font-heading text-base font-semibold text-slate-100">Meniu</p>
+              <button
+                type="button"
+                onClick={closeMenu}
+                aria-label="Închide meniul de navigare"
+                className="relative z-[60] inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-700 text-slate-100 transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+              >
+                <span aria-hidden="true" className="text-xl leading-none">
+                  ×
+                </span>
+              </button>
+            </div>
+
+            <nav className="flex-1 overflow-y-auto px-5 pb-8 pt-3" aria-label="Navigare mobilă">
+              <ul className="divide-y divide-slate-800 border-y border-slate-800">
+                {navItems.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={closeMenu}
+                      className={`block py-4 text-base transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg ${
+                        pathname === item.href ? 'text-accent' : 'text-slate-100'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                href={ctaHref}
+                onClick={closeMenu}
+                className="btn-primary mt-6 inline-flex w-full justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+              >
+                {ctaLabel}
+              </Link>
+            </nav>
+          </aside>
+        </>,
+        document.body,
+      )
+    : null;
 
   return (
     <div className="lg:hidden">
@@ -118,7 +171,7 @@ export const MobileMenu = ({
         type="button"
         aria-label={isOpen ? 'Închide meniul de navigare' : 'Deschide meniul de navigare'}
         aria-expanded={isOpen}
-        aria-controls={panelId}
+        aria-controls="mobile-menu"
         onClick={() => setIsOpen((current) => !current)}
         className="relative z-[60] inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-700 bg-bg/80 text-slate-100 transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
       >
@@ -142,54 +195,7 @@ export const MobileMenu = ({
         </span>
       </button>
 
-      <div
-        className={`fixed inset-0 z-40 bg-slate-950/50 backdrop-blur-sm transition-opacity duration-300 ease-out motion-reduce:transition-none ${
-          isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
-        }`}
-        aria-hidden="true"
-      />
-
-      <aside
-        id={panelId}
-        ref={panelRef}
-        className={`fixed inset-y-0 right-0 z-50 flex h-dvh w-[min(86vw,22rem)] max-w-full flex-col border-l border-slate-700 bg-bg/95 shadow-2xl transition-transform duration-300 ease-out motion-reduce:transition-none ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        <div className="flex items-center justify-between border-b border-slate-800 px-5 py-4">
-          <p className="font-heading text-base font-semibold text-slate-100">Meniu</p>
-        </div>
-
-        <nav className="flex-1 overflow-y-auto px-5 pb-8 pt-3" aria-label="Navigare mobilă">
-          <ul className="divide-y divide-slate-800 border-y border-slate-800">
-            {navItems.map((item, index) => (
-              <li
-                key={item.href}
-                className={`transition duration-300 ease-out motion-reduce:transition-none ${
-                  isOpen ? 'translate-x-0 opacity-100' : 'translate-x-3 opacity-0'
-                }`}
-                style={{ transitionDelay: `${index * 35}ms` }}
-              >
-                <Link
-                  href={item.href}
-                  onClick={closeMenu}
-                  className={`block py-4 text-base ${pathname === item.href ? 'text-accent' : 'text-slate-100'}`}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <Link
-            href={ctaHref}
-            onClick={closeMenu}
-            className="btn-primary mt-6 inline-flex w-full justify-center"
-          >
-            {ctaLabel}
-          </Link>
-        </nav>
-      </aside>
+      {menuLayer}
     </div>
   );
 };
