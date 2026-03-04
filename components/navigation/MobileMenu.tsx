@@ -152,7 +152,7 @@ export const MobileMenu = ({
       <aside
         id={panelId}
         ref={panelRef}
-        className={`fixed right-0 top-0 z-50 flex h-dvh w-[86vw] max-w-sm flex-col border-l border-slate-700 bg-bg/95 shadow-2xl transition-transform duration-300 ease-out motion-reduce:transition-none ${
+        className={`fixed inset-y-0 right-0 z-50 flex h-dvh w-[min(86vw,22rem)] max-w-full flex-col border-l border-slate-700 bg-bg/95 shadow-2xl transition-transform duration-300 ease-out motion-reduce:transition-none ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
