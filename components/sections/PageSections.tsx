@@ -1,9 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Chip, PillButton } from '@/components/sections/Chip';
-import { FeatureCard } from '@/components/sections/FeatureCard';
 import { FilterTabs } from '@/components/sections/FilterTabs';
 import { ProcessStep } from '@/components/sections/ProcessStep';
+import { TechFeatureSplitSectionContent } from '@/components/sections/TechFeatureSplitSection';
 import {
   BoltIcon,
   CheckIcon,
@@ -66,43 +65,6 @@ const engravingBenefits = [
   'Linii curate chiar și la dimensiuni mici',
   'Personalizare eficientă pe loturi mixte',
   'Integrare ușoară în identitatea vizuală',
-];
-
-const techFeatures = [
-  {
-    title: 'Control al densității',
-    description: 'Ajustări fine pentru suprafețe absorbante sau lucioase.',
-    icon: <CogIcon className="h-5 w-5" aria-hidden />,
-  },
-  {
-    title: 'Fidelitate cromatică',
-    description:
-      'Profilare culoare pentru reproducere consistentă în campanii.',
-    icon: <PaletteIcon className="h-5 w-5" aria-hidden />,
-  },
-  {
-    title: 'Protecție UV',
-    description:
-      'Rezistență la soare și umiditate pentru spații cu trafic intens.',
-    icon: <ShieldIcon className="h-5 w-5" aria-hidden />,
-  },
-  {
-    title: 'Ritm de producție',
-    description: 'Setare rapidă și execuție fluidă pentru termene scurte.',
-    icon: <BoltIcon className="h-5 w-5" aria-hidden />,
-  },
-  {
-    title: 'Adaptare suprafețe',
-    description:
-      'Rezultate stabile pe zidărie, metal, lemn sau materiale mixte.',
-    icon: <LayersIcon className="h-5 w-5" aria-hidden />,
-  },
-  {
-    title: 'Validare înainte de print',
-    description:
-      'Revizie vizuală în pre-producție pentru livrare fără surprize.',
-    icon: <SparkIcon className="h-5 w-5" aria-hidden />,
-  },
 ];
 
 const processSteps = [
@@ -206,24 +168,6 @@ const showcaseRows = [
     description: 'Serii limitate cu elemente de design custom.',
     tag: 'Limited',
     icon: <PaletteIcon className="h-4 w-4" aria-hidden />,
-  },
-];
-
-const statCards = [
-  {
-    label: 'Rezoluție',
-    value: '2880 DPI',
-    icon: <SparkIcon className="h-4 w-4" aria-hidden />,
-  },
-  {
-    label: 'Cerneluri',
-    value: 'UV+ Low Odor',
-    icon: <ShieldIcon className="h-4 w-4" aria-hidden />,
-  },
-  {
-    label: 'Setup',
-    value: '≤ 30 min',
-    icon: <BoltIcon className="h-4 w-4" aria-hidden />,
   },
 ];
 

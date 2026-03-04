@@ -2,21 +2,20 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { CTASection } from '@/components/CTASection';
 import { SectionHeading } from '@/components/SectionHeading';
+import { HomeHero } from '@/components/sections/HomeHero';
 import { canonical } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Despre Noi',
-  description: 'Povestea SDG PRINT & Design și tehnologia noastră de personalizare premium.',
+  description:
+    'Povestea SDG PRINT & Design și tehnologia noastră de personalizare premium.',
   alternates: { canonical: canonical('/despre-noi') },
 };
 
 export default function AboutPage() {
   return (
     <>
-      <section className="section-container">
-        <SectionHeading title="Despre SDG PRINT & Design" subtitle="Suntem o echipă din Timișoara care transformă idei în suprafețe cu impact vizual real." />
-        <p className="max-w-4xl text-muted">Construim proiecte de print premium pentru persoane fizice și companii din toată România. Punem accent pe calitatea execuției, design personalizat și suport rapid de la idee la implementare.</p>
-      </section>
+      <HomeHero />
 
       <section className="section-container">
         <SectionHeading title="Tehnologie care face diferența" />
@@ -42,12 +41,22 @@ export default function AboutPage() {
         <SectionHeading title="Galerie echipamente & proces" />
         <div className="grid gap-5 md:grid-cols-3">
           {[1, 2, 3].map((img) => (
-            <Image key={img} src={`/images/process/process-${img}.svg`} alt={`Proces ${img}`} width={700} height={500} className="card-premium h-60 w-full object-cover" />
+            <Image
+              key={img}
+              src={`/images/process/process-${img}.svg`}
+              alt={`Proces ${img}`}
+              width={700}
+              height={500}
+              className="card-premium h-60 w-full object-cover"
+            />
           ))}
         </div>
       </section>
 
-      <CTASection title="Vrei să discutăm proiectul tău?" description="Suntem gata să îți propunem cea mai bună soluție de print personalizat." />
+      <CTASection
+        title="Vrei să discutăm proiectul tău?"
+        description="Suntem gata să îți propunem cea mai bună soluție de print personalizat."
+      />
     </>
   );
 }

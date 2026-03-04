@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { HomeHero } from '@/components/HomeHero';
+import { AboutHero } from '@/components/sections/AboutHero';
 import { CTASection } from '@/components/CTASection';
 import { SectionHeading } from '@/components/SectionHeading';
 import { ServiceCard, TestimonialCard } from '@/components/cards';
@@ -34,8 +34,7 @@ const wallPrintCapabilities = [
   },
   {
     title: 'Low-odor, non-toxic',
-    description:
-      'Potrivit pentru spații interioare comerciale sau rezidențiale.',
+    description: 'Potrivit pentru spații comerciale sau rezidențiale.',
   },
   {
     title: 'Flux eficient',
@@ -79,7 +78,7 @@ const executionSteps = [
 export default function HomePage() {
   return (
     <>
-      <HomeHero />
+      <AboutHero />
 
       <AmbientSection variant="left" surfaceClassName="section-bloom">
         <SectionHeading
