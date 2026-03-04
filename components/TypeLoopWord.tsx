@@ -12,6 +12,8 @@ interface TypeLoopWordProps {
   caretClassName?: string;
 }
 
+type Phase = 'pause' | 'deleting' | 'typing';
+
 export function TypeLoopWord({
   words,
   typingSpeedMs = 80,
@@ -21,9 +23,8 @@ export function TypeLoopWord({
   caretClassName,
 }: TypeLoopWordProps) {
   const [wordIndex, setWordIndex] = useState(0);
-  const [displayedWord, setDisplayedWord] = useState(words[0] ?? '');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isPaused, setIsPaused] = useState(true);
+  const [charIndex, setCharIndex] = useState((words[0] ?? '').length); // pornește cu primul cuvânt complet
+  const [phase, setPhase] = useState<Phase>('pause');
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -32,65 +33,62 @@ export function TypeLoopWord({
 
     updatePreference();
     media.addEventListener('change', updatePreference);
-
     return () => media.removeEventListener('change', updatePreference);
   }, []);
 
   useEffect(() => {
     if (prefersReducedMotion || words.length <= 1) {
-      setDisplayedWord(words[0] ?? '');
+      setWordIndex(0);
+      setCharIndex((words[0] ?? '').length);
+      setPhase('pause');
       return;
     }
 
     const currentWord = words[wordIndex] ?? '';
-    const nextWord = words[(wordIndex + 1) % words.length] ?? '';
 
-    if (isPaused) {
-      const pauseTimer = window.setTimeout(() => {
-        setIsPaused(false);
-        if (isDeleting) {
-          setWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-          setIsDeleting(false);
-        } else {
-          setIsDeleting(true);
-        }
-      }, pauseMs);
+    const delay =
+      phase === 'pause'
+        ? pauseMs
+        : phase === 'deleting'
+          ? deletingSpeedMs
+          : typingSpeedMs;
 
-      return () => window.clearTimeout(pauseTimer);
-    }
+    const t = window.setTimeout(() => {
+      if (phase === 'pause') {
+        // după pauză, începem ștergerea cuvântului curent
+        setPhase('deleting');
+        return;
+      }
 
-    const stepTimer = window.setTimeout(
-      () => {
-        if (isDeleting) {
-          const nextDisplay = currentWord.slice(
-            0,
-            Math.max(displayedWord.length - 1, 0),
-          );
-          setDisplayedWord(nextDisplay);
-
-          if (nextDisplay.length === 0) {
-            setIsPaused(true);
-          }
+      if (phase === 'deleting') {
+        if (charIndex > 0) {
+          setCharIndex((c) => c - 1);
           return;
         }
 
-        const nextDisplay = nextWord.slice(0, displayedWord.length + 1);
-        setDisplayedWord(nextDisplay);
+        // am șters complet -> trecem imediat la următorul cuvânt și începem typing (fără pauză pe gol)
+        setWordIndex((i) => (i + 1) % words.length);
+        setCharIndex(0);
+        setPhase('typing');
+        return;
+      }
 
-        if (nextDisplay === nextWord) {
-          setIsPaused(true);
-        }
-      },
-      isDeleting ? deletingSpeedMs : typingSpeedMs,
-    );
+      // phase === 'typing'
+      if (charIndex < currentWord.length) {
+        setCharIndex((c) => c + 1);
+        return;
+      }
 
-    return () => window.clearTimeout(stepTimer);
+      // cuvânt complet -> pauză -> apoi ștergere
+      setPhase('pause');
+    }, delay);
+
+    return () => window.clearTimeout(t);
   }, [
+    charIndex,
     deletingSpeedMs,
-    displayedWord,
-    isDeleting,
-    isPaused,
     pauseMs,
+    phase,
     prefersReducedMotion,
     typingSpeedMs,
     wordIndex,
@@ -103,7 +101,9 @@ export function TypeLoopWord({
     [words],
   );
 
-  const currentWord = prefersReducedMotion ? (words[0] ?? '') : displayedWord;
+  const currentWord = prefersReducedMotion
+    ? (words[0] ?? '')
+    : (words[wordIndex] ?? '').slice(0, charIndex);
 
   return (
     <span

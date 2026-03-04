@@ -5,7 +5,7 @@ import { CountUp } from '@/components/CountUp';
 import { TypeLoopWord } from '@/components/TypeLoopWord';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
 
-const HERO_WORDS = ['spații', 'tricouri', 'obiecte', 'căni', 'spații'];
+const HERO_WORDS = ['spații', 'tricouri', 'obiecte', 'căni'];
 const COUNT_DURATION_MS = 1500;
 
 const stats = [
@@ -63,7 +63,7 @@ export function AboutHero() {
           }}
         />
 
-        <div className="relative mx-auto max-w-4xl text-center">
+        <div className="relative mx-auto text-center">
           <h1
             className="font-heading text-4xl font-semibold leading-tight md:text-5xl lg:text-6xl"
             aria-label="Print care transformă spații în experiențe memorabile"

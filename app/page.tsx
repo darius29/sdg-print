@@ -33,8 +33,7 @@ const wallPrintCapabilities = [
   },
   {
     title: 'Low-odor, non-toxic',
-    description:
-      'Potrivit pentru spații interioare comerciale sau rezidențiale.',
+    description: 'Potrivit pentru spații comerciale sau rezidențiale.',
   },
   {
     title: 'Flux eficient',
