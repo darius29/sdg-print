@@ -5,6 +5,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { ServiceCard, TestimonialCard } from '@/components/cards';
 import { BeforeAfterCard } from '@/components/BeforeAfterSlider';
 import { Reveal } from '@/components/Reveal';
+import { AmbientSection } from '@/components/sections/AmbientSection';
 import {
   HowItWorksSection,
   ProductShowcaseSection,
@@ -79,40 +80,36 @@ export default function HomePage() {
     <>
       <AboutHero />
 
-      <section className="section-container">
-        <div className="section-surface section-bloom">
-          <SectionHeading
-            title="Serviciile noastre"
-            subtitle="Alege categoria potrivită proiectului tău și vezi rapid soluțiile noastre de personalizare."
-          />
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {services.map((service, index) => (
-              <Reveal key={service.id} delayMs={index * 60}>
-                <ServiceCard service={service} />
-              </Reveal>
-            ))}
-          </div>
+      <AmbientSection variant="left" surfaceClassName="section-bloom">
+        <SectionHeading
+          title="Serviciile noastre"
+          subtitle="Alege categoria potrivită proiectului tău și vezi rapid soluțiile noastre de personalizare."
+        />
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {services.map((service, index) => (
+            <Reveal key={service.id} delayMs={index * 60}>
+              <ServiceCard service={service} />
+            </Reveal>
+          ))}
         </div>
-      </section>
+      </AmbientSection>
 
-      <section className="section-container">
-        <div className="section-surface">
-          <SectionHeading
-            title="Înainte / După"
-            subtitle="Transformări reale pentru spații comerciale, birouri și locații premium."
-          />
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {beforeAfterItems.map((item, index) => (
-              <Reveal key={item.id} delayMs={index * 70}>
-                <BeforeAfterCard item={item} />
-              </Reveal>
-            ))}
-          </div>
-          <Link href="/before-after" className="btn-secondary mt-8">
-            Vezi toate transformările
-          </Link>
+      <AmbientSection variant="right">
+        <SectionHeading
+          title="Înainte / După"
+          subtitle="Transformări reale pentru spații comerciale, birouri și locații premium."
+        />
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {beforeAfterItems.map((item, index) => (
+            <Reveal key={item.id} delayMs={index * 70}>
+              <BeforeAfterCard item={item} />
+            </Reveal>
+          ))}
         </div>
-      </section>
+        <Link href="/before-after" className="btn-secondary mt-8">
+          Vezi toate transformările
+        </Link>
+      </AmbientSection>
 
       <TechFeatureSplitSection />
       <HowItWorksSection />

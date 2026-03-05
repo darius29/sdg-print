@@ -13,6 +13,7 @@ import {
   SparkIcon,
 } from '@/components/sections/SectionIcons';
 import { SectionContainer } from '@/components/sections/SectionContainer';
+import { AmbientSection } from '@/components/sections/AmbientSection';
 import { SectionHeading } from '@/components/sections/SectionHeading';
 import { ShowcaseCard, ShowcaseRow } from '@/components/sections/ShowcaseCard';
 
@@ -219,40 +220,86 @@ export const ServiceHighlightsSection = () => (
 );
 
 export const TechFeatureSplitSection = () => (
-  <SectionContainer>
-    <TechFeatureSplitSectionContent />
-  </SectionContainer>
+  <AmbientSection variant="center" surfaceClassName="section-bloom">
+    <div className="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+      <div>
+        <SectionHeading
+          eyebrow="Wall print tech"
+          title="Tehnologie optimizată pentru suprafețe reale"
+          description="Echipamente calibrate pentru detalii curate, timpi rapizi și rezultate consistente în proiecte comerciale."
+        />
+        <div className="grid gap-4 sm:grid-cols-2">
+          {techFeatures.map((feature) => (
+            <FeatureCard
+              key={feature.title}
+              icon={feature.icon}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="bg-surface/60 relative overflow-hidden rounded-2xl border border-border p-3 shadow-xl">
+          <Image
+            src="/images/process/process-1.svg"
+            alt="Sistem de print calibrat pentru detalii de înaltă rezoluție"
+            width={900}
+            height={640}
+            className="h-auto w-full rounded-xl object-cover"
+          />
+          <div
+            className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_0_-90px_120px_rgba(2,6,23,0.4)]"
+            aria-hidden
+          />
+        </div>
+
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+          {statCards.map((stat) => (
+            <article key={stat.label} className="card-premium p-4">
+              <div className="text-accent">{stat.icon}</div>
+              <p className="mt-2 text-xs uppercase tracking-wider text-muted">
+                {stat.label}
+              </p>
+              <p className="mt-1 font-heading text-lg font-semibold">
+                {stat.value}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </AmbientSection>
 );
 
 export const HowItWorksSection = () => (
-  <SectionContainer>
-    <div className="section-surface">
-      <SectionHeading
-        eyebrow="How it works"
-        title="Un proces simplu, clar și previzibil"
-        description="Fiecare etapă este documentată, ca să ai control complet de la brief la livrare."
-      />
+  <AmbientSection variant="right">
+    <SectionHeading
+      eyebrow="How it works"
+      title="Un proces simplu, clar și previzibil"
+      description="Fiecare etapă este documentată, ca să ai control complet de la brief la livrare."
+    />
 
-      <ol className="space-y-4">
-        {processSteps.map((step, index) => (
-          <ProcessStep
-            key={step.title}
-            index={index}
-            title={step.title}
-            description={step.description}
-          />
-        ))}
-      </ol>
+    <ol className="space-y-4">
+      {processSteps.map((step, index) => (
+        <ProcessStep
+          key={step.title}
+          index={index}
+          title={step.title}
+          description={step.description}
+        />
+      ))}
+    </ol>
 
-      <Link
-        href="/contact"
-        className="btn-primary mt-8"
-        aria-label="Solicită oferta pentru proiectul tău"
-      >
-        Începe proiectul
-      </Link>
-    </div>
-  </SectionContainer>
+    <Link
+      href="/contact"
+      className="btn-primary mt-8"
+      aria-label="Solicită oferta pentru proiectul tău"
+    >
+      Începe proiectul
+    </Link>
+  </AmbientSection>
 );
 
 export const ServicesFilterSection = () => (
@@ -271,43 +318,41 @@ export const ServicesFilterSection = () => (
 );
 
 export const ProductShowcaseSection = () => (
-  <SectionContainer>
-    <div className="section-surface">
-      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <SectionHeading
-          className="mb-0"
-          eyebrow="Objects & textiles"
-          title="Categorii populare pentru obiecte și textile"
-          description="Mixăm funcționalitatea cu designul pentru produse care se remarcă imediat."
-        />
-        <Link
-          href="/contact"
-          className="btn-primary self-start"
-          aria-label="Solicită o ofertă pentru obiecte și textile"
-        >
-          Request quote
-        </Link>
-      </div>
+  <AmbientSection variant="left">
+    <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+      <SectionHeading
+        className="mb-0"
+        eyebrow="Objects & textiles"
+        title="Categorii populare pentru obiecte și textile"
+        description="Mixăm funcționalitatea cu designul pentru produse care se remarcă imediat."
+      />
+      <Link
+        href="/contact"
+        className="btn-primary self-start"
+        aria-label="Solicită o ofertă pentru obiecte și textile"
+      >
+        Request quote
+      </Link>
+    </div>
 
-      <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
-        <ShowcaseCard
-          icon={<SparkIcon className="h-5 w-5" aria-hidden />}
-          title="Colecții promoționale complete"
-          description="De la pachete de onboarding la cadouri corporate, fiecare produs este coordonat vizual și livrat rapid."
-          badges={['Fast delivery', 'Durable print', 'Vibrant colors']}
-        />
-        <div className="space-y-3">
-          {showcaseRows.map((row) => (
-            <ShowcaseRow
-              key={row.title}
-              icon={row.icon}
-              title={row.title}
-              description={row.description}
-              tag={row.tag}
-            />
-          ))}
-        </div>
+    <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+      <ShowcaseCard
+        icon={<SparkIcon className="h-5 w-5" aria-hidden />}
+        title="Colecții promoționale complete"
+        description="De la pachete de onboarding la cadouri corporate, fiecare produs este coordonat vizual și livrat rapid."
+        badges={['Fast delivery', 'Durable print', 'Vibrant colors']}
+      />
+      <div className="space-y-3">
+        {showcaseRows.map((row) => (
+          <ShowcaseRow
+            key={row.title}
+            icon={row.icon}
+            title={row.title}
+            description={row.description}
+            tag={row.tag}
+          />
+        ))}
       </div>
     </div>
-  </SectionContainer>
+  </AmbientSection>
 );

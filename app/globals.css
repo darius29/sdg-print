@@ -125,6 +125,161 @@ body::before {
     );
 }
 
+.ambient-region {
+  @apply relative isolate;
+}
+
+.ambient-region::before,
+.ambient-region::after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  width: clamp(15rem, 36vw, 32rem);
+  height: clamp(15rem, 36vw, 32rem);
+  border-radius: 999px;
+  filter: blur(72px);
+  opacity: 0.12;
+  transition:
+    opacity 900ms ease,
+    transform 1400ms ease;
+}
+
+.ambient-region::before {
+  left: -18%;
+  top: 6%;
+  background: radial-gradient(
+    circle,
+    rgba(34, 211, 238, 0.75),
+    transparent 70%
+  );
+  transform: translate3d(-10px, 12px, 0);
+}
+
+.ambient-region::after {
+  right: -16%;
+  bottom: -2%;
+  background: radial-gradient(
+    circle,
+    rgba(129, 140, 248, 0.72),
+    transparent 70%
+  );
+  transform: translate3d(10px, -12px, 0);
+}
+
+.ambient-region .ambient-surface {
+  position: relative;
+  animation: ambientDrift 18s ease-in-out infinite alternate;
+  border-image: linear-gradient(
+      120deg,
+      rgba(34, 211, 238, 0.24),
+      rgba(255, 255, 255, 0.08),
+      rgba(129, 140, 248, 0.24)
+    )
+    1;
+}
+
+.ambient-region .ambient-surface > * {
+  position: relative;
+  z-index: 1;
+}
+
+.ambient-region .ambient-surface::before {
+  opacity: 0.09;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.62) 0.4px, transparent 0.4px),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.03), transparent 55%);
+  background-size:
+    3px 3px,
+    100% 100%;
+}
+
+.ambient-region .ambient-surface::after {
+  opacity: 0.6;
+  background: radial-gradient(
+    circle,
+    rgba(45, 212, 191, 0.18),
+    transparent 72%
+  );
+}
+
+.ambient-region.is-visible::before,
+.ambient-region.is-visible::after {
+  opacity: 0.16;
+}
+
+.ambient-left::before {
+  opacity: 0.15;
+}
+
+.ambient-left::after {
+  opacity: 0.1;
+}
+
+.ambient-right::before {
+  opacity: 0.1;
+  top: -4%;
+}
+
+.ambient-right::after {
+  opacity: 0.15;
+  bottom: 10%;
+}
+
+.ambient-center::before {
+  left: 12%;
+  top: -16%;
+  opacity: 0.1;
+}
+
+.ambient-center::after {
+  right: 8%;
+  bottom: -18%;
+  opacity: 0.11;
+}
+
+.ambient-region::after,
+.ambient-region::before {
+  animation: ambientGlow 22s ease-in-out infinite alternate;
+}
+
+.ambient-region::after {
+  animation-duration: 26s;
+}
+
+.ambient-region .ambient-separator {
+  pointer-events: none;
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 211, 238, 0.35),
+    rgba(129, 140, 248, 0.35),
+    transparent
+  );
+}
+
+@keyframes ambientDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+@keyframes ambientGlow {
+  0% {
+    transform: translate3d(-8px, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(8px, -10px, 0) scale(1.05);
+  }
+}
 .card-premium {
   @apply relative rounded-2xl border bg-surface shadow-[var(--shadow-soft)] backdrop-blur-sm transition-all duration-300 ease-out;
   background-color: color-mix(in srgb, var(--surface) 82%, transparent);
@@ -188,9 +343,14 @@ body::before {
 @media (prefers-reduced-motion: reduce) {
   .reveal-up,
   .motion-base,
-  .card-premium {
+  .card-premium,
+  .ambient-region,
+  .ambient-region::before,
+  .ambient-region::after,
+  .ambient-region .ambient-surface {
     transition-duration: 1ms !important;
     transform: none !important;
+    animation: none !important;
   }
 }
 
