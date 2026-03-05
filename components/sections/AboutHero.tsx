@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { CountUp } from '@/components/CountUp';
 import { TypeLoopWord } from '@/components/TypeLoopWord';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
+import { Section } from '@/components/sections/Section';
 
 const HERO_WORDS = ['spații', 'tricouri', 'obiecte', 'căni'];
 const COUNT_DURATION_MS = 1500;
@@ -39,7 +40,7 @@ export function AboutHero() {
   const { ref, isInView } = useInViewOnce<HTMLDivElement>({ threshold: 0.25 });
 
   return (
-    <section className="section-container">
+    <Section variant="meshSoft">
       <div className="from-surface-2/80 via-surface/85 relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b to-bg p-8 shadow-[var(--shadow-md)] md:p-12 lg:p-16">
         <div
           className="pointer-events-none absolute inset-0"
@@ -115,6 +116,6 @@ export function AboutHero() {
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

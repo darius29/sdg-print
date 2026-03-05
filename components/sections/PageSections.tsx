@@ -171,7 +171,7 @@ const showcaseRows = [
 ];
 
 export const ServiceHighlightsSection = () => (
-  <SectionContainer>
+  <SectionContainer variant="leftGlow">
     <SectionHeading
       centered
       eyebrow="Laser engraving"
@@ -219,13 +219,13 @@ export const ServiceHighlightsSection = () => (
 );
 
 export const TechFeatureSplitSection = () => (
-  <SectionContainer>
+  <SectionContainer variant="splitGlow">
     <TechFeatureSplitSectionContent />
   </SectionContainer>
 );
 
 export const HowItWorksSection = () => (
-  <SectionContainer>
+  <SectionContainer variant="meshSoft">
     <div className="section-surface">
       <SectionHeading
         eyebrow="How it works"
@@ -256,7 +256,7 @@ export const HowItWorksSection = () => (
 );
 
 export const ServicesFilterSection = () => (
-  <SectionContainer className="section-bloom">
+  <SectionContainer variant="rightGlow" className="section-bloom">
     <div className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
       <SectionHeading
         className="mb-0"
@@ -271,7 +271,7 @@ export const ServicesFilterSection = () => (
 );
 
 export const ProductShowcaseSection = () => (
-  <SectionContainer>
+  <SectionContainer variant="leftGlow">
     <div className="section-surface">
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <SectionHeading

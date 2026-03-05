@@ -5,6 +5,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { ServiceCard, TestimonialCard } from '@/components/cards';
 import { BeforeAfterCard } from '@/components/BeforeAfterSlider';
 import { Reveal } from '@/components/Reveal';
+import { Section } from '@/components/sections/Section';
 import {
   HowItWorksSection,
   ProductShowcaseSection,
@@ -15,30 +16,12 @@ import { services } from '@/content/services';
 import { testimonials } from '@/content/testimonials';
 
 const wallPrintCapabilities = [
-  {
-    title: 'Aliniere precisă',
-    description: 'Sistem optic pentru aliniere perfectă pe suprafață.',
-  },
-  {
-    title: 'Rezoluție înaltă',
-    description: 'Detalii fine și culori consistente, până la 2880 DPI.',
-  },
-  {
-    title: 'Cerneluri UV durabile',
-    description: 'Rezistență sporită la zgârieturi, lumină și umezeală.',
-  },
-  {
-    title: 'Multi-suprafețe',
-    description: 'Print pe beton, cărămidă, lemn, sticlă sau metal.',
-  },
-  {
-    title: 'Low-odor, non-toxic',
-    description: 'Potrivit pentru spații comerciale sau rezidențiale.',
-  },
-  {
-    title: 'Flux eficient',
-    description: 'Configurare rapidă și execuție accelerată în teren.',
-  },
+  { title: 'Aliniere precisă', description: 'Sistem optic pentru aliniere perfectă pe suprafață.' },
+  { title: 'Rezoluție înaltă', description: 'Detalii fine și culori consistente, până la 2880 DPI.' },
+  { title: 'Cerneluri UV durabile', description: 'Rezistență sporită la zgârieturi, lumină și umezeală.' },
+  { title: 'Multi-suprafețe', description: 'Print pe beton, cărămidă, lemn, sticlă sau metal.' },
+  { title: 'Low-odor, non-toxic', description: 'Potrivit pentru spații comerciale sau rezidențiale.' },
+  { title: 'Flux eficient', description: 'Configurare rapidă și execuție accelerată în teren.' },
 ];
 
 const laserEngravingBenefits = [
@@ -49,37 +32,20 @@ const laserEngravingBenefits = [
 ];
 
 const objectAndTextileProducts = [
-  {
-    title: 'Căni personalizate',
-    useCases: 'Branding, cadouri corporate, activări de brand.',
-  },
-  {
-    title: 'Tricouri',
-    useCases: 'Echipă internă, promoții, merch de campanie.',
-  },
-  {
-    title: 'Hanorace',
-    useCases: 'Merch premium, colecții capsule, confort zilnic.',
-  },
-  {
-    title: 'Șepci',
-    useCases: 'Evenimente, promo outdoor, uniformizare echipe.',
-  },
+  { title: 'Căni personalizate', useCases: 'Branding, cadouri corporate, activări de brand.' },
+  { title: 'Tricouri', useCases: 'Echipă internă, promoții, merch de campanie.' },
+  { title: 'Hanorace', useCases: 'Merch premium, colecții capsule, confort zilnic.' },
+  { title: 'Șepci', useCases: 'Evenimente, promo outdoor, uniformizare echipe.' },
 ];
 
-const executionSteps = [
-  'Consultare',
-  'Design personalizat',
-  'Print',
-  'Predare & montaj',
-];
+const executionSteps = ['Consultare', 'Design personalizat', 'Print', 'Predare & montaj'];
 
 export default function HomePage() {
   return (
     <>
       <AboutHero />
 
-      <section className="section-container">
+      <Section variant="leftGlow">
         <div className="section-surface section-bloom">
           <SectionHeading
             title="Serviciile noastre"
@@ -93,9 +59,9 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
-      <section className="section-container">
+      <Section variant="rightGlow">
         <div className="section-surface">
           <SectionHeading
             title="Înainte / După"
@@ -112,13 +78,13 @@ export default function HomePage() {
             Vezi toate transformările
           </Link>
         </div>
-      </section>
+      </Section>
 
       <TechFeatureSplitSection />
       <HowItWorksSection />
       <ProductShowcaseSection />
 
-      <section className="section-container">
+      <Section variant="splitGlow">
         <div className="section-surface section-bloom">
           <SectionHeading
             title="Precizie, viteză și culori care rămân impecabile"
@@ -128,20 +94,16 @@ export default function HomePage() {
             {wallPrintCapabilities.map((feature, index) => (
               <Reveal key={feature.title} delayMs={index * 60}>
                 <article className="card-premium p-5">
-                  <h3 className="font-heading text-lg font-semibold">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted">
-                    {feature.description}
-                  </p>
+                  <h3 className="font-heading text-lg font-semibold">{feature.title}</h3>
+                  <p className="mt-2 text-sm text-muted">{feature.description}</p>
                 </article>
               </Reveal>
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
-      <section className="section-container">
+      <Section variant="meshSoft">
         <div className="section-surface">
           <SectionHeading title="Cum funcționează" />
           <div className="grid gap-4 md:grid-cols-4">
@@ -155,9 +117,9 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
-      <section className="section-container">
+      <Section variant="leftGlow">
         <div className="section-surface">
           <SectionHeading
             title="Gravură laser personalizată"
@@ -165,18 +127,13 @@ export default function HomePage() {
           />
           <div className="grid gap-4 md:grid-cols-2">
             <article className="card-premium p-6">
-              <h3 className="font-heading text-lg font-semibold">
-                Materiale compatibile
-              </h3>
+              <h3 className="font-heading text-lg font-semibold">Materiale compatibile</h3>
               <p className="mt-2 text-sm text-muted">
-                Lemn, MDF, acril, piele, placaj și materiale speciale pentru
-                semnalistică, gifting și branding premium.
+                Lemn, MDF, acril, piele, placaj și materiale speciale pentru semnalistică, gifting și branding premium.
               </p>
             </article>
             <article className="card-premium p-6">
-              <h3 className="font-heading text-lg font-semibold">
-                De ce gravură laser?
-              </h3>
+              <h3 className="font-heading text-lg font-semibold">De ce gravură laser?</h3>
               <ul className="mt-3 space-y-2 text-sm text-muted">
                 {laserEngravingBenefits.map((benefit) => (
                   <li key={benefit}>• {benefit}</li>
@@ -185,9 +142,9 @@ export default function HomePage() {
             </article>
           </div>
         </div>
-      </section>
+      </Section>
 
-      <section className="section-container">
+      <Section variant="rightGlow">
         <div className="section-surface">
           <SectionHeading
             title="Print personalizat pe obiecte & textile"
@@ -196,17 +153,15 @@ export default function HomePage() {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {objectAndTextileProducts.map((product) => (
               <article key={product.title} className="card-premium p-5">
-                <h3 className="font-heading text-lg font-semibold">
-                  {product.title}
-                </h3>
+                <h3 className="font-heading text-lg font-semibold">{product.title}</h3>
                 <p className="mt-2 text-sm text-muted">{product.useCases}</p>
               </article>
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
-      <section className="section-container">
+      <Section variant="splitGlow">
         <div className="section-surface">
           <SectionHeading title="Ce spun clienții" />
           <div className="grid gap-5 md:grid-cols-3">
@@ -217,7 +172,7 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
       <CTASection
         title="Gata să îți transformi spațiul?"

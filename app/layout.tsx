@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Sora } from 'next/font/google';
 import './globals.css';
+import { AmbientBackground } from '@/components/AmbientBackground';
 import { Footer } from '@/components/Footer';
 import { StickyHeader } from '@/components/StickyHeader';
 import { canonical, siteConfig } from '@/lib/site';
@@ -40,9 +41,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="ro">
       <body className={`${inter.variable} ${sora.variable}`}>
-        <StickyHeader />
-        <main>{children}</main>
-        <Footer />
+        <AmbientBackground />
+        <div className="site-shell">
+          <StickyHeader />
+          <main>{children}</main>
+          <Footer />
+        </div>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       </body>
     </html>
