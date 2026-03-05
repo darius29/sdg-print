@@ -114,7 +114,7 @@ export const MobileMenu = ({
             role="dialog"
             aria-modal="true"
             aria-label="Navigare mobilă"
-            className={`fixed right-0 top-0 z-50 flex h-screen w-[min(90vw,380px)] max-w-full flex-col border-l border-slate-700 bg-bg/95 shadow-2xl transition-transform duration-300 ease-out motion-reduce:transition-none ${
+            className={`fixed right-0 top-0 z-50 flex h-screen w-[min(90vw,380px)] max-w-full flex-col border-l border-slate-700 bg-slate-950 shadow-2xl transition-transform duration-300 ease-out motion-reduce:transition-none ${
               isOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
             onClick={(event) => event.stopPropagation()}
@@ -166,34 +166,24 @@ export const MobileMenu = ({
 
   return (
     <div className="lg:hidden">
-      <button
-        ref={buttonRef}
-        type="button"
-        aria-label={isOpen ? 'Închide meniul de navigare' : 'Deschide meniul de navigare'}
-        aria-expanded={isOpen}
-        aria-controls="mobile-menu"
-        onClick={() => setIsOpen((current) => !current)}
-        className="relative z-[60] inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-700 bg-bg/80 text-slate-100 transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-      >
-        <span className="sr-only">Meniu principal</span>
-        <span className="relative h-5 w-6">
-          <span
-            className={`absolute left-0 top-0 h-0.5 w-6 bg-current transition-all duration-300 ease-out motion-reduce:transition-none ${
-              isOpen ? 'translate-y-[9px] rotate-45' : ''
-            }`}
-          />
-          <span
-            className={`absolute left-0 top-[9px] h-0.5 w-6 bg-current transition-all duration-300 ease-out motion-reduce:transition-none ${
-              isOpen ? 'opacity-0' : 'opacity-100'
-            }`}
-          />
-          <span
-            className={`absolute left-0 top-[18px] h-0.5 w-6 bg-current transition-all duration-300 ease-out motion-reduce:transition-none ${
-              isOpen ? '-translate-y-[9px] -rotate-45' : ''
-            }`}
-          />
-        </span>
-      </button>
+      {!isOpen && (
+        <button
+          ref={buttonRef}
+          type="button"
+          aria-label="Deschide meniul de navigare"
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setIsOpen(true)}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-700 bg-bg text-slate-100 transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+        >
+          <span className="sr-only">Meniu principal</span>
+          <span className="relative h-5 w-6">
+            <span className="absolute left-0 top-0 h-0.5 w-6 bg-current" />
+            <span className="absolute left-0 top-[9px] h-0.5 w-6 bg-current" />
+            <span className="absolute left-0 top-[18px] h-0.5 w-6 bg-current" />
+          </span>
+        </button>
+      )}
 
       {menuLayer}
     </div>
