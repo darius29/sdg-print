@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { SectionHeading } from '@/components/SectionHeading';
+import { Section } from '@/components/sections/Section';
 import { TestimonialCard } from '@/components/cards';
 import { testimonials } from '@/content/testimonials';
 import { canonical } from '@/lib/site';
@@ -12,16 +13,13 @@ export const metadata: Metadata = {
 
 export default function TestimonialsPage() {
   return (
-    <section className="section-container">
-      <SectionHeading
-        title="Testimoniale"
-        subtitle="Păreri de la clienți mulțumiți din diferite industrii."
-      />
+    <Section variant="meshSoft">
+      <SectionHeading title="Testimoniale" subtitle="Păreri de la clienți mulțumiți din diferite industrii." />
       <div className="grid gap-5 md:grid-cols-3">
         {testimonials.map((item) => (
           <TestimonialCard key={item.id} item={item} />
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

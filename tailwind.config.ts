@@ -14,6 +14,9 @@ const config: Config = {
         text: 'var(--text)',
         muted: 'var(--muted)',
         accent: 'var(--accent)',
+        'accent-1': 'var(--accent-1)',
+        'accent-2': 'var(--accent-2)',
+        'accent-3': 'var(--accent-3)',
         border: 'var(--border)',
         primary: 'var(--primary)',
         'primary-2': 'var(--primary-2)',
@@ -24,7 +27,7 @@ const config: Config = {
         body: ['var(--font-inter)'],
       },
       boxShadow: {
-        glow: '0 0 20px rgba(0,229,255,0.35)',
+        glow: '0 0 20px var(--glow-1)',
         soft: 'var(--shadow-soft)',
         md: 'var(--shadow-md)',
       },

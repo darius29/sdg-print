@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ContactForm } from '@/components/ContactForm';
 import { SectionHeading } from '@/components/SectionHeading';
+import { Section } from '@/components/sections/Section';
 import { canonical, siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="section-container">
+    <Section variant="splitGlow">
       <SectionHeading title="Contact" subtitle="Trimite-ne detaliile proiectului și revenim rapid cu o ofertă." />
       <div className="grid gap-8 lg:grid-cols-2">
         <ContactForm />
@@ -30,6 +31,6 @@ export default function ContactPage() {
           />
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
