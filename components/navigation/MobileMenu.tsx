@@ -125,7 +125,7 @@ export const MobileMenu = ({
                 type="button"
                 onClick={closeMenu}
                 aria-label="Închide meniul de navigare"
-                className="relative z-[60] inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-700 text-slate-100 transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+                className="relative z-[60] inline-flex h-11 w-11 items-center justify-center rounded-md border border-slate-700 text-slate-100 transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
               >
                 <span aria-hidden="true" className="text-xl leading-none">
                   ×
@@ -174,7 +174,7 @@ export const MobileMenu = ({
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
           onClick={() => setIsOpen(true)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-700 bg-bg text-slate-100 transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-slate-700 bg-bg text-slate-100 transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         >
           <span className="sr-only">Meniu principal</span>
           <span className="relative h-5 w-6">

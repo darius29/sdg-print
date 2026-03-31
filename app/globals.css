@@ -284,6 +284,16 @@ body {
   @apply border-primary;
 }
 
+/* ── Form input focus states ─────────────────────────────────────────────── */
+
+input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='file']),
+select,
+textarea {
+  min-height: 44px;
+}
+
+/* ── Tab trigger ─────────────────────────────────────────────────────────── */
+
 .tab-trigger {
   position: relative;
   overflow: hidden;

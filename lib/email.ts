@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 export const sendContactEmail = async (payload: {
   nume: string;
@@ -8,25 +8,17 @@ export const sendContactEmail = async (payload: {
   locatie?: string;
   mesaj: string;
 }) => {
-  const host = process.env.SMTP_HOST;
-  const port = Number(process.env.SMTP_PORT ?? 587);
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  const to = process.env.CONTACT_TO ?? 'dariusgabriel52@gmail.com';
+  const apiKey = process.env.RESEND_API_KEY;
 
-  if (!host || !user || !pass) {
-    throw new Error('Lipsesc variabilele SMTP (SMTP_HOST, SMTP_USER, SMTP_PASS).');
+  if (!apiKey) {
+    throw new Error('Lipsește variabila RESEND_API_KEY.');
   }
 
-  const transporter = nodemailer.createTransport({
-    host,
-    port,
-    secure: port === 465,
-    auth: { user, pass },
-  });
+  const resend = new Resend(apiKey);
+  const to = process.env.CONTACT_TO ?? 'dariusgabriel52@gmail.com';
 
-  await transporter.sendMail({
-    from: `SDG Website <${user}>`,
+  await resend.emails.send({
+    from: 'SDG Website <onboarding@resend.dev>',
     to,
     replyTo: payload.email,
     subject: `Cerere ofertă nouă - ${payload.tipServiciu}`,

@@ -88,7 +88,7 @@ export function AboutHero() {
 
           <div
             ref={ref}
-            className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+            className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
           >
             {stats.map((stat) => (
               <article

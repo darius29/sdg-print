@@ -89,7 +89,8 @@ export const PortfolioGrid = () => {
 
   return (
     <>
-      <div className="mb-8 flex flex-wrap gap-3" role="tablist" aria-label="Filtrare portofoliu">
+      {/* Filter tabs */}
+      <div className="mb-8 flex flex-wrap gap-2" role="tablist" aria-label="Filtrare portofoliu">
         {filters.map((filter) => {
           const isActive = activeFilter === filter;
           return (
@@ -98,7 +99,11 @@ export const PortfolioGrid = () => {
               role="tab"
               aria-selected={isActive}
               onClick={() => setActiveFilter(filter)}
-              className={`motion-base focus-ring rounded-full border px-4 py-2 text-sm ${isActive ? 'border-primary bg-primary/10 text-primary shadow-glow' : 'border-border text-muted hover:border-primary/50 hover:text-text'}`}
+              className={`focus-ring motion-base min-h-[44px] rounded-full border px-4 py-2.5 text-sm ${
+                isActive
+                  ? 'border-primary bg-primary/10 text-primary shadow-glow'
+                  : 'border-border text-muted hover:border-primary/50 hover:text-text'
+              }`}
             >
               {filter}
             </button>
@@ -106,6 +111,7 @@ export const PortfolioGrid = () => {
         })}
       </div>
 
+      {/* Grid */}
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {items.map((item) => (
           <Reveal key={item.id}>
@@ -114,6 +120,7 @@ export const PortfolioGrid = () => {
         ))}
       </div>
 
+      {/* Modal dialog */}
       {activeItem ? (
         <div
           className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
@@ -128,23 +135,32 @@ export const PortfolioGrid = () => {
             aria-label={`Galerie pentru ${activeItem.title}`}
             onClick={(event) => event.stopPropagation()}
           >
+            {/* Header */}
             <div className="mb-5 flex items-start justify-between gap-4">
               <div>
                 <h3 className="font-heading text-2xl">{activeItem.title}</h3>
-                <p className="mt-1 text-sm text-muted">{activeItem.category} • {activeItem.location}</p>
+                <p className="mt-1 text-sm text-muted">
+                  {activeItem.category} • {activeItem.location}
+                </p>
               </div>
-              <button onClick={closeDialog} className="focus-ring rounded-full border border-border px-3 py-1 text-sm text-muted hover:text-text" aria-label="Închide galeria">
+              <button
+                onClick={closeDialog}
+                className="focus-ring min-h-[44px] min-w-[44px] rounded-full border border-border px-4 py-2 text-sm text-muted hover:text-text"
+                aria-label="Închide galeria"
+              >
                 Închide ✕
               </button>
             </div>
 
+            {/* Main image */}
             <div className="relative overflow-hidden rounded-2xl border border-border bg-bg/40">
               <Image
                 src={activeItem.images[activeImageIndex]}
-                alt={`${activeItem.title} imagine ${activeImageIndex + 1}`}
+                alt={`${activeItem.title} — imaginea ${activeImageIndex + 1} din ${activeItem.images.length}`}
                 width={1200}
                 height={820}
                 className="h-auto w-full object-cover"
+                sizes="(max-width: 768px) 100vw, 80vw"
                 priority
               />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-bg/80 to-transparent p-4 text-sm text-muted">
@@ -152,21 +168,49 @@ export const PortfolioGrid = () => {
               </div>
             </div>
 
+            {/* Navigation */}
             <div className="mt-4 flex items-center justify-between gap-3">
-              <button onClick={() => setActiveImageIndex((index) => (index - 1 + activeItem.images.length) % activeItem.images.length)} className="focus-ring motion-base rounded-full border border-border px-4 py-2 text-sm hover:border-primary/70 hover:text-primary" aria-label="Imagine anterioară">← Previous</button>
-              <p className="text-xs uppercase tracking-[0.24em] text-muted">{activeImageIndex + 1} / {activeItem.images.length}</p>
-              <button onClick={() => setActiveImageIndex((index) => (index + 1) % activeItem.images.length)} className="focus-ring motion-base rounded-full border border-border px-4 py-2 text-sm hover:border-primary/70 hover:text-primary" aria-label="Imagine următoare">Next →</button>
+              <button
+                onClick={() => setActiveImageIndex((index) => (index - 1 + activeItem.images.length) % activeItem.images.length)}
+                className="focus-ring motion-base min-h-[44px] rounded-full border border-border px-4 py-2.5 text-sm hover:border-primary/70 hover:text-primary"
+                aria-label="Imaginea anterioară"
+              >
+                ← Înapoi
+              </button>
+              <p className="text-xs uppercase tracking-[0.24em] text-muted" aria-live="polite">
+                {activeImageIndex + 1} / {activeItem.images.length}
+              </p>
+              <button
+                onClick={() => setActiveImageIndex((index) => (index + 1) % activeItem.images.length)}
+                className="focus-ring motion-base min-h-[44px] rounded-full border border-border px-4 py-2.5 text-sm hover:border-primary/70 hover:text-primary"
+                aria-label="Imaginea următoare"
+              >
+                Înainte →
+              </button>
             </div>
 
-            <div className="mt-5 grid gap-3 sm:grid-cols-4">
+            {/* Thumbnails — responsive grid */}
+            <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
               {activeItem.images.map((image, index) => (
                 <button
                   key={image}
-                  className={`motion-base focus-ring overflow-hidden rounded-xl border ${index === activeImageIndex ? 'border-primary shadow-glow' : 'border-border hover:border-primary/40'}`}
+                  className={`focus-ring motion-base overflow-hidden rounded-xl border ${
+                    index === activeImageIndex
+                      ? 'border-primary shadow-glow'
+                      : 'border-border hover:border-primary/40'
+                  }`}
                   onClick={() => setActiveImageIndex(index)}
                   aria-label={`Selectează imaginea ${index + 1}`}
+                  aria-pressed={index === activeImageIndex}
                 >
-                  <Image src={image} alt={`${activeItem.title} miniatură ${index + 1}`} width={320} height={220} className="h-20 w-full object-cover" />
+                  <Image
+                    src={image}
+                    alt={`${activeItem.title} — miniatură ${index + 1}`}
+                    width={320}
+                    height={220}
+                    className="h-20 w-full object-cover"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  />
                 </button>
               ))}
             </div>

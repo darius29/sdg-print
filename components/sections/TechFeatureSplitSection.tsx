@@ -55,11 +55,12 @@ const keySpecs = [
   '2880 DPI',
   'UV Ink',
   'Low Odor',
-  '≤30 min setup',
+  '290 cm înălțime',
+  '2–6 m²/oră',
   'Multi-surface',
 ];
 
-const bestForTags = ['Office branding', 'Retail spaces', 'Events & pop-ups'];
+const bestForTags = ['HoReCa', 'Retail & showroom', 'Birouri & corporate'];
 
 const statCards = [
   {
@@ -68,18 +69,18 @@ const statCards = [
     icon: <SparkIcon className="h-4 w-4" aria-hidden />,
   },
   {
-    label: 'Cerneluri',
-    value: 'UV+ Low Odor',
-    icon: <ShieldIcon className="h-4 w-4" aria-hidden />,
+    label: 'Înălțime max.',
+    value: '290 cm',
+    icon: <LayersIcon className="h-4 w-4" aria-hidden />,
   },
   {
-    label: 'Setup',
-    value: '≤ 30 min',
+    label: 'Viteză',
+    value: '2–6 m²/h',
     icon: <BoltIcon className="h-4 w-4" aria-hidden />,
   },
   {
-    label: 'Calibrare',
-    value: 'Pre-check inclus',
+    label: 'Tehnologie',
+    value: 'UV instant',
     icon: <CheckIcon className="h-4 w-4" aria-hidden />,
   },
 ];

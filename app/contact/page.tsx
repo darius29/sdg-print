@@ -26,7 +26,7 @@ export default function ContactPage() {
           <iframe
             title="Hartă Timișoara"
             src="https://maps.google.com/maps?q=Timisoara&t=&z=12&ie=UTF8&iwloc=&output=embed"
-            className="h-80 w-full rounded-2xl border border-slate-700"
+            className="h-56 w-full rounded-2xl border border-slate-700 sm:h-72 md:h-80"
             loading="lazy"
           />
         </div>

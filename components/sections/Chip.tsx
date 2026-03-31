@@ -9,11 +9,11 @@ interface ChipProps {
 
 export const Chip = ({ label, icon, active, className }: ChipProps) => (
   <span
-    className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition ${
+    className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm transition ${
       active
         ? 'border-accent/70 bg-accent/10 text-text'
-        : 'border-slate-700 bg-surface/50 text-muted hover:-translate-y-0.5 hover:border-accent/60 hover:text-text'
-    } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg ${className ?? ''}`.trim()}
+        : 'border-slate-700 bg-surface/50 text-muted'
+    } ${className ?? ''}`.trim()}
   >
     {icon}
     <span>{label}</span>
@@ -56,8 +56,8 @@ export const PillButton = ({
     aria-controls={ariaControls}
     id={id}
     onKeyDown={onKeyDown}
-    data-active={isActive ? "true" : "false"}
-    className={`tab-trigger inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg ${
+    data-active={isActive ? 'true' : 'false'}
+    className={`tab-trigger inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg ${
       isActive
         ? 'border-accent/70 bg-accent/15 text-text'
         : 'border-slate-700 bg-surface/60 text-muted hover:-translate-y-0.5 hover:border-accent/60 hover:text-text'

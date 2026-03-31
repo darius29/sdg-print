@@ -78,7 +78,7 @@ export const FilterTabs = ({ filters, items }: FilterTabsProps) => {
         ))}
       </div>
 
-      <div id={`services-panel-${activeFilter}`} role="tabpanel" aria-labelledby={`services-tab-${activeFilter}`} className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+      <div id={`services-panel-${activeFilter}`} role="tabpanel" aria-labelledby={`services-tab-${activeFilter}`} className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         {filteredItems.map((item) => (
           <article key={item.id} className="card-premium flex h-full flex-col p-6">
             <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-accent/40 bg-accent/10 text-accent">
@@ -95,7 +95,7 @@ export const FilterTabs = ({ filters, items }: FilterTabsProps) => {
               ))}
             </ul>
             <Link href="/contact" className="btn-secondary mt-5 w-fit text-sm" aria-label={`Află mai multe despre ${item.title}`}>
-              Learn more
+              Află mai multe
             </Link>
           </article>
         ))}
