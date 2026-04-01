@@ -334,6 +334,143 @@ const portfolioPreviews = [
   },
 ];
 
+// ─── 5b. Echipamente ─────────────────────────────────────────────────────────
+
+const echipamente = [
+  {
+    nume: 'Wall Printer UV',
+    model: 'Sistem print UV direct pe perete',
+    specs: [
+      { label: 'Înălțime maximă print', value: '290 cm' },
+      { label: 'Sistem culori', value: 'CMYK' },
+      { label: 'Rezoluție maximă', value: '2880 DPI' },
+      { label: 'Viteză', value: '2–6 m²/oră' },
+      { label: 'Tehnologie cerneală', value: 'UV, uscare instant' },
+      { label: 'Nivel miros', value: 'Low-odor, non-toxic' },
+    ],
+    desc: 'Echipament de ultimă generație pentru print direct pe suprafețe verticale. Calibrare optică automată, fără risc de deteriorare a suprafeței.',
+    badge: 'Wall Print',
+    badgeClass: 'border-primary/40 bg-primary/10 text-primary',
+  },
+  {
+    nume: 'Junlong Laser CO₂',
+    model: 'Mașină industrială gravare & debitare',
+    specs: [
+      { label: 'Tip laser', value: 'CO₂' },
+      { label: 'Precizie', value: 'Industrială' },
+      { label: 'Operație', value: 'Gravare + debitare' },
+      { label: 'Materiale', value: '10+ tipuri' },
+      { label: 'Contact material', value: 'Zero (non-contact)' },
+      { label: 'Finisaj', value: 'Curat, fără bavuri' },
+    ],
+    desc: 'Laser CO₂ de înaltă precizie pentru gravare și debitare pe lemn, acril, piele, sticlă și alte materiale. Repetabilitate industrială pentru producție mică și medie.',
+    badge: 'Laser CO₂',
+    badgeClass: 'border-accent/40 bg-accent/10 text-accent',
+  },
+];
+
+export const AboutEquipmentSection = () => (
+  <Section variant="splitGlow">
+    <SectionHeading
+      eyebrow="Echipamentele noastre"
+      title="Tehnologie de nivel industrial"
+      description="Investim în echipamente de calitate pentru că rezultatele finale depind direct de precizia și fiabilitatea utilajelor folosite."
+    />
+    <div className="grid gap-6 lg:grid-cols-2">
+      {echipamente.map((eq) => (
+        <article key={eq.nume} className="card-premium p-6">
+          <div className="mb-5 flex items-start justify-between gap-3">
+            <div>
+              <h3 className="font-heading text-xl font-semibold">{eq.nume}</h3>
+              <p className="mt-0.5 text-sm text-muted">{eq.model}</p>
+            </div>
+            <span className={`shrink-0 rounded-full border px-3 py-1 text-xs font-semibold ${eq.badgeClass}`}>
+              {eq.badge}
+            </span>
+          </div>
+          <p className="mb-5 text-sm text-muted">{eq.desc}</p>
+          <div className="grid grid-cols-2 gap-2">
+            {eq.specs.map(({ label, value }) => (
+              <div key={label} className="rounded-xl border border-border bg-surface/50 px-3 py-2.5">
+                <p className="text-xs text-muted">{label}</p>
+                <p className="mt-0.5 text-sm font-semibold text-text">{value}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </Section>
+);
+
+// ─── 5c. Zonă de acoperire ────────────────────────────────────────────────────
+
+const judete = [
+  'Timiș', 'Arad', 'Bihor', 'Cluj', 'Alba', 'Hunedoara',
+  'Caraș-Severin', 'Mehedinți', 'Mureș', 'Sibiu',
+];
+
+export const AboutCoverageSection = () => (
+  <Section variant="meshSoft">
+    <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div>
+        <SectionHeading
+          eyebrow="Zona de acoperire"
+          title="Lucrăm în Timișoara și toată România"
+          description="Sediul principal este în Timișoara, dar ne deplasăm pentru proiecte de wall print în toată țara. Gravura laser și obiectele personalizate se expediază în toată România."
+        />
+        <div className="mt-2 space-y-4 text-sm text-muted">
+          <div className="flex items-start gap-3">
+            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-primary/40 bg-primary/10 text-lg">📍</span>
+            <div>
+              <p className="font-medium text-text">Sediu principal</p>
+              <p>Timișoara, județul Timiș</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-accent/40 bg-accent/10 text-lg">🚗</span>
+            <div>
+              <p className="font-medium text-text">Deplasare pentru wall print</p>
+              <p>Vest, centru și nord-vest România. La cerere, național (tarif suplimentar transport).</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-600 bg-slate-800/50 text-lg">📦</span>
+            <div>
+              <p className="font-medium text-text">Expediere națională</p>
+              <p>Gravură laser, obiecte personalizate și textile — livrăm prin curier în toată România.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="card-premium p-6">
+        <p className="mb-4 text-sm font-semibold text-text">Județe cu acoperire frecventă</p>
+        <div className="flex flex-wrap gap-2">
+          {judete.map((judet) => (
+            <span
+              key={judet}
+              className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-sm text-primary"
+            >
+              {judet}
+            </span>
+          ))}
+          <span className="rounded-full border border-slate-700 bg-surface/50 px-3 py-1.5 text-sm text-muted">
+            + toată România (la cerere)
+          </span>
+        </div>
+
+        <div className="mt-6 rounded-2xl border border-accent/20 bg-accent/5 p-4 text-sm text-muted">
+          <strong className="text-text">Ai un proiect în altă zonă?</strong>{' '}
+          Contactează-ne — evaluăm fiecare proiect individual și găsim cea mai bună soluție logistică.
+        </div>
+      </div>
+    </div>
+  </Section>
+);
+
+// ─── 6. Preview portofoliu ────────────────────────────────────────────────────
+
 export const AboutPortfolioPreview = () => (
   <Section variant="rightGlow">
     <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">

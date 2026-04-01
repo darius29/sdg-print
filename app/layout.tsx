@@ -2,12 +2,15 @@ import type { Metadata } from 'next';
 import { Inter, Sora } from 'next/font/google';
 import './globals.css';
 import { AmbientBackground } from '@/components/AmbientBackground';
+import { CookieConsent } from '@/components/CookieConsent';
+import { FloatingContact } from '@/components/FloatingContact';
 import { Footer } from '@/components/Footer';
+import { ScrollToTop } from '@/components/ScrollToTop';
 import { StickyHeader } from '@/components/StickyHeader';
 import { canonical, siteConfig } from '@/lib/site';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const sora = Sora({ subsets: ['latin'], variable: '--font-sora' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const sora = Sora({ subsets: ['latin'], variable: '--font-sora', display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -44,9 +47,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <AmbientBackground />
         <div className="site-shell">
           <StickyHeader />
-          <main>{children}</main>
+          <main id="main-content">{children}</main>
           <Footer />
         </div>
+        <CookieConsent />
+        <FloatingContact />
+        <ScrollToTop />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       </body>
     </html>
