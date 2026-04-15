@@ -1,8 +1,17 @@
 import { NextResponse } from 'next/server';
 import { sendContactEmail } from '@/lib/email';
 import { contactSchema } from '@/lib/schemas';
+import { isRateLimited, getClientIp } from '@/lib/rateLimit';
 
 export async function POST(request: Request) {
+  const ip = getClientIp(request);
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: 'Prea multe cereri. Încearcă din nou peste un minut.' },
+      { status: 429 },
+    );
+  }
+
   try {
     const body = await request.json();
     const parsed = contactSchema.safeParse(body);

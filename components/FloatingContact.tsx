@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useCookieConsent } from '@/lib/cookie-consent-context';
 import { siteConfig } from '@/lib/site';
 
 const whatsappNumber = siteConfig.phone.replace(/^0/, '40').replace(/\s/g, '');
@@ -67,6 +68,7 @@ const actions = [
 export const FloatingContact = () => {
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
+  const { bannerVisible } = useCookieConsent();
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 300);
@@ -85,7 +87,9 @@ export const FloatingContact = () => {
 
   return (
     <div
-      className={`fixed bottom-6 right-5 z-50 flex flex-col items-end gap-3 transition-all duration-300 ${
+      className={`fixed right-5 z-50 flex flex-col items-end gap-3 transition-all duration-300 ${
+        bannerVisible ? 'bottom-36 sm:bottom-24' : 'bottom-6'
+      } ${
         visible ? 'pointer-events-auto translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
       }`}
       aria-label="Contact rapid"

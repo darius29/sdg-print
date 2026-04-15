@@ -291,39 +291,63 @@ const processTimeline = [
 ];
 
 export const ServicesHeroSection = () => (
-  <SectionContainer variant="splitGlow">
-    <div className="flex flex-col items-center py-16 text-center md:py-24">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-        SDG Print — Timișoara
-      </p>
-      <h1 className="mt-4 max-w-3xl font-heading text-4xl font-semibold md:text-6xl">
-        <span className="bg-gradient-to-r from-text via-cyan-100 to-text bg-clip-text text-transparent">
-          Două tehnologii. Rezultate de neratat.
-        </span>
-      </h1>
-      <p className="mt-6 max-w-2xl text-lg text-muted">
-        Print UV direct pe perete și gravare / debitare laser CO₂ — plus obiecte personalizate și textile pentru branding complet.
-      </p>
-      <div className="mt-8 flex flex-wrap justify-center gap-4">
-        <Link href="/contact" className="btn-primary">Cere ofertă personalizată</Link>
-        <Link href="/portofoliu" className="btn-secondary">Vezi portofoliu</Link>
-      </div>
+  <section
+    className="relative isolate flex min-h-[580px] items-center overflow-hidden px-4 py-24 md:min-h-[80vh] md:px-8"
+    style={{
+      backgroundImage:
+        "linear-gradient(135deg, rgba(6,9,16,0.96) 0%, rgba(6,9,16,0.74) 50%, rgba(6,9,16,0.97) 100%), radial-gradient(circle at 75% 15%, rgba(0,217,255,0.2), transparent 33%), radial-gradient(circle at 18% 85%, rgba(122,92,255,0.22), transparent 35%), url('/images/home/hero.png')",
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+    }}
+  >
+    <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(145deg,rgba(255,255,255,0.03)_0%,transparent_40%)]" aria-hidden />
+    <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-bg to-transparent" aria-hidden />
 
-      {/* Two primary services at a glance */}
-      <div className="mt-10 grid w-full max-w-2xl gap-4 sm:grid-cols-2">
-        <div className="rounded-2xl border border-primary/30 bg-primary/5 p-5 text-left">
-          <p className="text-2xl">🖨️</p>
-          <h2 className="mt-2 font-heading text-lg font-semibold">Print UV pe perete</h2>
-          <p className="mt-1 text-sm text-muted">Direct pe suprafață, fără autocolant. Înălțime max. 290 cm, culori CMYK.</p>
+    <div className="relative mx-auto w-full max-w-5xl">
+      <div className="flex flex-col items-center text-center">
+
+        <div className="mb-6 flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-sm">
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            SDG Print — Timișoara
+          </span>
         </div>
-        <div className="rounded-2xl border border-accent/30 bg-accent/5 p-5 text-left">
-          <p className="text-2xl">⚡</p>
-          <h2 className="mt-2 font-heading text-lg font-semibold">Gravare laser CO₂</h2>
-          <p className="mt-1 text-sm text-muted">Precizie industrială pe lemn, acril, piele, sticlă și multe altele.</p>
+
+        <h1 className="mx-auto max-w-4xl font-heading text-4xl font-bold leading-[1.1] text-text sm:text-5xl md:text-6xl">
+          Două tehnologii.{' '}
+          <span className="bg-gradient-to-r from-primary via-cyan-300 to-accent bg-clip-text text-transparent">
+            Rezultate de neratat.
+          </span>
+        </h1>
+
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+          Print UV direct pe perete și gravare / debitare laser CO₂ — plus obiecte personalizate și textile pentru branding complet.
+        </p>
+
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <Link href="/contact" className="btn-primary">Cere ofertă personalizată</Link>
+          <Link href="/portofoliu" className="btn-secondary">Vezi portofoliu</Link>
+        </div>
+
+        <div className="mt-12 grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { emoji: '🖨️', title: 'Print UV pe perete', desc: 'Direct pe suprafață, fără autocolant. Înălțime max. 290 cm, culori CMYK.', border: 'border-primary/30', bg: 'bg-primary/5' },
+            { emoji: '⚡', title: 'Gravare laser CO₂', desc: 'Precizie industrială pe lemn, acril, piele, sticlă și multe altele.', border: 'border-accent/30', bg: 'bg-accent/5' },
+            { emoji: '👕', title: 'Print textile', desc: 'Tricouri, hanorace și șepci personalizate pentru echipe și evenimente.', border: 'border-white/15', bg: 'bg-white/5' },
+            { emoji: '🎁', title: 'Obiecte personalizate', desc: 'Căni, accesorii și produse promo cu print de înaltă calitate.', border: 'border-white/15', bg: 'bg-white/5' },
+          ].map((s) => (
+            <div key={s.title} className={`rounded-2xl border ${s.border} ${s.bg} p-5 text-left backdrop-blur-sm`}>
+              <p className="text-2xl">{s.emoji}</p>
+              <h2 className="mt-2 font-heading text-base font-semibold text-text">{s.title}</h2>
+              <p className="mt-1 text-sm text-muted">{s.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
-  </SectionContainer>
+
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg to-transparent" aria-hidden />
+  </section>
 );
 
 export const ServicesAlternatingSection = () => (

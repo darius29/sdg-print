@@ -4,6 +4,7 @@ import Image from 'next/image';
 import {
   KeyboardEvent,
   PointerEvent,
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -51,10 +52,26 @@ export const BeforeAfterSlider = ({
   duration,
   description,
 }: BeforeAfterSliderProps) => {
-  const [position, setPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const [isReady, setIsReady] = useState(false);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  // ariaValue is the only React state for position — updated on drag end / keyboard
+  const [ariaValue, setAriaValue] = useState(50);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const revealRef = useRef<HTMLDivElement>(null);
+  const dividerRef = useRef<HTMLDivElement>(null);
+  const handleRef = useRef<HTMLButtonElement>(null);
+  // positionRef tracks current value without triggering re-renders
+  const positionRef = useRef(50);
+
+  // Direct DOM update — zero React re-renders during drag
+  const applyPosition = useCallback((pos: number) => {
+    const clamped = clamp(pos);
+    positionRef.current = clamped;
+    if (revealRef.current) revealRef.current.style.width = `${clamped}%`;
+    if (dividerRef.current) dividerRef.current.style.left = `${clamped}%`;
+    if (handleRef.current) handleRef.current.style.left = `${clamped}%`;
+  }, []);
 
   useEffect(() => {
     const node = containerRef.current;
@@ -72,8 +89,9 @@ export const BeforeAfterSlider = ({
       ([entry]) => {
         if (!entry.isIntersecting) return;
         setIsReady(true);
-        setPosition(32);
-        window.setTimeout(() => setPosition(50), 360);
+        // Initial reveal sweep — transition is active here (not dragging)
+        applyPosition(32);
+        window.setTimeout(() => applyPosition(50), 360);
         observer.disconnect();
       },
       { threshold: 0.35 },
@@ -81,31 +99,32 @@ export const BeforeAfterSlider = ({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [applyPosition]);
 
-  const updateFromPointer = (clientX: number, container: HTMLElement) => {
+  const getPositionFromPointer = (
+    clientX: number,
+    container: HTMLElement,
+  ): number => {
     const rect = container.getBoundingClientRect();
-    const nextPosition = ((clientX - rect.left) / rect.width) * 100;
-    setPosition(clamp(nextPosition));
+    return clamp(((clientX - rect.left) / rect.width) * 100);
   };
 
   const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
-    const container = event.currentTarget;
-    container.setPointerCapture(event.pointerId);
+    event.currentTarget.setPointerCapture(event.pointerId);
     setIsDragging(true);
-    updateFromPointer(event.clientX, container);
+    applyPosition(getPositionFromPointer(event.clientX, event.currentTarget));
   };
 
   const onPointerMove = (event: PointerEvent<HTMLDivElement>) => {
-    const container = event.currentTarget;
-    if (!container.hasPointerCapture(event.pointerId)) {
-      return;
-    }
-
-    updateFromPointer(event.clientX, container);
+    if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
+    applyPosition(getPositionFromPointer(event.clientX, event.currentTarget));
   };
 
-  const onPointerUp = () => setIsDragging(false);
+  const onPointerUp = () => {
+    setIsDragging(false);
+    // Sync aria value once on release
+    setAriaValue(Math.round(positionRef.current));
+  };
 
   const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
     const keyDelta: Record<string, number> = {
@@ -118,27 +137,24 @@ export const BeforeAfterSlider = ({
     };
 
     if (!(event.key in keyDelta)) return;
-
     event.preventDefault();
 
-    if (event.key === 'Home') {
-      setPosition(0);
-      return;
-    }
+    const next =
+      event.key === 'Home'
+        ? 0
+        : event.key === 'End'
+          ? 100
+          : clamp(positionRef.current + keyDelta[event.key]);
 
-    if (event.key === 'End') {
-      setPosition(100);
-      return;
-    }
-
-    setPosition((current) => clamp(current + keyDelta[event.key]));
+    applyPosition(next);
+    setAriaValue(Math.round(next));
   };
 
   return (
     <article className="card-premium overflow-hidden p-4">
       <div
         ref={containerRef}
-        className={`${styles.comparison} ${isReady ? styles.ready : ''} relative aspect-[4/3] md:aspect-[16/9]`}
+        className={`${styles.comparison} ${isReady ? styles.ready : ''} ${isDragging ? styles.isDragging : ''} relative aspect-[4/3] md:aspect-[16/9]`}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -151,7 +167,7 @@ export const BeforeAfterSlider = ({
           sizes="(max-width: 768px) 100vw, 33vw"
         />
 
-        <div className={styles.reveal} style={{ width: `${position}%` }}>
+        <div ref={revealRef} className={styles.reveal} style={{ width: '50%' }}>
           <Image
             src={afterImage}
             alt={`${title} după`}
@@ -169,22 +185,24 @@ export const BeforeAfterSlider = ({
         </span>
 
         <div
+          ref={dividerRef}
           className={styles.divider}
-          style={{ left: `${position}%` }}
+          style={{ left: '50%' }}
           aria-hidden
         />
 
         <button
+          ref={handleRef}
           type="button"
           role="slider"
           tabIndex={0}
           aria-label={`Comparație imagini ${title}`}
           aria-valuemin={0}
           aria-valuemax={100}
-          aria-valuenow={Math.round(position)}
+          aria-valuenow={ariaValue}
           onKeyDown={onKeyDown}
           className={`${styles.handle} ${isDragging ? styles.dragging : ''}`}
-          style={{ left: `${position}%` }}
+          style={{ left: '50%' }}
         >
           <span className={styles.chevrons}>
             <ChevronIcon direction="left" />

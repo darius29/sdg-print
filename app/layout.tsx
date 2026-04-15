@@ -4,6 +4,7 @@ import './globals.css';
 import { AmbientBackground } from '@/components/AmbientBackground';
 import { CookieConsent } from '@/components/CookieConsent';
 import { FloatingContact } from '@/components/FloatingContact';
+import { CookieConsentProvider } from '@/lib/cookie-consent-context';
 import { Footer } from '@/components/Footer';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { StickyHeader } from '@/components/StickyHeader';
@@ -50,9 +51,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <main id="main-content">{children}</main>
           <Footer />
         </div>
-        <CookieConsent />
-        <FloatingContact />
-        <ScrollToTop />
+        <CookieConsentProvider>
+          <CookieConsent />
+          <FloatingContact />
+          <ScrollToTop />
+        </CookieConsentProvider>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       </body>
     </html>
