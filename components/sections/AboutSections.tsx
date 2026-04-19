@@ -15,7 +15,17 @@ import { SVGProps } from 'react';
 // ─── Icons ────────────────────────────────────────────────────────────────────
 
 const XIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+  <svg
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
     <path d="M18 6L6 18M6 6l12 12" />
   </svg>
 );
@@ -34,28 +44,28 @@ export const AboutStorySection = () => (
         />
         <div className="space-y-4 text-muted">
           <p>
-            SDG Print & Design s-a născut din convingerea că personalizarea unui spațiu
-            sau a unui produs trebuie să fie accesibilă, rapidă și de calitate reală.
-            Am pornit ca un atelier mic din Timișoara, cu un singur printer UV, și am
-            crescut pas cu pas, proiect cu proiect.
+            SDG Print & Design s-a născut din convingerea că personalizarea unui
+            spațiu sau a unui produs trebuie să fie accesibilă, rapidă și de
+            calitate reală. Am pornit ca un atelier mic din Timișoara, cu un
+            singur printer UV, și am crescut pas cu pas, proiect cu proiect.
           </p>
           <p>
-            Astăzi lucrăm cu antreprenori, agenții de interior, branduri naționale și
-            persoane fizice din toată România — de la un tricou personalizat pentru un
-            eveniment de familie, până la muraluri de zeci de metri pătrați pentru
-            spații comerciale premium.
+            Astăzi lucrăm cu antreprenori, agenții de interior, branduri
+            naționale și persoane fizice din toată România — de la un tricou
+            personalizat pentru un eveniment de familie, până la muraluri de
+            zeci de metri pătrați pentru spații comerciale premium.
           </p>
           <p>
-            Ceea ce ne diferențiază nu este doar tehnologia, ci modul în care tratăm
-            fiecare comandă: cu atenție, comunicare transparentă și dorința sinceră ca
-            rezultatul final să depășească așteptările.
+            Ceea ce ne diferențiază nu este doar tehnologia, ci modul în care
+            tratăm fiecare comandă: cu atenție, comunicare transparentă și
+            dorința sinceră ca rezultatul final să depășească așteptările.
           </p>
         </div>
         <div className="mt-8 flex flex-wrap gap-3">
-          <span className="rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-sm text-primary">
+          <span className="border-primary/30 bg-primary/5 rounded-full border px-4 py-1.5 text-sm text-primary">
             Timișoara
           </span>
-          <span className="rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-sm text-accent">
+          <span className="border-accent/30 bg-accent/5 rounded-full border px-4 py-1.5 text-sm text-accent">
             Print UV direct
           </span>
           <span className="rounded-full border border-slate-600 bg-slate-800/50 px-4 py-1.5 text-sm text-muted">
@@ -66,7 +76,7 @@ export const AboutStorySection = () => (
 
       {/* Image */}
       <div className="relative flex-1">
-        <div className="relative overflow-hidden rounded-3xl border border-primary/20 shadow-2xl shadow-primary/10">
+        <div className="border-primary/20 shadow-primary/10 relative overflow-hidden rounded-3xl border shadow-2xl">
           <Image
             src="/images/portfolio/receptie-corporate-1.svg"
             alt="Recepție corporate personalizată de SDG Print"
@@ -74,15 +84,18 @@ export const AboutStorySection = () => (
             height={450}
             className="h-80 w-full object-cover md:h-96"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg/60 via-transparent to-transparent" />
+          <div className="from-bg/60 absolute inset-0 bg-gradient-to-t via-transparent to-transparent" />
           <div className="absolute bottom-4 left-4 right-4">
-            <span className="inline-block rounded-xl border border-white/10 bg-bg/80 px-3 py-1.5 text-xs text-muted backdrop-blur-sm">
+            <span className="bg-bg/80 inline-block rounded-xl border border-white/10 px-3 py-1.5 text-xs text-muted backdrop-blur-sm">
               Proiect: Recepție corporate — Timișoara
             </span>
           </div>
         </div>
         {/* Decorative glow */}
-        <div className="pointer-events-none absolute -right-6 -top-6 h-32 w-32 rounded-full bg-primary/15 blur-3xl" aria-hidden />
+        <div
+          className="bg-primary/15 pointer-events-none absolute -right-6 -top-6 h-32 w-32 rounded-full blur-3xl"
+          aria-hidden
+        />
       </div>
     </div>
   </Section>
@@ -146,19 +159,21 @@ export const AboutTechSection = () => (
       {techCards.map((card) => (
         <article
           key={card.title}
-          className="card-premium group flex flex-col gap-4 p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10"
+          className="card-premium hover:border-primary/40 hover:shadow-primary/10 group flex flex-col gap-4 p-6 transition-all duration-300 hover:shadow-lg"
         >
           <div className="flex items-start justify-between">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent transition-colors duration-300 group-hover:border-accent/50 group-hover:bg-accent/20">
+            <div className="border-accent/30 bg-accent/10 group-hover:border-accent/50 group-hover:bg-accent/20 flex h-11 w-11 items-center justify-center rounded-xl border text-accent transition-colors duration-300">
               <card.icon className="h-5 w-5" aria-hidden />
             </div>
-            <span className="rounded-full border border-primary/20 bg-primary/5 px-2.5 py-0.5 text-xs font-medium text-primary">
+            <span className="border-primary/20 bg-primary/5 rounded-full border px-2.5 py-0.5 text-xs font-medium text-primary">
               {card.badge}
             </span>
           </div>
           <div>
             <h3 className="font-medium">{card.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">{card.description}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              {card.description}
+            </p>
           </div>
         </article>
       ))}
@@ -227,11 +242,17 @@ export const AboutComparisonSection = () => (
         >
           <div className="p-4 text-sm font-medium">{row.criteriu}</div>
           <div className="flex items-start gap-2 border-l border-slate-700/40 p-4">
-            <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
+            <CheckIcon
+              className="mt-0.5 h-4 w-4 shrink-0 text-accent"
+              aria-hidden
+            />
             <span className="text-sm text-muted">{row.sdg}</span>
           </div>
           <div className="flex items-start gap-2 border-l border-slate-700/40 p-4">
-            <XIcon className="mt-0.5 h-4 w-4 shrink-0 text-red-400/70" aria-hidden />
+            <XIcon
+              className="mt-0.5 h-4 w-4 shrink-0 text-red-400/70"
+              aria-hidden
+            />
             <span className="text-sm text-muted">{row.clasic}</span>
           </div>
         </div>
@@ -280,9 +301,9 @@ export const AboutGallerySection = () => (
           height={500}
           className="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105 md:h-full md:min-h-[400px]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg/80 via-transparent to-transparent" />
+        <div className="from-bg/80 absolute inset-0 bg-gradient-to-t via-transparent to-transparent" />
         <div className="absolute bottom-4 left-4">
-          <span className="rounded-lg border border-white/10 bg-bg/80 px-3 py-1.5 text-xs text-muted backdrop-blur-sm">
+          <span className="bg-bg/80 rounded-lg border border-white/10 px-3 py-1.5 text-xs text-muted backdrop-blur-sm">
             {galleryImages[0].caption}
           </span>
         </div>
@@ -290,7 +311,10 @@ export const AboutGallerySection = () => (
       {/* Two stacked images */}
       <div className="flex flex-col gap-4">
         {[galleryImages[1], galleryImages[2]].map((img) => (
-          <div key={img.src} className="group relative overflow-hidden rounded-2xl border border-slate-700/50">
+          <div
+            key={img.src}
+            className="group relative overflow-hidden rounded-2xl border border-slate-700/50"
+          >
             <Image
               src={img.src}
               alt={img.alt}
@@ -298,9 +322,9 @@ export const AboutGallerySection = () => (
               height={350}
               className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-bg/80 via-transparent to-transparent" />
+            <div className="from-bg/80 absolute inset-0 bg-gradient-to-t via-transparent to-transparent" />
             <div className="absolute bottom-4 left-4">
-              <span className="rounded-lg border border-white/10 bg-bg/80 px-3 py-1.5 text-xs text-muted backdrop-blur-sm">
+              <span className="bg-bg/80 rounded-lg border border-white/10 px-3 py-1.5 text-xs text-muted backdrop-blur-sm">
                 {img.caption}
               </span>
             </div>
@@ -384,16 +408,23 @@ export const AboutEquipmentSection = () => (
               <h3 className="font-heading text-xl font-semibold">{eq.nume}</h3>
               <p className="mt-0.5 text-sm text-muted">{eq.model}</p>
             </div>
-            <span className={`shrink-0 rounded-full border px-3 py-1 text-xs font-semibold ${eq.badgeClass}`}>
+            <span
+              className={`shrink-0 rounded-full border px-3 py-1 text-xs font-semibold ${eq.badgeClass}`}
+            >
               {eq.badge}
             </span>
           </div>
           <p className="mb-5 text-sm text-muted">{eq.desc}</p>
           <div className="grid grid-cols-2 gap-2">
             {eq.specs.map(({ label, value }) => (
-              <div key={label} className="rounded-xl border border-border bg-surface/50 px-3 py-2.5">
+              <div
+                key={label}
+                className="bg-surface/50 rounded-xl border border-border px-3 py-2.5"
+              >
                 <p className="text-xs text-muted">{label}</p>
-                <p className="mt-0.5 text-sm font-semibold text-text">{value}</p>
+                <p className="mt-0.5 text-sm font-semibold text-text">
+                  {value}
+                </p>
               </div>
             ))}
           </div>
@@ -406,8 +437,16 @@ export const AboutEquipmentSection = () => (
 // ─── 5c. Zonă de acoperire ────────────────────────────────────────────────────
 
 const judete = [
-  'Timiș', 'Arad', 'Bihor', 'Cluj', 'Alba', 'Hunedoara',
-  'Caraș-Severin', 'Mehedinți', 'Mureș', 'Sibiu',
+  'Timiș',
+  'Arad',
+  'Bihor',
+  'Cluj',
+  'Alba',
+  'Hunedoara',
+  'Caraș-Severin',
+  'Mehedinți',
+  'Mureș',
+  'Sibiu',
 ];
 
 export const AboutCoverageSection = () => (
@@ -421,48 +460,65 @@ export const AboutCoverageSection = () => (
         />
         <div className="mt-2 space-y-4 text-sm text-muted">
           <div className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-primary/40 bg-primary/10 text-lg">📍</span>
+            <span className="border-primary/40 bg-primary/10 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-lg">
+              📍
+            </span>
             <div>
               <p className="font-medium text-text">Sediu principal</p>
               <p>Timișoara, județul Timiș</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-accent/40 bg-accent/10 text-lg">🚗</span>
+            <span className="border-accent/40 bg-accent/10 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-lg">
+              🚗
+            </span>
             <div>
-              <p className="font-medium text-text">Deplasare pentru wall print</p>
-              <p>Vest, centru și nord-vest România. La cerere, național (tarif suplimentar transport).</p>
+              <p className="font-medium text-text">
+                Deplasare pentru wall print
+              </p>
+              <p>
+                Vest, centru și nord-vest România. La cerere, național (tarif
+                suplimentar transport).
+              </p>
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-600 bg-slate-800/50 text-lg">📦</span>
+            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-600 bg-slate-800/50 text-lg">
+              📦
+            </span>
             <div>
               <p className="font-medium text-text">Expediere națională</p>
-              <p>Gravură laser, obiecte personalizate și textile — livrăm prin curier în toată România.</p>
+              <p>
+                Gravură laser, obiecte personalizate și textile — livrăm prin
+                curier în toată România.
+              </p>
             </div>
           </div>
         </div>
       </div>
 
       <div className="card-premium p-6">
-        <p className="mb-4 text-sm font-semibold text-text">Județe cu acoperire frecventă</p>
+        <p className="mb-4 text-sm font-semibold text-text">
+          Județe cu acoperire frecventă
+        </p>
         <div className="flex flex-wrap gap-2">
           {judete.map((judet) => (
             <span
               key={judet}
-              className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-sm text-primary"
+              className="border-primary/20 bg-primary/5 rounded-full border px-3 py-1.5 text-sm text-primary"
             >
               {judet}
             </span>
           ))}
-          <span className="rounded-full border border-slate-700 bg-surface/50 px-3 py-1.5 text-sm text-muted">
+          <span className="bg-surface/50 rounded-full border border-slate-700 px-3 py-1.5 text-sm text-muted">
             + toată România (la cerere)
           </span>
         </div>
 
-        <div className="mt-6 rounded-2xl border border-accent/20 bg-accent/5 p-4 text-sm text-muted">
+        <div className="border-accent/20 bg-accent/5 mt-6 rounded-2xl border p-4 text-sm text-muted">
           <strong className="text-text">Ai un proiect în altă zonă?</strong>{' '}
-          Contactează-ne — evaluăm fiecare proiect individual și găsim cea mai bună soluție logistică.
+          Contactează-ne — evaluăm fiecare proiect individual și găsim cea mai
+          bună soluție logistică.
         </div>
       </div>
     </div>
@@ -479,7 +535,10 @@ export const AboutPortfolioPreview = () => (
         title="Câteva dintre proiectele noastre"
         className="mb-0"
       />
-      <Link href="/portofoliu" className="btn-secondary shrink-0 self-start sm:self-auto">
+      <Link
+        href="/portofoliu"
+        className="btn-secondary shrink-0 self-start sm:self-auto"
+      >
         Vezi tot portofoliul →
       </Link>
     </div>
@@ -497,7 +556,7 @@ export const AboutPortfolioPreview = () => (
             height={300}
             className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/20 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="from-bg/90 via-bg/20 absolute inset-0 bg-gradient-to-t to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
           <div className="absolute bottom-0 left-0 right-0 p-4">
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">
               {item.category}

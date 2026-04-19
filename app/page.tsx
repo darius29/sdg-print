@@ -11,7 +11,7 @@ import {
   WallPrintSection,
   LaserCO2Section,
 } from '@/components/sections/PageSections';
-import { beforeAfterItems } from '@/content/beforeAfter';
+import { beforeAfterItemsHomepage } from '@/content/beforeAfter';
 import { services } from '@/content/services';
 import { testimonials } from '@/content/testimonials';
 
@@ -65,7 +65,7 @@ export default function HomePage() {
             subtitle="Transformări reale pentru spații comerciale, birouri și locații premium."
           />
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {beforeAfterItems.map((item, index) => (
+            {beforeAfterItemsHomepage.map((item, index) => (
               <Reveal key={item.id} delayMs={index * 70}>
                 <BeforeAfterCard item={item} />
               </Reveal>

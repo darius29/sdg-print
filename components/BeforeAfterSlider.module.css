@@ -25,9 +25,8 @@
 .reveal {
   position: absolute;
   inset: 0;
-  overflow: hidden;
-  will-change: width;
-  transition: width 200ms ease-out;
+  will-change: clip-path;
+  transition: clip-path 200ms ease-out;
 }
 
 /* Disable transition during active drag — eliminates lag */
@@ -131,6 +130,6 @@
   .comparison,
   .reveal,
   .handle {
-    transition: none;
+    transition: none !important;
   }
 }

@@ -68,7 +68,9 @@ export const BeforeAfterSlider = ({
   const applyPosition = useCallback((pos: number) => {
     const clamped = clamp(pos);
     positionRef.current = clamped;
-    if (revealRef.current) revealRef.current.style.width = `${clamped}%`;
+    // clip-path masks the after layer without resizing the image
+    if (revealRef.current)
+      revealRef.current.style.clipPath = `inset(0 ${100 - clamped}% 0 0)`;
     if (dividerRef.current) dividerRef.current.style.left = `${clamped}%`;
     if (handleRef.current) handleRef.current.style.left = `${clamped}%`;
   }, []);
@@ -167,7 +169,7 @@ export const BeforeAfterSlider = ({
           sizes="(max-width: 768px) 100vw, 33vw"
         />
 
-        <div ref={revealRef} className={styles.reveal} style={{ width: '50%' }}>
+        <div ref={revealRef} className={styles.reveal} style={{ clipPath: 'inset(0 50% 0 0)' }}>
           <Image
             src={afterImage}
             alt={`${title} după`}

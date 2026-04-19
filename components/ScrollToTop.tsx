@@ -30,7 +30,7 @@ export const ScrollToTop = () => {
       onClick={handleClick}
       aria-label="Înapoi sus"
       className={`fixed right-5 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-surface/80 text-muted shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg ${
-        bannerVisible ? 'bottom-[13.5rem] sm:bottom-[10.5rem]' : 'bottom-24'
+        bannerVisible ? 'bottom-[16.5rem] sm:bottom-[11.5rem]' : 'bottom-24'
       } ${
         visible
           ? 'pointer-events-auto translate-y-0 opacity-100'
