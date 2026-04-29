@@ -51,7 +51,7 @@ export const AboutStorySection = () => (
           </p>
           <p>
             Astăzi lucrăm cu antreprenori, agenții de interior, branduri
-            naționale și persoane fizice din toată România — de la un tricou
+            naționale și persoane fizice din toată România de la un tricou
             personalizat pentru un eveniment de familie, până la muraluri de
             zeci de metri pătrați pentru spații comerciale premium.
           </p>
@@ -69,7 +69,7 @@ export const AboutStorySection = () => (
             Print UV direct
           </span>
           <span className="rounded-full border border-slate-600 bg-slate-800/50 px-4 py-1.5 text-sm text-muted">
-            4+ ani experiență
+            Execuție premium
           </span>
         </div>
       </div>
@@ -78,18 +78,13 @@ export const AboutStorySection = () => (
       <div className="relative flex-1">
         <div className="border-primary/20 shadow-primary/10 relative overflow-hidden rounded-3xl border shadow-2xl">
           <Image
-            src="/images/portfolio/receptie-corporate-1.svg"
+            src="/images/despre-noi/studio/about-us.png"
             alt="Recepție corporate personalizată de SDG Print"
             width={600}
             height={450}
             className="h-80 w-full object-cover md:h-96"
           />
           <div className="from-bg/60 absolute inset-0 bg-gradient-to-t via-transparent to-transparent" />
-          <div className="absolute bottom-4 left-4 right-4">
-            <span className="bg-bg/80 inline-block rounded-xl border border-white/10 px-3 py-1.5 text-xs text-muted backdrop-blur-sm">
-              Proiect: Recepție corporate — Timișoara
-            </span>
-          </div>
         </div>
         {/* Decorative glow */}
         <div

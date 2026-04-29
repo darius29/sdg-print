@@ -280,7 +280,6 @@ const trustStats = [
   { value: '50+', label: 'Proiecte finalizate' },
   { value: '48h', label: 'Timp mediu de livrare' },
   { value: '100%', label: 'Clienți satisfăcuți' },
-  { value: '4+', label: 'Ani de experiență' },
 ];
 
 const processTimeline = [
