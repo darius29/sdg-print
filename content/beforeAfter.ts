@@ -92,8 +92,8 @@ export const beforeAfterByMaterial: BeforeAfterMaterialGroup[] = [
         duration: '4 ore',
         description:
           'Personalizare mobilier cu grafică de brand — aspect premium și consistență vizuală în întregul showroom.',
-        beforeImage: '/images/before-after/after7.png',
-        afterImage: '/images/before-after/before5.png',
+        beforeImage: '/images/before-after/lemn/before-galaxy.png',
+        afterImage: '/images/before-after/lemn/after-galaxy.png',
       },
       {
         id: 'l2',
@@ -102,8 +102,8 @@ export const beforeAfterByMaterial: BeforeAfterMaterialGroup[] = [
         duration: '3 ore',
         description:
           'Uși standard transformate în elemente de design — print UV cu rezoluție înaltă direct pe suprafața PAL.',
-        beforeImage: '/images/before-after/after1.png',
-        afterImage: '/images/before-after/before1.jpg',
+        beforeImage: '/images/before-after/lemn/before-colorsplash.png',
+        afterImage: '/images/before-after/lemn/after-colorsplash.png',
       },
       {
         id: 'l3',
@@ -112,8 +112,8 @@ export const beforeAfterByMaterial: BeforeAfterMaterialGroup[] = [
         duration: '5 ore',
         description:
           'Rafturi personalizate pentru retail — logo, prețuri și grafică promoțională integrate direct în mobilier.',
-        beforeImage: '/images/before-after/after1.png',
-        afterImage: '/images/before-after/before1.jpg',
+        beforeImage: '/images/before-after/lemn/before-tiger.png',
+        afterImage: '/images/before-after/lemn/after-tiger.png',
       },
     ],
   },
@@ -130,8 +130,8 @@ export const beforeAfterByMaterial: BeforeAfterMaterialGroup[] = [
         duration: '2 ore',
         description:
           'Vitrină transformată în suport de comunicare — promo, ore program și identitate vizuală aplicate direct.',
-        beforeImage: '/images/before-after/after1.png',
-        afterImage: '/images/before-after/before1.jpg',
+        beforeImage: '/images/before-after/sticla/before-beauty.png',
+        afterImage: '/images/before-after/sticla/after-beauty.png',
       },
       {
         id: 's2',
@@ -140,8 +140,8 @@ export const beforeAfterByMaterial: BeforeAfterMaterialGroup[] = [
         duration: '3 ore',
         description:
           'Pereți de sticlă cu grafică de brand — confidențialitate vizuală și estetică premium pentru open space.',
-        beforeImage: '/images/before-after/before2.png',
-        afterImage: '/images/before-after/after2.png',
+        beforeImage: '/images/before-after/sticla/before-salon.png',
+        afterImage: '/images/before-after/sticla/after-salon.png',
       },
       {
         id: 's3',
@@ -150,8 +150,8 @@ export const beforeAfterByMaterial: BeforeAfterMaterialGroup[] = [
         duration: '1 oră',
         description:
           'Prima impresie contează — logo și informații de contact aplicate pe ușa de intrare cu finisaj mat.',
-        beforeImage: '/images/before-after/after3.png',
-        afterImage: '/images/before-after/before3.png',
+        beforeImage: '/images/before-after/sticla/before-medical.png',
+        afterImage: '/images/before-after/sticla/after-medical.png',
       },
     ],
   },
@@ -168,8 +168,8 @@ export const beforeAfterByMaterial: BeforeAfterMaterialGroup[] = [
         duration: '4 ore',
         description:
           'Panouri metalice pentru exterior cu print UV rezistent UV și apă — ideal pentru fațade comerciale.',
-        beforeImage: '/images/before-after/after1.png',
-        afterImage: '/images/before-after/before1.jpg',
+        beforeImage: '/images/before-after/metal/before-gym.png',
+        afterImage: '/images/before-after/metal/after-gym.png',
       },
       {
         id: 'm2',
@@ -178,8 +178,8 @@ export const beforeAfterByMaterial: BeforeAfterMaterialGroup[] = [
         duration: '3 ore',
         description:
           'Branding aplicat pe echipamente și dulapuri metalice — identificare rapidă și imagine profesională.',
-        beforeImage: '/images/before-after/after1.png',
-        afterImage: '/images/before-after/before1.jpg',
+        beforeImage: '/images/before-after/metal/before-barbershop.png',
+        afterImage: '/images/before-after/metal/after-barbershop.png',
       },
       {
         id: 'm3',
@@ -188,8 +188,8 @@ export const beforeAfterByMaterial: BeforeAfterMaterialGroup[] = [
         duration: '1 zi',
         description:
           'Vehicul de firmă transformat în suport mobil de publicitate — print UV cu aderență maximă pe aluminiu.',
-        beforeImage: '/images/before-after/after1.png',
-        afterImage: '/images/before-after/before1.jpg',
+        beforeImage: '/images/before-after/metal/before-auto.png',
+        afterImage: '/images/before-after/metal/after-auto.png',
       },
     ],
   },
@@ -206,8 +206,8 @@ export const beforeAfterByMaterial: BeforeAfterMaterialGroup[] = [
         duration: '2 ore',
         description:
           'Panouri de semnalistică interioară și exterioară — print UV cu negru intens și culori saturate pe PVC.',
-        beforeImage: '/images/before-after/after1.png',
-        afterImage: '/images/before-after/before1.jpg',
+        beforeImage: '/images/before-after/sticla/before-medical.png',
+        afterImage: '/images/before-after/sticla/after-medical.png',
       },
       {
         id: 'pl2',
@@ -216,8 +216,8 @@ export const beforeAfterByMaterial: BeforeAfterMaterialGroup[] = [
         duration: '2 ore',
         description:
           'Display-uri și standuri din acril personalizate — efect de iluminare naturală cu print pe spate.',
-        beforeImage: '/images/before-after/after1.png',
-        afterImage: '/images/before-after/before1.jpg',
+        beforeImage: '/images/before-after/sticla/before-salon.png',
+        afterImage: '/images/before-after/sticla/after-salon.png',
       },
       {
         id: 'pl3',
@@ -226,8 +226,8 @@ export const beforeAfterByMaterial: BeforeAfterMaterialGroup[] = [
         duration: '3 ore',
         description:
           'Panouri ușoare pentru expoziții și târguri — montaj rapid, culori vii și suprafață rezistentă la zgârieturi.',
-        beforeImage: '/images/before-after/after1.png',
-        afterImage: '/images/before-after/before1.jpg',
+        beforeImage: '/images/before-after/sticla/before-beauty.png',
+        afterImage: '/images/before-after/sticla/after-beauty.png',
       },
     ],
   },

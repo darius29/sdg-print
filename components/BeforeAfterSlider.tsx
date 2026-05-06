@@ -169,7 +169,11 @@ export const BeforeAfterSlider = ({
           sizes="(max-width: 768px) 100vw, 33vw"
         />
 
-        <div ref={revealRef} className={styles.reveal} style={{ clipPath: 'inset(0 50% 0 0)' }}>
+        <div
+          ref={revealRef}
+          className={styles.reveal}
+          style={{ clipPath: 'inset(0 50% 0 0)' }}
+        >
           <Image
             src={afterImage}
             alt={`${title} după`}
@@ -227,8 +231,8 @@ export const BeforeAfterSlider = ({
 
 export const BeforeAfterCard = ({ item }: { item: BeforeAfterItem }) => (
   <BeforeAfterSlider
-    beforeImage={item.beforeImage}
-    afterImage={item.afterImage}
+    beforeImage={item.afterImage}
+    afterImage={item.beforeImage}
     title={item.title}
     surface={item.surface}
     duration={item.duration}

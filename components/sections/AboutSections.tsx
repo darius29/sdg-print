@@ -78,7 +78,7 @@ export const AboutStorySection = () => (
       <div className="relative flex-1">
         <div className="border-primary/20 shadow-primary/10 relative overflow-hidden rounded-3xl border shadow-2xl">
           <Image
-            src="/images/despre-noi/studio/about-us.png"
+            src="/images/despre-noi/studio/about-us2.png"
             alt="Recepție corporate personalizată de SDG Print"
             width={600}
             height={450}
