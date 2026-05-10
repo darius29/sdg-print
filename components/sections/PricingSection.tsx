@@ -125,7 +125,7 @@ export const PricingSection = () => (
             className={`rounded-t-2xl p-5 ${
               tier.highlight
                 ? 'bg-primary/8 border-b border-primary/20'
-                : 'bg-surface/40 border-b border-slate-700/40'
+                : 'bg-surface/40 border-b border-border/40'
             }`}
           >
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
@@ -145,7 +145,7 @@ export const PricingSection = () => (
 
             <p className="mt-2 text-xs text-muted">{tier.subtitle}</p>
 
-            <span className="mt-4 inline-block rounded-full border border-slate-700/80 bg-slate-800/60 px-3 py-1 text-[11px] text-muted">
+            <span className="mt-4 inline-block rounded-full border border-border/80 bg-surface-2/60 px-3 py-1 text-[11px] text-muted">
               {tier.min}
             </span>
           </div>
@@ -167,7 +167,7 @@ export const PricingSection = () => (
               {tier.excluded.map((f) => (
                 <li key={f} className="flex items-start gap-2.5 text-sm text-muted/40">
                   <span
-                    className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-slate-800 text-slate-600"
+                    className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-surface-2 text-muted/50"
                     aria-hidden
                   >
                     <MinusIcon />
@@ -186,7 +186,7 @@ export const PricingSection = () => (
     </div>
 
     {/* Disclaimer notes */}
-    <div className="mt-8 rounded-2xl border border-slate-700/40 bg-surface/20 p-5">
+    <div className="mt-8 rounded-2xl border border-border/40 bg-surface/20 p-5">
       <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
         Note importante
       </p>

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const ANIMATED_WORDS = [
   'pereți',
@@ -25,12 +25,12 @@ const highlights = [
 ];
 
 export function HomeHero() {
-  const [displayedText, setDisplayedText] = useState(ANIMATED_WORDS[0]);
-  const [phase, setPhase] = useState<
-    'typing' | 'paused' | 'deleting' | 'waiting'
-  >('paused');
-  const [wordIndex, setWordIndex] = useState(0);
   const [prefersReduced, setPrefersReduced] = useState(false);
+  const textRef = useRef<HTMLSpanElement>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const posRef = useRef(ANIMATED_WORDS[0].length);
+  const wordRef = useRef(0);
+  const phaseRef = useRef<'typing' | 'paused' | 'deleting' | 'waiting'>('paused');
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -43,40 +43,42 @@ export function HomeHero() {
   useEffect(() => {
     if (prefersReduced) return;
 
-    const currentWord = ANIMATED_WORDS[wordIndex];
-    let timeout: ReturnType<typeof setTimeout>;
+    const tick = () => {
+      const word = ANIMATED_WORDS[wordRef.current];
+      const phase = phaseRef.current;
 
-    if (phase === 'typing') {
-      if (displayedText.length < currentWord.length) {
-        timeout = setTimeout(
-          () =>
-            setDisplayedText(currentWord.slice(0, displayedText.length + 1)),
-          TYPING_SPEED,
-        );
+      if (phase === 'typing') {
+        posRef.current++;
+        if (textRef.current) textRef.current.textContent = word.slice(0, posRef.current);
+        if (posRef.current >= word.length) {
+          phaseRef.current = 'paused';
+          timerRef.current = setTimeout(tick, PAUSE_AFTER_TYPED);
+        } else {
+          timerRef.current = setTimeout(tick, TYPING_SPEED);
+        }
+      } else if (phase === 'paused') {
+        phaseRef.current = 'deleting';
+        timerRef.current = setTimeout(tick, DELETING_SPEED);
+      } else if (phase === 'deleting') {
+        posRef.current--;
+        if (textRef.current) textRef.current.textContent = word.slice(0, posRef.current);
+        if (posRef.current <= 0) {
+          phaseRef.current = 'waiting';
+          timerRef.current = setTimeout(tick, PAUSE_BEFORE_TYPING);
+        } else {
+          timerRef.current = setTimeout(tick, DELETING_SPEED);
+        }
       } else {
-        setPhase('paused');
+        wordRef.current = (wordRef.current + 1) % ANIMATED_WORDS.length;
+        posRef.current = 0;
+        phaseRef.current = 'typing';
+        timerRef.current = setTimeout(tick, TYPING_SPEED);
       }
-    } else if (phase === 'paused') {
-      timeout = setTimeout(() => setPhase('deleting'), PAUSE_AFTER_TYPED);
-    } else if (phase === 'deleting') {
-      if (displayedText.length > 0) {
-        timeout = setTimeout(
-          () => setDisplayedText(displayedText.slice(0, -1)),
-          DELETING_SPEED,
-        );
-      } else {
-        setPhase('waiting');
-      }
-    } else if (phase === 'waiting') {
-      timeout = setTimeout(() => {
-        setWordIndex((prev) => (prev + 1) % ANIMATED_WORDS.length);
-        setDisplayedText('');
-        setPhase('typing');
-      }, PAUSE_BEFORE_TYPING);
-    }
+    };
 
-    return () => clearTimeout(timeout);
-  }, [displayedText, phase, wordIndex, prefersReduced]);
+    timerRef.current = setTimeout(tick, PAUSE_AFTER_TYPED);
+    return () => clearTimeout(timerRef.current);
+  }, [prefersReduced]);
 
   return (
     <section
@@ -106,7 +108,7 @@ export function HomeHero() {
             {prefersReduced ? (
               <>
                 Transformăm pereți, textile și materiale personalizate{' '}
-                <span className="bg-gradient-to-r from-primary via-cyan-300 to-accent bg-clip-text text-transparent">
+                <span className="text-primary">
                   în produse vizuale cu impact.
                 </span>
               </>
@@ -114,16 +116,16 @@ export function HomeHero() {
               <>
                 <span className="block">Transformăm</span>
                 <span className="block min-h-[1.2em]" aria-hidden="true">
-                  <span className="bg-gradient-to-r from-primary via-cyan-300 to-accent bg-clip-text text-transparent">
-                    {displayedText}
+                  <span ref={textRef} className="text-primary">
+                    {ANIMATED_WORDS[0]}
                   </span>
-                  <span className="animate-type-caret ml-0.5 inline-block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  <span className="animate-type-caret ml-0.5 inline-block text-primary">
                     |
                   </span>
                 </span>
                 <span className="block">
                   în{' '}
-                  <span className="bg-gradient-to-r from-primary via-cyan-300 to-accent bg-clip-text text-transparent">
+                  <span className="text-primary">
                     produse vizuale cu impact.
                   </span>
                 </span>

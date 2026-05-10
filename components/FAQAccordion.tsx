@@ -44,7 +44,7 @@ export const FAQAccordion = ({ items }: { items: FaqItem[] }) => {
 
   return (
     <div className="section-bloom rounded-3xl border border-white/10 bg-surface/35 p-4 shadow-[var(--shadow-soft)] md:p-6">
-      <label htmlFor="faq-search" className="mb-2 block text-sm font-medium text-slate-200">
+      <label htmlFor="faq-search" className="mb-2 block text-sm font-medium text-text">
         Caută întrebări
       </label>
       <input
@@ -53,7 +53,7 @@ export const FAQAccordion = ({ items }: { items: FaqItem[] }) => {
         value={query}
         onChange={(event) => setQuery(event.target.value)}
         placeholder="Caută după cuvinte cheie"
-        className="focus-ring mb-6 w-full rounded-xl border border-white/15 bg-slate-950/55 px-4 py-3.5 text-sm text-slate-100 placeholder:text-slate-400"
+        className="focus-ring mb-6 w-full rounded-xl border border-white/15 bg-bg/55 px-4 py-3.5 text-sm text-text placeholder:text-muted"
         aria-label="Caută în întrebări frecvente"
       />
 
@@ -79,7 +79,7 @@ export const FAQAccordion = ({ items }: { items: FaqItem[] }) => {
         ) : (
           <p
             role="alert"
-            className="rounded-xl border border-dashed border-white/20 bg-slate-950/40 px-4 py-6 text-center text-sm text-muted"
+            className="rounded-xl border border-dashed border-white/20 bg-bg/40 px-4 py-6 text-center text-sm text-muted"
           >
             Nu am găsit rezultate. Încearcă un alt cuvânt cheie.
           </p>

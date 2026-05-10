@@ -279,7 +279,7 @@ export const ServicesFilterSection = () => (
 const trustStats = [
   { value: '50+', label: 'Proiecte finalizate' },
   { value: '48h', label: 'Timp mediu de livrare' },
-  { value: '100%', label: 'Clienți satisfăcuți' },
+  { value: '10+', label: 'Materiale compatibile' },
 ];
 
 const processTimeline = [
@@ -335,7 +335,7 @@ export const ServicesHeroSection = () => (
 
         <h1 className="mx-auto max-w-4xl font-heading text-4xl font-bold leading-[1.1] text-text sm:text-5xl md:text-6xl">
           Două tehnologii.{' '}
-          <span className="bg-gradient-to-r from-primary via-cyan-300 to-accent bg-clip-text text-transparent">
+          <span className="text-primary">
             Rezultate de neratat.
           </span>
         </h1>
@@ -389,7 +389,7 @@ export const ServicesHeroSection = () => (
               key={s.title}
               className={`rounded-2xl border ${s.border} ${s.bg} p-5 text-left backdrop-blur-sm`}
             >
-              <p className="text-2xl">{s.emoji}</p>
+              <p className="text-2xl" aria-hidden="true">{s.emoji}</p>
               <h3 className="mt-2 font-heading text-base font-semibold text-text">
                 {s.title}
               </h3>

@@ -60,7 +60,7 @@ export const DespreNoiHero = () => {
           {/* Heading */}
           <h1 className="mx-auto max-w-3xl font-heading text-4xl font-bold leading-[1.1] text-text sm:text-5xl md:text-6xl">
             Pasiunea pentru print,{' '}
-            <span className="bg-gradient-to-r from-accent via-cyan-300 to-primary bg-clip-text text-transparent">
+            <span className="text-primary">
               transpusă în fiecare proiect
             </span>
           </h1>

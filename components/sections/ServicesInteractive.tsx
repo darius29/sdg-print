@@ -24,14 +24,14 @@ export const ServicesInteractive = () => {
               className={`group flex items-center gap-4 rounded-2xl border px-5 py-4 text-left transition-all duration-200 ${
                 active === service.id
                   ? 'border-primary/50 bg-primary/10 shadow-lg shadow-primary/10'
-                  : 'border-slate-700/50 bg-bg hover:border-primary/30 hover:bg-primary/5'
+                  : 'border-border/50 bg-bg hover:border-primary/30 hover:bg-primary/5'
               }`}
             >
               <span
                 className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border text-2xl transition-colors duration-200 ${
                   active === service.id
                     ? 'border-primary/40 bg-primary/10'
-                    : 'border-slate-700/50 bg-slate-800/50 group-hover:border-primary/20'
+                    : 'border-border/50 bg-surface-2/50 group-hover:border-primary/20'
                 }`}
               >
                 {service.icon}
@@ -98,7 +98,7 @@ export const ServicesInteractive = () => {
             <div
               key={service.id}
               className={`rounded-2xl border transition-colors duration-200 ${
-                isOpen ? 'border-primary/50 bg-primary/5' : 'border-slate-700/50 bg-bg'
+                isOpen ? 'border-primary/50 bg-primary/5' : 'border-border/50 bg-bg'
               }`}
             >
               <button
@@ -106,7 +106,7 @@ export const ServicesInteractive = () => {
                 className="flex w-full items-center gap-4 px-5 py-4 text-left"
                 aria-expanded={isOpen}
               >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-700/50 bg-slate-800/50 text-xl">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border/50 bg-surface-2/50 text-xl">
                   {service.icon}
                 </span>
                 <div className="min-w-0 flex-1">

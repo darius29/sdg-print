@@ -16,7 +16,7 @@ export const ShowcaseCard = ({ icon, title, description, badges }: ShowcaseCardP
     <p className="mt-3 text-sm text-muted">{description}</p>
     <div className="mt-5 flex flex-wrap gap-2">
       {badges.map((badge) => (
-        <span key={badge} className="rounded-full border border-slate-700 bg-surface/60 px-3 py-1 text-xs text-muted">
+        <span key={badge} className="rounded-full border border-border bg-surface/60 px-3 py-1 text-xs text-muted">
           {badge}
         </span>
       ))}
@@ -39,7 +39,7 @@ export const ShowcaseRow = ({ icon, title, description, tag }: ShowcaseRowProps)
     <div className="min-w-0 flex-1">
       <div className="flex flex-wrap items-center gap-2">
         <h4 className="font-heading text-lg font-semibold">{title}</h4>
-        <span className="rounded-full border border-slate-700 bg-surface px-2 py-0.5 text-[11px] uppercase tracking-wide text-muted">
+        <span className="rounded-full border border-border bg-surface px-2 py-0.5 text-[11px] uppercase tracking-wide text-muted">
           {tag}
         </span>
       </div>

@@ -9,7 +9,7 @@ export const StickyHeader = () => {
   const pathname = usePathname();
 
   return (
-    <header className="bg-bg/90 sticky top-0 z-30 border-b border-slate-800 backdrop-blur">
+    <header className="bg-bg/90 sticky top-0 z-30 border-b border-border backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
         <Link href="/" className="font-heading text-lg font-bold">
           SDG PRINT & Design

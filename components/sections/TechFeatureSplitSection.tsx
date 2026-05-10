@@ -176,7 +176,7 @@ export const TechFeatureSplitSectionContent = () => {
             />
 
             <div
-              className="from-white/4 pointer-events-none inset-0 rounded-2xl bg-gradient-to-b via-transparent to-slate-950/40"
+              className="from-white/4 pointer-events-none inset-0 rounded-2xl bg-gradient-to-b via-transparent to-bg/40"
               aria-hidden
             />
             <div

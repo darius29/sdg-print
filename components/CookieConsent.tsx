@@ -13,7 +13,7 @@ export const CookieConsent = () => {
       role="dialog"
       aria-modal="false"
       aria-label="Consimțământ cookies"
-      className="bg-bg/95 fixed bottom-0 left-0 right-0 z-[70] border-t border-slate-700/80 backdrop-blur-md"
+      className="bg-bg/95 fixed bottom-0 left-0 right-0 z-[70] border-t border-border/80 backdrop-blur-md"
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 md:px-8">
         <div className="flex-1">
@@ -32,7 +32,7 @@ export const CookieConsent = () => {
           <button
             type="button"
             onClick={() => dismiss('essential')}
-            className="min-h-[44px] flex-1 rounded-full border border-slate-600 bg-transparent px-4 py-2 text-sm font-medium text-muted transition hover:border-slate-400 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:flex-none"
+            className="min-h-[44px] flex-1 rounded-full border border-border bg-transparent px-4 py-2 text-sm font-medium text-muted transition hover:border-text/40 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:flex-none"
           >
             Doar esențiale
           </button>

@@ -37,7 +37,7 @@ export const FaqAccordionItem = ({
         aria-controls={panelId}
         id={triggerId}
       >
-        <span className="text-base font-semibold leading-snug text-slate-100 md:text-lg">
+        <span className="text-base font-semibold leading-snug text-text md:text-lg">
           {item.question}
         </span>
         <span

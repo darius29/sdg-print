@@ -216,22 +216,26 @@ body {
   opacity: 0;
   transform: translate3d(0, 16px, 0);
   transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 420ms ease-out;
+  will-change: transform, opacity;
 }
 
 .reveal-up.is-visible {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
 }
 
 .reveal-section {
   opacity: 0;
   transform: translate3d(0, 8px, 0);
   transition: transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 350ms ease-out;
+  will-change: transform, opacity;
 }
 
 .reveal-section.is-visible {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
 }
 
 @keyframes type-caret-blink {

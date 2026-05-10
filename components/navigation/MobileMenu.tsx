@@ -114,18 +114,18 @@ export const MobileMenu = ({
             role="dialog"
             aria-modal="true"
             aria-label="Navigare mobilă"
-            className={`fixed right-0 top-0 z-50 flex h-screen w-[min(90vw,380px)] max-w-full flex-col border-l border-slate-700 bg-slate-950 shadow-2xl transition-transform duration-300 ease-out motion-reduce:transition-none ${
+            className={`fixed right-0 top-0 z-50 flex h-screen w-[min(90vw,380px)] max-w-full flex-col border-l border-border bg-bg shadow-2xl transition-transform duration-300 ease-out motion-reduce:transition-none ${
               isOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-center justify-between border-b border-slate-800 px-5 py-4">
-              <p className="font-heading text-base font-semibold text-slate-100">Meniu</p>
+            <div className="flex items-center justify-between border-b border-border px-5 py-4">
+              <p className="font-heading text-base font-semibold text-text">Meniu</p>
               <button
                 type="button"
                 onClick={closeMenu}
                 aria-label="Închide meniul de navigare"
-                className="relative z-[60] inline-flex h-11 w-11 items-center justify-center rounded-md border border-slate-700 text-slate-100 transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+                className="relative z-[60] inline-flex h-11 w-11 items-center justify-center rounded-md border border-border text-text transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
               >
                 <span aria-hidden="true" className="text-xl leading-none">
                   ×
@@ -134,14 +134,14 @@ export const MobileMenu = ({
             </div>
 
             <nav className="flex-1 overflow-y-auto px-5 pb-8 pt-3" aria-label="Navigare mobilă">
-              <ul className="divide-y divide-slate-800 border-y border-slate-800">
+              <ul className="divide-y divide-border border-y border-border">
                 {navItems.map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
                       onClick={closeMenu}
                       className={`block py-4 text-base transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg ${
-                        pathname === item.href ? 'text-accent' : 'text-slate-100'
+                        pathname === item.href ? 'text-accent' : 'text-text'
                       }`}
                     >
                       {item.label}
@@ -173,7 +173,7 @@ export const MobileMenu = ({
         aria-expanded={isOpen}
         aria-controls="mobile-menu"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-slate-700 bg-bg text-slate-100 transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-bg text-text transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
       >
         <span className="sr-only">Meniu principal</span>
         {isOpen ? (

@@ -8,7 +8,7 @@ import { ContactFormValues, contactSchema } from '@/lib/schemas';
 const options = ['Wall Print', 'Gravare / Debitare Laser', 'Tricouri & Hanorace', 'Căni', 'Șepci & Textile', 'Design'];
 
 const inputClass =
-  'w-full rounded-lg border border-slate-700 bg-bg px-4 py-3 text-sm text-text transition-colors placeholder:text-muted focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/20';
+  'w-full rounded-lg border border-border bg-bg px-4 py-3 text-sm text-text transition-colors placeholder:text-muted focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/20';
 
 const inputErrorClass =
   'w-full rounded-lg border border-red-500/70 bg-bg px-4 py-3 text-sm text-text transition-colors placeholder:text-muted focus:border-red-400 focus:outline-none focus:ring-2 focus:ring-red-400/20';

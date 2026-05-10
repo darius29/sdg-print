@@ -68,7 +68,7 @@ export const AboutStorySection = () => (
           <span className="border-accent/30 bg-accent/5 rounded-full border px-4 py-1.5 text-sm text-accent">
             Print UV direct
           </span>
-          <span className="rounded-full border border-slate-600 bg-slate-800/50 px-4 py-1.5 text-sm text-muted">
+          <span className="rounded-full border border-border bg-surface-2/50 px-4 py-1.5 text-sm text-muted">
             Execuție premium
           </span>
         </div>
@@ -218,15 +218,15 @@ export const AboutComparisonSection = () => (
       title="Print UV vs. metode clasice"
       description="O comparație directă între ceea ce oferim noi și soluțiile tradiționale de personalizare."
     />
-    <div className="overflow-x-auto rounded-2xl border border-slate-700/60">
+    <div className="overflow-x-auto rounded-2xl border border-border/60">
       <div className="min-w-[560px]">
       {/* Header */}
-      <div className="grid grid-cols-[1fr_1.2fr_1.2fr] border-b border-slate-700/60 bg-slate-800/60">
+      <div className="grid grid-cols-[1fr_1.2fr_1.2fr] border-b border-border/60 bg-surface-2/60">
         <div className="p-4 text-sm font-semibold text-muted">Criteriu</div>
-        <div className="border-l border-slate-700/60 p-4 text-sm font-semibold text-primary">
+        <div className="border-l border-border/60 p-4 text-sm font-semibold text-primary">
           SDG Print
         </div>
-        <div className="border-l border-slate-700/60 p-4 text-sm font-semibold text-muted">
+        <div className="border-l border-border/60 p-4 text-sm font-semibold text-muted">
           Metoda clasică
         </div>
       </div>
@@ -234,17 +234,17 @@ export const AboutComparisonSection = () => (
       {comparisonRows.map((row, i) => (
         <div
           key={row.criteriu}
-          className={`grid grid-cols-[1fr_1.2fr_1.2fr] border-b border-slate-700/40 last:border-0 ${i % 2 === 0 ? 'bg-transparent' : 'bg-slate-800/20'}`}
+          className={`grid grid-cols-[1fr_1.2fr_1.2fr] border-b border-border/40 last:border-0 ${i % 2 === 0 ? 'bg-transparent' : 'bg-surface/20'}`}
         >
           <div className="p-4 text-sm font-medium">{row.criteriu}</div>
-          <div className="flex items-start gap-2 border-l border-slate-700/40 p-4">
+          <div className="flex items-start gap-2 border-l border-border/40 p-4">
             <CheckIcon
               className="mt-0.5 h-4 w-4 shrink-0 text-accent"
               aria-hidden
             />
             <span className="text-sm text-muted">{row.sdg}</span>
           </div>
-          <div className="flex items-start gap-2 border-l border-slate-700/40 p-4">
+          <div className="flex items-start gap-2 border-l border-border/40 p-4">
             <XIcon
               className="mt-0.5 h-4 w-4 shrink-0 text-red-400/70"
               aria-hidden
@@ -290,7 +290,7 @@ export const AboutGallerySection = () => (
     />
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
       {/* Large image */}
-      <div className="group relative overflow-hidden rounded-2xl border border-slate-700/50">
+      <div className="group relative overflow-hidden rounded-2xl border border-border/50">
         <Image
           src={galleryImages[0].src}
           alt={galleryImages[0].alt}
@@ -310,7 +310,7 @@ export const AboutGallerySection = () => (
         {[galleryImages[1], galleryImages[2]].map((img) => (
           <div
             key={img.src}
-            className="group relative overflow-hidden rounded-2xl border border-slate-700/50"
+            className="group relative overflow-hidden rounded-2xl border border-border/50"
           >
             <Image
               src={img.src}
@@ -480,7 +480,7 @@ export const AboutCoverageSection = () => (
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-600 bg-slate-800/50 text-lg">
+            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-surface-2/50 text-lg">
               📦
             </span>
             <div>
@@ -507,7 +507,7 @@ export const AboutCoverageSection = () => (
               {judet}
             </span>
           ))}
-          <span className="bg-surface/50 rounded-full border border-slate-700 px-3 py-1.5 text-sm text-muted">
+          <span className="bg-surface/50 rounded-full border border-border px-3 py-1.5 text-sm text-muted">
             + toată România (la cerere)
           </span>
         </div>
@@ -544,7 +544,7 @@ export const AboutPortfolioPreview = () => (
         <Link
           key={item.src}
           href="/portofoliu"
-          className="group relative overflow-hidden rounded-2xl border border-slate-700/50"
+          className="group relative overflow-hidden rounded-2xl border border-border/50"
         >
           <Image
             src={item.src}

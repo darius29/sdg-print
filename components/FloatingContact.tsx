@@ -88,7 +88,7 @@ export const FloatingContact = () => {
   return (
     <div
       className={`fixed right-5 z-50 flex flex-row items-end gap-3 transition-all duration-300 ${
-        bannerVisible ? 'bottom-[12rem] sm:bottom-28' : 'bottom-6'
+        bannerVisible ? 'bottom-[8.5rem] sm:bottom-28' : 'bottom-6'
       } ${
         visible ? 'pointer-events-auto translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
       }`}

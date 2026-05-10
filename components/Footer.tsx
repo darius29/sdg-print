@@ -24,7 +24,7 @@ const serviceLinks = [
 ];
 
 export const Footer = () => (
-  <footer className="border-t border-slate-800 bg-surface">
+  <footer className="border-t border-border bg-surface">
     <div className="section-container grid gap-10 md:grid-cols-2 md:py-12 lg:grid-cols-4">
       {/* Brand */}
       <div className="lg:col-span-1">
@@ -39,7 +39,7 @@ export const Footer = () => (
           {paymentMethods.map((m) => (
             <span
               key={m}
-              className="rounded-full border border-slate-700 px-2.5 py-1 text-xs text-muted"
+              className="rounded-full border border-border px-2.5 py-1 text-xs text-muted"
             >
               {m}
             </span>
@@ -167,7 +167,7 @@ export const Footer = () => (
     </div>
 
     {/* Bottom bar */}
-    <div className="border-t border-slate-800">
+    <div className="border-t border-border">
       <div className="section-container flex flex-col gap-2 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
         <p>
           © {new Date().getFullYear()} SDG PRINT & Design. Toate drepturile
