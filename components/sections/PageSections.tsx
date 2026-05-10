@@ -277,8 +277,8 @@ export const ServicesFilterSection = () => (
 );
 
 const trustStats = [
-  { value: '50+', label: 'Proiecte finalizate' },
-  { value: '48h', label: 'Timp mediu de livrare' },
+  { value: '100%', label: 'Personalizat pe brief' },
+  { value: '48h', label: 'Livrare standard' },
   { value: '10+', label: 'Materiale compatibile' },
 ];
 
@@ -306,104 +306,80 @@ const processTimeline = [
 ];
 
 export const ServicesHeroSection = () => (
-  <section
-    className="relative isolate flex min-h-[580px] items-center overflow-hidden px-4 py-24 md:min-h-[80vh] md:px-8"
-    style={{
-      backgroundImage:
-        "linear-gradient(135deg, rgba(6,9,16,0.96) 0%, rgba(6,9,16,0.74) 50%, rgba(6,9,16,0.97) 100%), radial-gradient(circle at 75% 15%, rgba(0,217,255,0.2), transparent 33%), radial-gradient(circle at 18% 85%, rgba(122,92,255,0.22), transparent 35%), url('/images/home/hero.png')",
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
-    }}
-  >
+  <section className="relative isolate overflow-hidden px-4 pb-8 pt-16 md:px-8 md:pt-28">
     <div
-      className="pointer-events-none absolute inset-0 bg-[linear-gradient(145deg,rgba(255,255,255,0.03)_0%,transparent_40%)]"
+      className="pointer-events-none absolute -left-40 -top-40 h-[500px] w-[500px] rounded-full blur-[130px]"
+      style={{ background: 'radial-gradient(circle, rgba(0,217,255,0.09), transparent 70%)' }}
       aria-hidden
     />
     <div
-      className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-bg to-transparent"
+      className="pointer-events-none absolute -right-32 bottom-0 h-[400px] w-[400px] rounded-full blur-[110px]"
+      style={{ background: 'radial-gradient(circle, rgba(46,230,166,0.07), transparent 70%)' }}
       aria-hidden
     />
 
-    <div className="relative mx-auto w-full max-w-5xl">
-      <div className="flex flex-col items-center text-center">
-        <div className="mb-6 flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-sm">
-          <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+    <div className="relative mx-auto max-w-7xl">
+      <div className="grid items-end gap-16 lg:grid-cols-[1.1fr_1fr] lg:gap-24">
+
+        {/* Heading + CTAs */}
+        <div>
+          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-muted">
             SDG Print — Timișoara
-          </span>
+          </p>
+          <h1 className="font-heading text-5xl font-bold leading-[1.05] text-text sm:text-6xl xl:text-7xl">
+            Două<br className="hidden sm:block" />
+            {' '}tehnologii.<br className="hidden sm:block" />
+            {' '}<span className="text-primary">Rezultate</span><br className="hidden sm:block" />
+            {' '}de neratat.
+          </h1>
+          <p className="mt-6 max-w-md text-base leading-relaxed text-muted">
+            Print UV direct pe perete și gravare laser CO₂ — plus obiecte personalizate și textile pentru branding complet.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link href="/contact" className="btn-primary">
+              Cere ofertă personalizată
+            </Link>
+            <Link href="/portofoliu" className="btn-secondary">
+              Vezi portofoliu
+            </Link>
+          </div>
         </div>
 
-        <h1 className="mx-auto max-w-4xl font-heading text-4xl font-bold leading-[1.1] text-text sm:text-5xl md:text-6xl">
-          Două tehnologii.{' '}
-          <span className="text-primary">
-            Rezultate de neratat.
-          </span>
-        </h1>
-
-        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-          Print UV direct pe perete și gravare / debitare laser CO₂ — plus
-          obiecte personalizate și textile pentru branding complet.
-        </p>
-
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Link href="/contact" className="btn-primary">
-            Cere ofertă personalizată
-          </Link>
-          <Link href="/portofoliu" className="btn-secondary">
-            Vezi portofoliu
-          </Link>
-        </div>
-
-        <div className="mt-12 grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              emoji: '🖨️',
-              title: 'Print UV pe perete',
-              desc: 'Direct pe suprafață, fără autocolant. Înălțime max. 290 cm, culori CMYK.',
-              border: 'border-primary/30',
-              bg: 'bg-primary/5',
-            },
-            {
-              emoji: '⚡',
-              title: 'Gravare laser CO₂',
-              desc: 'Precizie industrială pe lemn, acril, piele, sticlă și multe altele.',
-              border: 'border-accent/30',
-              bg: 'bg-accent/5',
-            },
-            {
-              emoji: '👕',
-              title: 'Print textile',
-              desc: 'Tricouri, hanorace și șepci personalizate pentru echipe și evenimente.',
-              border: 'border-white/15',
-              bg: 'bg-white/5',
-            },
-            {
-              emoji: '🎁',
-              title: 'Obiecte personalizate',
-              desc: 'Căni, accesorii și produse promo cu print de înaltă calitate.',
-              border: 'border-white/15',
-              bg: 'bg-white/5',
-            },
-          ].map((s) => (
-            <div
-              key={s.title}
-              className={`rounded-2xl border ${s.border} ${s.bg} p-5 text-left backdrop-blur-sm`}
-            >
-              <p className="text-2xl" aria-hidden="true">{s.emoji}</p>
-              <h3 className="mt-2 font-heading text-base font-semibold text-text">
-                {s.title}
-              </h3>
-              <p className="mt-1 text-sm text-muted">{s.desc}</p>
-            </div>
-          ))}
+        {/* Service index */}
+        <div className="lg:pb-3">
+          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted/60">
+            Servicii disponibile
+          </p>
+          <ol className="divide-y divide-border/40">
+            {[
+              { num: '01', name: 'Print UV pe perete', desc: 'Direct pe suprafață, fără autocolant' },
+              { num: '02', name: 'Gravare laser CO₂', desc: 'Precizie industrială pe 10+ materiale' },
+              { num: '03', name: 'Print textile', desc: 'Tricouri, hanorace, accesorii' },
+              { num: '04', name: 'Obiecte personalizate', desc: 'Căni, cutii, produse promo' },
+            ].map((s) => (
+              <li key={s.num} className="group flex items-center gap-5 py-5">
+                <span className="w-7 shrink-0 font-heading text-xs font-bold text-muted/30 transition-colors duration-200 group-hover:text-primary">
+                  {s.num}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="font-heading text-base font-semibold text-text">{s.name}</p>
+                  <p className="mt-0.5 text-sm text-muted">{s.desc}</p>
+                </div>
+                <span className="text-muted/20 transition-colors duration-200 group-hover:text-primary" aria-hidden>
+                  →
+                </span>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
-    </div>
 
-    <div
-      className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg to-transparent"
-      aria-hidden
-    />
+      <div
+        className="mt-16 h-px"
+        style={{ background: 'linear-gradient(to right, transparent, var(--border), transparent)' }}
+        aria-hidden
+      />
+    </div>
   </section>
 );
 

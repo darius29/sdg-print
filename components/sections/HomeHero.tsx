@@ -82,7 +82,7 @@ export function HomeHero() {
 
   return (
     <section
-      className="relative isolate flex min-h-[580px] items-center overflow-hidden px-4 py-20 md:min-h-[80vh] md:px-8 md:py-24 lg:min-h-[100vh]"
+      className="relative isolate flex min-h-[520px] items-center overflow-hidden px-4 py-12 md:min-h-[80vh] md:px-8 md:py-20 lg:min-h-[100vh]"
       style={{
         backgroundImage:
           "linear-gradient(120deg, rgba(6,9,16,0.94) 0%, rgba(6,9,16,0.72) 50%, rgba(6,9,16,0.96) 100%), radial-gradient(circle at 82% 0%, rgba(0,217,255,0.22), transparent 32%), radial-gradient(circle at 14% 88%, rgba(122,92,255,0.2), transparent 34%), url('/images/home/hero.png')",

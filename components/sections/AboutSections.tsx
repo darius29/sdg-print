@@ -44,16 +44,17 @@ export const AboutStorySection = () => (
         />
         <div className="space-y-4 text-muted">
           <p>
-            SDG Print & Design s-a născut din convingerea că personalizarea unui
-            spațiu sau a unui produs trebuie să fie accesibilă, rapidă și de
-            calitate reală. Am pornit ca un atelier mic din Timișoara, cu un
-            singur printer UV, și am crescut pas cu pas, proiect cu proiect.
+            SDG Print & Design a pornit cu un singur scop: să aducă
+            personalizarea la un nivel profesional, rapid și accesibil. Am
+            investit în echipamente de nivel industrial — un printer UV direct
+            pe suprafață și un laser CO₂ — ca să putem oferi rezultate reale,
+            nu promisiuni.
           </p>
           <p>
-            Astăzi lucrăm cu antreprenori, agenții de interior, branduri
-            naționale și persoane fizice din toată România de la un tricou
-            personalizat pentru un eveniment de familie, până la muraluri de
-            zeci de metri pătrați pentru spații comerciale premium.
+            Lucrăm cu antreprenori, agenții de design și persoane fizice din
+            Timișoara și din toată România — de la un obiect personalizat
+            pentru un eveniment, până la muraluri și instalații vizuale pentru
+            spații comerciale.
           </p>
           <p>
             Ceea ce ne diferențiază nu este doar tehnologia, ci modul în care
@@ -457,7 +458,7 @@ export const AboutCoverageSection = () => (
         />
         <div className="mt-2 space-y-4 text-sm text-muted">
           <div className="flex items-start gap-3">
-            <span className="border-primary/40 bg-primary/10 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-lg">
+            <span className="border-primary/40 bg-primary/10 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-lg" aria-hidden="true">
               📍
             </span>
             <div>
@@ -466,7 +467,7 @@ export const AboutCoverageSection = () => (
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <span className="border-accent/40 bg-accent/10 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-lg">
+            <span className="border-accent/40 bg-accent/10 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-lg" aria-hidden="true">
               🚗
             </span>
             <div>
@@ -480,7 +481,7 @@ export const AboutCoverageSection = () => (
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-surface-2/50 text-lg">
+            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-surface-2/50 text-lg" aria-hidden="true">
               📦
             </span>
             <div>
@@ -496,7 +497,7 @@ export const AboutCoverageSection = () => (
 
       <div className="card-premium p-6">
         <p className="mb-4 text-sm font-semibold text-text">
-          Județe cu acoperire frecventă
+          Zone în care servim
         </p>
         <div className="flex flex-wrap gap-2">
           {judete.map((judet) => (

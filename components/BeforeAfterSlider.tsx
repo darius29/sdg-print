@@ -96,7 +96,7 @@ export const BeforeAfterSlider = ({
         window.setTimeout(() => applyPosition(50), 360);
         observer.disconnect();
       },
-      { threshold: 0.35 },
+      { threshold: 0.1 },
     );
 
     observer.observe(node);
