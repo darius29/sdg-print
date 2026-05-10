@@ -176,15 +176,11 @@ export const MobileMenu = ({
         className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-bg text-text transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
       >
         <span className="sr-only">Meniu principal</span>
-        {isOpen ? (
-          <span aria-hidden="true" className="text-xl leading-none">×</span>
-        ) : (
-          <span className="relative h-5 w-6" aria-hidden="true">
-            <span className="absolute left-0 top-0 h-0.5 w-6 bg-current" />
-            <span className="absolute left-0 top-[9px] h-0.5 w-6 bg-current" />
-            <span className="absolute left-0 top-[18px] h-0.5 w-6 bg-current" />
-          </span>
-        )}
+        <span className="relative h-5 w-6" aria-hidden="true">
+          <span className={`absolute left-0 h-0.5 w-6 bg-current transition-all duration-300 ease-out ${isOpen ? 'top-[9px] rotate-45' : 'top-0'}`} />
+          <span className={`absolute left-0 top-[9px] h-0.5 w-6 bg-current transition-all duration-300 ease-out ${isOpen ? 'scale-x-0 opacity-0' : ''}`} />
+          <span className={`absolute left-0 h-0.5 w-6 bg-current transition-all duration-300 ease-out ${isOpen ? 'top-[9px] -rotate-45' : 'top-[18px]'}`} />
+        </span>
       </button>
 
       {menuLayer}

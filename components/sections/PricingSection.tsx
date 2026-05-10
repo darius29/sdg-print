@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { SVGProps } from 'react';
 import { Section } from '@/components/sections/Section';
 import { SectionHeading } from '@/components/sections/SectionHeading';
+import { Reveal } from '@/components/Reveal';
 
 const CheckIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg width={13} height={13} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
@@ -99,10 +100,10 @@ export const PricingSection = () => (
     />
 
     <div className="grid gap-5 lg:grid-cols-3">
-      {tiers.map((tier) => (
+      {tiers.map((tier, i) => (
+        <Reveal key={tier.name} delayMs={i * 120} className="h-full">
         <article
-          key={tier.name}
-          className={`card-premium relative flex flex-col overflow-visible p-0 ${
+          className={`card-premium relative flex h-full flex-col overflow-visible p-0 ${
             tier.highlight
               ? 'border-primary/40 shadow-[0_0_48px_rgba(0,217,255,0.10)]'
               : ''
@@ -182,6 +183,7 @@ export const PricingSection = () => (
             </Link>
           </div>
         </article>
+        </Reveal>
       ))}
     </div>
 

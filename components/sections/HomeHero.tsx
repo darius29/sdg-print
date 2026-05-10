@@ -1,7 +1,18 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+
+const HERO_IMAGES = [
+  '/images/home/hero1.png',
+  '/images/home/hero2.png',
+  '/images/home/hero4.png',
+  '/images/home/hero5.png',
+  '/images/home/hero6.png',
+];
+
+const SLIDE_INTERVAL = 5000;
 
 const ANIMATED_WORDS = [
   'pereți',
@@ -26,6 +37,7 @@ const highlights = [
 
 export function HomeHero() {
   const [prefersReduced, setPrefersReduced] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const textRef = useRef<HTMLSpanElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const posRef = useRef(ANIMATED_WORDS[0].length);
@@ -42,6 +54,16 @@ export function HomeHero() {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
+  // Auto-advance slideshow
+  useEffect(() => {
+    if (prefersReduced) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, SLIDE_INTERVAL);
+    return () => clearInterval(timer);
+  }, [prefersReduced]);
+
+  // Typing animation
   useEffect(() => {
     if (prefersReduced) return;
 
@@ -85,28 +107,49 @@ export function HomeHero() {
   }, [prefersReduced]);
 
   return (
-    <section
-      className="relative isolate flex min-h-[520px] items-center overflow-hidden px-4 py-12 md:min-h-[80vh] md:px-8 md:py-20 lg:min-h-[100vh]"
-      style={{
-        backgroundImage:
-          "linear-gradient(120deg, rgba(6,9,16,0.94) 0%, rgba(6,9,16,0.72) 50%, rgba(6,9,16,0.96) 100%), radial-gradient(circle at 82% 0%, rgba(0,217,255,0.22), transparent 32%), radial-gradient(circle at 14% 88%, rgba(122,92,255,0.2), transparent 34%), url('/images/home/hero.png')",
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-      }}
-    >
+    <section className="relative isolate flex min-h-[520px] items-center overflow-hidden px-4 py-12 md:min-h-[80vh] md:px-8 md:py-20 lg:min-h-[100vh]">
+      {/* Background images — crossfade slideshow */}
+      {HERO_IMAGES.map((src, i) => (
+        <Image
+          key={src}
+          src={src}
+          alt=""
+          fill
+          priority={i === 0}
+          sizes="100vw"
+          className={`object-cover transition-opacity duration-1000 ease-in-out ${
+            i === currentIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+      ))}
+
+      {/* Gradient overlay */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(145deg,rgba(255,255,255,0.04)_0%,transparent_35%)]"
+        className="absolute inset-0 z-[1]"
+        style={{
+          background:
+            'linear-gradient(120deg, rgba(6,9,16,0.94) 0%, rgba(6,9,16,0.72) 50%, rgba(6,9,16,0.96) 100%), radial-gradient(circle at 82% 0%, rgba(0,217,255,0.22), transparent 32%), radial-gradient(circle at 14% 88%, rgba(122,92,255,0.2), transparent 34%)',
+        }}
         aria-hidden
       />
 
-      <div className="relative mx-auto w-full max-w-5xl">
+      {/* Shimmer */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(145deg,rgba(255,255,255,0.04)_0%,transparent_35%)]"
+        aria-hidden
+      />
+
+      {/* Content */}
+      <div className="relative z-[3] mx-auto w-full max-w-5xl">
         <div className="flex flex-col items-center text-center">
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+          <div className="border-primary/20 bg-primary/5 mb-2 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
             SDG Print — Timișoara
-          </p>
+          </div>
 
           <h1
-            className="mx-auto max-w-4xl font-heading text-4xl font-bold leading-[1.2] text-text sm:text-5xl md:text-6xl lg:text-7xl"
+            className="animate-hero mx-auto max-w-4xl font-heading text-4xl font-bold leading-[1.2] text-text sm:text-5xl md:text-6xl lg:text-7xl"
+            style={{ animationDelay: '120ms' }}
             aria-label="Transformăm pereți, textile, obiecte personalizate, spații comerciale, showroom-uri și birouri în produse vizuale cu impact."
           >
             {prefersReduced ? (
@@ -137,13 +180,19 @@ export function HomeHero() {
             )}
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+          <p
+            className="animate-hero mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
+            style={{ animationDelay: '240ms' }}
+          >
             Print UV direct pe perete, gravură și debitare laser CO₂, obiecte
             personalizate și branding vizual pentru firme, HoReCa, showroom-uri
             și spații comerciale.
           </p>
 
-          <div className="mt-9 flex flex-wrap justify-center gap-4">
+          <div
+            className="animate-hero mt-9 flex flex-wrap justify-center gap-4"
+            style={{ animationDelay: '360ms' }}
+          >
             <Link href="/contact" className="btn-primary">
               Cere ofertă personalizată
             </Link>
@@ -152,7 +201,10 @@ export function HomeHero() {
             </Link>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div
+            className="animate-hero mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4"
+            style={{ animationDelay: '480ms' }}
+          >
             {highlights.map((h) => (
               <div
                 key={h.label}
@@ -170,6 +222,27 @@ export function HomeHero() {
           </div>
         </div>
       </div>
+
+      {/* Slide indicators */}
+      {!prefersReduced && (
+        <div
+          className="absolute bottom-6 left-1/2 z-[3] flex -translate-x-1/2 gap-1.5"
+          aria-hidden
+        >
+          {HERO_IMAGES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentIndex(i)}
+              tabIndex={-1}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === currentIndex
+                  ? 'w-6 bg-primary'
+                  : 'w-1.5 bg-white/30 hover:bg-white/50'
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 }

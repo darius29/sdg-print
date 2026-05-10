@@ -32,7 +32,10 @@ export const FilterTabs = ({ filters, items }: FilterTabsProps) => {
     return items.filter((item) => item.category === activeFilter);
   }, [activeFilter, items]);
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+  const handleKeyDown = (
+    event: KeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) => {
     if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
 
     event.preventDefault();
@@ -61,40 +64,40 @@ export const FilterTabs = ({ filters, items }: FilterTabsProps) => {
 
   return (
     <div>
-      <div className="mb-6 flex flex-wrap items-center gap-2" role="tablist" aria-label="Filtre servicii">
-        {filters.map((filter, index) => (
-          <PillButton
-            key={filter.id}
-            label={filter.label}
-            role="tab"
-            id={`services-tab-${filter.id}`}
-            ariaControls={`services-panel-${filter.id}`}
-            ariaSelected={activeFilter === filter.id}
-            tabIndex={activeFilter === filter.id ? 0 : -1}
-            isActive={activeFilter === filter.id}
-            onClick={() => setActiveFilter(filter.id)}
-            onKeyDown={(event) => handleKeyDown(event, index)}
-          />
-        ))}
-      </div>
-
-      <div id={`services-panel-${activeFilter}`} role="tabpanel" aria-labelledby={`services-tab-${activeFilter}`} className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <div
+        id={`services-panel-${activeFilter}`}
+        role="tabpanel"
+        aria-labelledby={`services-tab-${activeFilter}`}
+        className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4"
+      >
         {filteredItems.map((item) => (
-          <article key={item.id} className="card-premium flex h-full flex-col p-6">
-            <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-accent/40 bg-accent/10 text-accent">
+          <article
+            key={item.id}
+            className="card-premium flex h-full flex-col p-6"
+          >
+            <div className="border-accent/40 bg-accent/10 inline-flex h-10 w-10 items-center justify-center rounded-xl border text-accent">
               {item.icon}
             </div>
-            <h3 className="mt-4 font-heading text-2xl font-semibold">{item.title}</h3>
+            <h3 className="mt-4 font-heading text-2xl font-semibold">
+              {item.title}
+            </h3>
             <p className="mt-3 text-sm text-muted">{item.description}</p>
             <ul className="mt-4 space-y-2 text-sm text-muted">
               {item.benefits.map((benefit) => (
                 <li key={benefit} className="flex items-start gap-2">
-                  <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
+                  <CheckIcon
+                    className="mt-0.5 h-4 w-4 shrink-0 text-accent"
+                    aria-hidden
+                  />
                   <span>{benefit}</span>
                 </li>
               ))}
             </ul>
-            <Link href="/contact" className="btn-secondary mt-5 w-fit text-sm" aria-label={`Află mai multe despre ${item.title}`}>
+            <Link
+              href="/contact"
+              className="btn-secondary mt-5 w-fit text-sm"
+              aria-label={`Află mai multe despre ${item.title}`}
+            >
               Află mai multe
             </Link>
           </article>

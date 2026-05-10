@@ -90,7 +90,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="ro">
       <head>
-        <link rel="preload" href="/images/home/hero.png" as="image" fetchPriority="high" />
+        <link rel="preload" href="/images/home/hero1.png" as="image" fetchPriority="high" />
       </head>
       <body className={`${inter.variable} ${sora.variable}`}>
         <AmbientBackground />

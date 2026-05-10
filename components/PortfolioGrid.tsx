@@ -112,7 +112,7 @@ export const PortfolioGrid = () => {
       </div>
 
       {/* Grid */}
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div key={activeFilter} className="grid gap-6 animate-in fade-in duration-300 md:grid-cols-2 xl:grid-cols-3">
         {items.map((item) => (
           <Reveal key={item.id}>
             <PortfolioCard item={item} onOpen={() => openProject(item.id)} />
@@ -123,13 +123,13 @@ export const PortfolioGrid = () => {
       {/* Modal dialog */}
       {activeItem ? (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm animate-in fade-in duration-200"
           role="presentation"
           onClick={closeDialog}
         >
           <div
             ref={dialogRef}
-            className="card-premium max-h-[92vh] w-full max-w-5xl overflow-y-auto border-white/20 bg-surface-2/95 p-6"
+            className="card-premium max-h-[92vh] w-full max-w-5xl overflow-y-auto border-white/20 bg-surface-2/95 p-6 animate-in fade-in zoom-in-95 duration-200"
             role="dialog"
             aria-modal="true"
             aria-label={`Galerie pentru ${activeItem.title}`}

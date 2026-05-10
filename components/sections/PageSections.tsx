@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Reveal } from '@/components/Reveal';
 import { Chip, PillButton } from '@/components/sections/Chip';
 import { FilterTabs } from '@/components/sections/FilterTabs';
 import { ProcessStep } from '@/components/sections/ProcessStep';
@@ -241,12 +242,13 @@ export const HowItWorksSection = () => (
 
       <ol className="space-y-4">
         {processSteps.map((step, index) => (
-          <ProcessStep
-            key={step.title}
-            index={index}
-            title={step.title}
-            description={step.description}
-          />
+          <Reveal key={step.title} delayMs={index * 100}>
+            <ProcessStep
+              index={index}
+              title={step.title}
+              description={step.description}
+            />
+          </Reveal>
         ))}
       </ol>
 
@@ -305,80 +307,97 @@ const processTimeline = [
   },
 ];
 
+const HERO_SERVICES = [
+  { num: '01', name: 'Print UV pe perete', detail: 'Direct pe suprafață, fără autocolant' },
+  { num: '02', name: 'Gravare Laser CO₂', detail: 'Precizie pe 10+ materiale' },
+  { num: '03', name: 'Textile personalizate', detail: 'Tricouri, hanorace, accesorii' },
+  { num: '04', name: 'Obiecte & promo', detail: 'Căni, cutii, produse corporate' },
+];
+
+const HERO_STATS = [
+  { value: '48h', label: 'Execuție standard' },
+  { value: '2880', label: 'DPI rezoluție' },
+  { value: '10+', label: 'Materiale compatibile' },
+];
+
 export const ServicesHeroSection = () => (
-  <section className="relative isolate overflow-hidden px-4 pb-8 pt-16 md:px-8 md:pt-28">
-    <div
-      className="pointer-events-none absolute -left-40 -top-40 h-[500px] w-[500px] rounded-full blur-[130px]"
-      style={{ background: 'radial-gradient(circle, rgba(0,217,255,0.09), transparent 70%)' }}
-      aria-hidden
-    />
-    <div
-      className="pointer-events-none absolute -right-32 bottom-0 h-[400px] w-[400px] rounded-full blur-[110px]"
-      style={{ background: 'radial-gradient(circle, rgba(46,230,166,0.07), transparent 70%)' }}
-      aria-hidden
-    />
+  <section className="relative isolate overflow-hidden px-4 pb-0 pt-16 md:px-8 md:pt-24">
 
-    <div className="relative mx-auto max-w-7xl">
-      <div className="grid items-end gap-16 lg:grid-cols-[1.1fr_1fr] lg:gap-24">
+    {/* ── Background layers ── */}
+    <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, rgba(17,26,41,0.9) 0%, rgba(7,12,22,1) 55%)' }} />
+      <div className="absolute -left-32 -top-32 h-[560px] w-[560px] rounded-full blur-[100px]"
+        style={{ background: 'radial-gradient(circle, rgba(0,217,255,0.11), transparent 68%)' }} />
+      <div className="absolute -bottom-10 right-0 h-[420px] w-[420px] rounded-full blur-[90px]"
+        style={{ background: 'radial-gradient(circle, rgba(46,230,166,0.09), transparent 68%)' }} />
+      <div className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[80px]"
+        style={{ background: 'radial-gradient(circle, rgba(122,92,255,0.07), transparent 68%)' }} />
+      {/* Subtle grid */}
+      <div className="absolute inset-0 opacity-[0.025]"
+        style={{ backgroundImage: 'linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(to right, var(--border) 1px, transparent 1px)', backgroundSize: '64px 64px' }} />
+      {/* Noise */}
+      <div className="absolute inset-0 opacity-[0.04]"
+        style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.8) 0.45px, transparent 0.45px)', backgroundSize: '3px 3px' }} />
+    </div>
 
-        {/* Heading + CTAs */}
+    {/* ── Top accent line ── */}
+    <div className="absolute inset-x-0 top-0 h-px" aria-hidden
+      style={{ background: 'linear-gradient(to right, transparent, var(--primary) 35%, var(--accent) 65%, transparent)' }} />
+
+    <div className="mx-auto max-w-6xl">
+      <div className="grid gap-12 lg:grid-cols-[1fr_auto] lg:gap-20">
+
+        {/* ── Left: copy ── */}
         <div>
-          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-muted">
-            SDG Print — Timișoara
+          <p className="animate-hero text-[11px] font-semibold uppercase tracking-[0.26em] text-primary/70"
+            style={{ animationDelay: '0ms' }}>
+            SDG Print — Servicii
           </p>
-          <h1 className="font-heading text-5xl font-bold leading-[1.05] text-text sm:text-6xl xl:text-7xl">
-            Două<br className="hidden sm:block" />
-            {' '}tehnologii.<br className="hidden sm:block" />
-            {' '}<span className="text-primary">Rezultate</span><br className="hidden sm:block" />
-            {' '}de neratat.
+
+          <h1 className="animate-hero mt-5 font-heading text-4xl font-bold leading-[1.1] text-text sm:text-5xl"
+            style={{ animationDelay: '100ms' }}>
+            Soluții de print<br />
+            <span className="text-primary">cu rezultate reale.</span>
           </h1>
-          <p className="mt-6 max-w-md text-base leading-relaxed text-muted">
-            Print UV direct pe perete și gravare laser CO₂ — plus obiecte personalizate și textile pentru branding complet.
+
+          <p className="animate-hero mt-5 max-w-md text-base leading-relaxed text-muted"
+            style={{ animationDelay: '200ms' }}>
+            Consultanță gratuită, pregătire fișier inclusă și execuție în 48h — pentru proiecte care lasă o impresie permanentă.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/contact" className="btn-primary">
-              Cere ofertă personalizată
-            </Link>
-            <Link href="/portofoliu" className="btn-secondary">
-              Vezi portofoliu
-            </Link>
+
+          <div className="animate-hero mt-8 flex flex-wrap gap-3" style={{ animationDelay: '300ms' }}>
+            <Link href="/contact" className="btn-primary">Cere ofertă personalizată</Link>
+            <Link href="/portofoliu" className="btn-secondary">Portofoliu</Link>
           </div>
         </div>
 
-        {/* Service index */}
-        <div className="lg:pb-3">
-          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted/60">
-            Servicii disponibile
-          </p>
-          <ol className="divide-y divide-border/40">
-            {[
-              { num: '01', name: 'Print UV pe perete', desc: 'Direct pe suprafață, fără autocolant' },
-              { num: '02', name: 'Gravare laser CO₂', desc: 'Precizie industrială pe 10+ materiale' },
-              { num: '03', name: 'Print textile', desc: 'Tricouri, hanorace, accesorii' },
-              { num: '04', name: 'Obiecte personalizate', desc: 'Căni, cutii, produse promo' },
-            ].map((s) => (
-              <li key={s.num} className="group flex items-center gap-5 py-5">
-                <span className="w-7 shrink-0 font-heading text-xs font-bold text-muted/30 transition-colors duration-200 group-hover:text-primary">
-                  {s.num}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="font-heading text-base font-semibold text-text">{s.name}</p>
-                  <p className="mt-0.5 text-sm text-muted">{s.desc}</p>
-                </div>
-                <span className="text-muted/20 transition-colors duration-200 group-hover:text-primary" aria-hidden>
-                  →
-                </span>
-              </li>
+        {/* ── Right: stats card ── */}
+        <div className="animate-hero hidden shrink-0 lg:block" style={{ animationDelay: '250ms' }}>
+          <div className="flex h-full flex-col justify-center divide-y divide-border/50 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-7 backdrop-blur-sm">
+            {HERO_STATS.map((s) => (
+              <div key={s.label} className="py-5 text-right">
+                <p className="font-heading text-3xl font-bold tabular-nums text-text">{s.value}</p>
+                <p className="mt-0.5 text-xs text-muted">{s.label}</p>
+              </div>
             ))}
-          </ol>
+          </div>
         </div>
       </div>
 
-      <div
-        className="mt-16 h-px"
-        style={{ background: 'linear-gradient(to right, transparent, var(--border), transparent)' }}
-        aria-hidden
-      />
+      {/* ── Service items strip ── */}
+      <div className="animate-hero mt-16 grid grid-cols-2 gap-px border-t border-white/[0.07] bg-border/30 sm:grid-cols-4"
+        style={{ animationDelay: '400ms' }}>
+        {HERO_SERVICES.map((s) => (
+          <div key={s.num}
+            className="group flex flex-col gap-1.5 bg-bg px-5 py-6 transition-colors duration-300 hover:bg-surface/40">
+            <span className="text-[10px] font-bold tabular-nums text-primary/30 transition-colors duration-300 group-hover:text-primary/70">
+              {s.num}
+            </span>
+            <p className="text-sm font-semibold text-text">{s.name}</p>
+            <p className="text-xs leading-snug text-muted">{s.detail}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 );

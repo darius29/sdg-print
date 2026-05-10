@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Reveal } from '@/components/Reveal';
 import { Section } from '@/components/sections/Section';
 import { SectionHeading } from '@/components/sections/SectionHeading';
 import {
@@ -36,7 +37,7 @@ export const AboutStorySection = () => (
   <Section variant="leftGlow">
     <div className="flex flex-col gap-12 md:flex-row md:items-center md:gap-16">
       {/* Text */}
-      <div className="flex-1">
+      <Reveal from="left" className="flex-1">
         <SectionHeading
           eyebrow="Povestea noastră"
           title="Din pasiune pentru detalii"
@@ -73,10 +74,10 @@ export const AboutStorySection = () => (
             Execuție premium
           </span>
         </div>
-      </div>
+      </Reveal>
 
       {/* Image */}
-      <div className="relative flex-1">
+      <Reveal from="right" className="relative flex-1" delayMs={100}>
         <div className="border-primary/20 shadow-primary/10 relative overflow-hidden rounded-3xl border shadow-2xl">
           <Image
             src="/images/despre-noi/studio/about-us2.png"
@@ -92,7 +93,7 @@ export const AboutStorySection = () => (
           className="bg-primary/15 pointer-events-none absolute -right-6 -top-6 h-32 w-32 rounded-full blur-3xl"
           aria-hidden
         />
-      </div>
+      </Reveal>
     </div>
   </Section>
 );

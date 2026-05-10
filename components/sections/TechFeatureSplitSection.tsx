@@ -13,6 +13,7 @@ import {
 } from '@/components/sections/SectionIcons';
 import { SectionHeading } from '@/components/sections/SectionHeading';
 import { useStickyScrollProgress } from '@/components/sections/useStickyScrollProgress';
+import { Reveal } from '@/components/Reveal';
 
 const techFeatures = [
   {
@@ -92,6 +93,7 @@ export const TechFeatureSplitSectionContent = () => {
   return (
     <section ref={sectionRef} className="section-surface section-bloom">
       <div className="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <Reveal from="left">
         <div>
           <SectionHeading
             eyebrow="Wall print tech"
@@ -154,8 +156,9 @@ export const TechFeatureSplitSectionContent = () => {
             ))}
           </div>
         </div>
+        </Reveal>
 
-        <div className="lg:sticky lg:top-28">
+        <Reveal from="right" className="lg:sticky lg:top-28" delayMs={100}>
           <div className="bg-surface/70 border-border/90 relative overflow-hidden rounded-2xl border p-3 shadow-[0_20px_55px_rgba(2,6,23,0.22)]">
             <div className="bg-surface-2/80 text-secondary absolute left-5 top-5 z-20 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-medium backdrop-blur-sm">
               <SparkIcon className="h-3.5 w-3.5 text-accent" aria-hidden />
@@ -203,7 +206,7 @@ export const TechFeatureSplitSectionContent = () => {
               </article>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

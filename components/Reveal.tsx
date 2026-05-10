@@ -6,10 +6,12 @@ export const Reveal = ({
   children,
   className = '',
   delayMs = 0,
+  from = 'up',
 }: {
   children: ReactNode;
   className?: string;
   delayMs?: number;
+  from?: 'up' | 'left' | 'right';
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -42,10 +44,13 @@ export const Reveal = ({
     return () => observer.disconnect();
   }, []);
 
+  const baseClass =
+    from === 'left' ? 'reveal-left' : from === 'right' ? 'reveal-right' : 'reveal-up';
+
   return (
     <div
       ref={containerRef}
-      className={`reveal-up ${isVisible ? 'is-visible' : ''} ${className}`}
+      className={`${baseClass} ${isVisible ? 'is-visible' : ''} ${className}`}
       style={{ transitionDelay: `${delayMs}ms` }}
     >
       {children}

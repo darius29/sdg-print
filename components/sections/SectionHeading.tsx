@@ -14,7 +14,7 @@ export const SectionHeading = ({
   className,
 }: SectionHeadingProps) => (
   <div
-    className={`${centered ? 'mx-auto text-center' : ''} relative mb-10 max-w-3xl ${className ?? ''}`.trim()}
+    className={`${centered ? 'mx-auto text-center' : ''} relative mb-4 max-w-3xl ${className ?? ''}`.trim()}
   >
     <span
       className="bg-primary/10 pointer-events-none absolute -left-6 -top-6 h-20 w-20 rounded-full blur-2xl"
