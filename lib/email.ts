@@ -15,7 +15,7 @@ export const sendContactEmail = async (payload: {
   }
 
   const resend = new Resend(apiKey);
-  const to = process.env.CONTACT_TO ?? 'dariusgabriel52@gmail.com';
+  const to = process.env.CONTACT_TO ?? 'contact@printpeperete.com';
 
   await resend.emails.send({
     from: 'SDG Website <onboarding@resend.dev>',

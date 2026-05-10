@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { ContactForm } from '@/components/ContactForm';
+import { FAQAccordion } from '@/components/FAQAccordion';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Section } from '@/components/sections/Section';
+import { faqItems } from '@/content/faq';
 import { canonical, siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -23,6 +25,16 @@ const paymentMethods = [
   { label: 'Numerar', icon: '💵' },
   { label: 'Factură cu termen (firme)', icon: '🧾' },
 ];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
 
 export default function ContactPage() {
   return (
@@ -98,7 +110,7 @@ export default function ContactPage() {
               {paymentMethods.map(({ label, icon }) => (
                 <div
                   key={label}
-                  className="flex items-center gap-2 rounded-xl border border-slate-700/60 bg-surface px-3 py-2 text-xs text-muted"
+                  className="flex items-center gap-2 rounded-xl border border-border/60 bg-surface px-3 py-2 text-xs text-muted"
                 >
                   <span aria-hidden="true">{icon}</span>
                   <span>{label}</span>
@@ -111,11 +123,24 @@ export default function ContactPage() {
           <iframe
             title="Hartă Timișoara"
             src="https://maps.google.com/maps?q=Timisoara&t=&z=12&ie=UTF8&iwloc=&output=embed"
-            className="h-56 w-full rounded-2xl border border-slate-700 sm:h-72 md:h-80"
+            className="h-56 w-full rounded-2xl border border-border sm:h-72 md:h-80"
             loading="lazy"
           />
         </div>
       </div>
+
+      <div className="mt-16">
+        <SectionHeading
+          title="Întrebări frecvente"
+          subtitle="Răspunsuri rapide la cele mai comune întrebări."
+        />
+        <FAQAccordion items={faqItems} />
+      </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     </Section>
   );
 }

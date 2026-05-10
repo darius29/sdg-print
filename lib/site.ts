@@ -3,8 +3,8 @@ export const siteConfig = {
   description:
     'Print direct pe perete, textile și obiecte personalizate în Timișoara și toată România.',
   url: 'https://sdgprint.ro',
-  phone: '0722333444',
-  email: 'dariusgabriel52@gmail.com',
+  phone: '0779281047',
+  email: 'contact@printpeperete.com',
   city: 'Timișoara',
   country: 'România',
   facebook: 'https://www.facebook.com/profile.php?id=61587649299641',
@@ -14,7 +14,6 @@ export const siteConfig = {
     { href: '/servicii', label: 'Servicii' },
     { href: '/portofoliu', label: 'Portofoliu' },
     { href: '/before-after', label: 'Before/After' },
-    { href: '/faq', label: 'FAQ' },
     { href: '/contact', label: 'Contact' },
   ],
 };
