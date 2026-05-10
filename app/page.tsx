@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { HomeHero } from '@/components/sections/HomeHero';
 import { CTASection } from '@/components/CTASection';
 import { SectionHeading } from '@/components/SectionHeading';
-import { ServiceCard, TestimonialCard } from '@/components/cards';
+import { ServiceCard } from '@/components/cards';
 import { BeforeAfterCard } from '@/components/BeforeAfterSlider';
 import { Reveal } from '@/components/Reveal';
 import { Section } from '@/components/sections/Section';
@@ -13,7 +13,6 @@ import {
 } from '@/components/sections/PageSections';
 import { beforeAfterItemsHomepage } from '@/content/beforeAfter';
 import { services } from '@/content/services';
-import { testimonials } from '@/content/testimonials';
 
 export default function HomePage() {
   const primaryServices = services.slice(0, 2);
@@ -82,20 +81,6 @@ export default function HomePage() {
 
       {/* How it works */}
       <HowItWorksSection />
-
-      {/* Testimonials */}
-      <Section variant="splitGlow">
-        <div className="section-surface">
-          <SectionHeading title="Ce spun clienții" />
-          <div className="grid gap-5 md:grid-cols-3">
-            {testimonials.map((item, index) => (
-              <Reveal key={item.id} delayMs={index * 60}>
-                <TestimonialCard item={item} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </Section>
 
       <CTASection
         title="Gata să îți transformi spațiul?"

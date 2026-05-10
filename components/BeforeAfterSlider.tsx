@@ -45,8 +45,8 @@ const ChevronIcon = ({ direction }: { direction: 'left' | 'right' }) => (
 export const BeforeAfterSlider = ({
   beforeImage,
   afterImage,
-  beforeLabel = 'Before',
-  afterLabel = 'After',
+  beforeLabel = 'Înainte',
+  afterLabel = 'După',
   title,
   surface,
   duration,

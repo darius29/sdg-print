@@ -218,7 +218,8 @@ export const AboutComparisonSection = () => (
       title="Print UV vs. metode clasice"
       description="O comparație directă între ceea ce oferim noi și soluțiile tradiționale de personalizare."
     />
-    <div className="overflow-hidden rounded-2xl border border-slate-700/60">
+    <div className="overflow-x-auto rounded-2xl border border-slate-700/60">
+      <div className="min-w-[560px]">
       {/* Header */}
       <div className="grid grid-cols-[1fr_1.2fr_1.2fr] border-b border-slate-700/60 bg-slate-800/60">
         <div className="p-4 text-sm font-semibold text-muted">Criteriu</div>
@@ -252,6 +253,7 @@ export const AboutComparisonSection = () => (
           </div>
         </div>
       ))}
+      </div>
     </div>
   </Section>
 );

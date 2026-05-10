@@ -18,14 +18,6 @@ export interface PortfolioItem {
   images: string[];
 }
 
-export interface Testimonial {
-  id: string;
-  name: string;
-  company?: string;
-  rating: number;
-  text: string;
-}
-
 export interface FaqItem {
   id: string;
   question: string;

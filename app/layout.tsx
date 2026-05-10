@@ -44,6 +44,9 @@ const localBusinessSchema = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ro">
+      <head>
+        <link rel="preload" href="/images/home/hero.png" as="image" fetchPriority="high" />
+      </head>
       <body className={`${inter.variable} ${sora.variable}`}>
         <AmbientBackground />
         <div className="site-shell">

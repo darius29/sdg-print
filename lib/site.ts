@@ -14,7 +14,6 @@ export const siteConfig = {
     { href: '/servicii', label: 'Servicii' },
     { href: '/portofoliu', label: 'Portofoliu' },
     { href: '/before-after', label: 'Before/After' },
-    { href: '/testimoniale', label: 'Testimoniale' },
     { href: '/faq', label: 'FAQ' },
     { href: '/contact', label: 'Contact' },
   ],

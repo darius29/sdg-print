@@ -9,6 +9,7 @@ import {
   WallPrintSection,
   LaserCO2Section,
 } from '@/components/sections/PageSections';
+import { PricingSection } from '@/components/sections/PricingSection';
 import { canonical } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function ServicesPage() {
     <>
       <ServicesHeroSection />
       <ServicesTrustSection />
+      <PricingSection />
       <WallPrintSection />
       <LaserCO2Section />
       <ServicesAlternatingSection />

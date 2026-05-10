@@ -15,7 +15,7 @@ export const StickyHeader = () => {
           SDG PRINT & Design
         </Link>
 
-        <nav className="hidden items-center gap-4 lg:flex">
+        <nav className="hidden items-center gap-3 lg:flex">
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
@@ -29,7 +29,7 @@ export const StickyHeader = () => {
 
         <div className="hidden items-center gap-2 lg:flex">
           <Link href="/contact" className="btn-primary text-sm">
-            Cere ofertă personalizată
+            Cere ofertă
           </Link>
         </div>
 

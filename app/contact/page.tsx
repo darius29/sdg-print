@@ -31,7 +31,7 @@ export default function ContactPage() {
         title="Contact"
         subtitle="Trimite-ne detaliile proiectului și revenim rapid cu o ofertă."
       />
-      <div className="grid gap-8 lg:grid-cols-2">
+      <div className="grid gap-8 md:grid-cols-2">
         <ContactForm />
         <div className="space-y-5">
           {/* Contact info */}

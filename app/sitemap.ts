@@ -1,7 +1,17 @@
 import { MetadataRoute } from 'next';
 import { siteConfig } from '@/lib/site';
 
-const routes = ['', '/despre-noi', '/servicii', '/portofoliu', '/before-after', '/testimoniale', '/faq', '/contact', '/privacy', '/cookies'];
+const routes = [
+  '',
+  '/despre-noi',
+  '/servicii',
+  '/portofoliu',
+  '/before-after',
+  '/faq',
+  '/contact',
+  '/privacy',
+  '/cookies',
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({

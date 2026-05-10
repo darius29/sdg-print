@@ -166,24 +166,26 @@ export const MobileMenu = ({
 
   return (
     <div className="lg:hidden">
-      {!isOpen && (
-        <button
-          ref={buttonRef}
-          type="button"
-          aria-label="Deschide meniul de navigare"
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
-          onClick={() => setIsOpen(true)}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-slate-700 bg-bg text-slate-100 transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-        >
-          <span className="sr-only">Meniu principal</span>
-          <span className="relative h-5 w-6">
+      <button
+        ref={buttonRef}
+        type="button"
+        aria-label={isOpen ? 'Închide meniul de navigare' : 'Deschide meniul de navigare'}
+        aria-expanded={isOpen}
+        aria-controls="mobile-menu"
+        onClick={() => setIsOpen((prev) => !prev)}
+        className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-slate-700 bg-bg text-slate-100 transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+      >
+        <span className="sr-only">Meniu principal</span>
+        {isOpen ? (
+          <span aria-hidden="true" className="text-xl leading-none">×</span>
+        ) : (
+          <span className="relative h-5 w-6" aria-hidden="true">
             <span className="absolute left-0 top-0 h-0.5 w-6 bg-current" />
             <span className="absolute left-0 top-[9px] h-0.5 w-6 bg-current" />
             <span className="absolute left-0 top-[18px] h-0.5 w-6 bg-current" />
           </span>
-        </button>
-      )}
+        )}
+      </button>
 
       {menuLayer}
     </div>

@@ -91,10 +91,10 @@ const processSteps = [
 ];
 
 const serviceFilters = [
-  { id: 'all', label: 'All' },
-  { id: 'walls', label: 'Walls' },
-  { id: 'objects', label: 'Objects' },
-  { id: 'textiles', label: 'Textiles' },
+  { id: 'all', label: 'Toate' },
+  { id: 'walls', label: 'Pereți' },
+  { id: 'objects', label: 'Obiecte' },
+  { id: 'textiles', label: 'Textile' },
   { id: 'design', label: 'Design' },
 ];
 
@@ -153,7 +153,7 @@ const showcaseRows = [
   {
     title: 'Uniforme textile',
     description: 'Seturi pentru echipe de retail și hospitality.',
-    tag: 'Comfort',
+    tag: 'Confort',
     icon: <ShieldIcon className="h-4 w-4" aria-hidden />,
   },
   {
@@ -171,7 +171,7 @@ const showcaseRows = [
   {
     title: 'Merch creativ',
     description: 'Serii limitate cu elemente de design custom.',
-    tag: 'Limited',
+    tag: 'Limitat',
     icon: <PaletteIcon className="h-4 w-4" aria-hidden />,
   },
 ];
@@ -180,7 +180,7 @@ export const ServiceHighlightsSection = () => (
   <SectionContainer variant="leftGlow">
     <SectionHeading
       centered
-      eyebrow="Laser engraving"
+      eyebrow="Gravare laser"
       title="Categorii rapide pentru gravură personalizată"
       description="Selectează rapid tipul de proiect și verifică materialele pe care lucrăm cel mai des."
     />
@@ -234,7 +234,7 @@ export const HowItWorksSection = () => (
   <SectionContainer variant="meshSoft">
     <div className="section-surface">
       <SectionHeading
-        eyebrow="How it works"
+        eyebrow="Cum funcționează"
         title="Un proces simplu, clar și previzibil"
         description="Fiecare etapă este documentată, ca să ai control complet de la brief la livrare."
       />
@@ -390,9 +390,9 @@ export const ServicesHeroSection = () => (
               className={`rounded-2xl border ${s.border} ${s.bg} p-5 text-left backdrop-blur-sm`}
             >
               <p className="text-2xl">{s.emoji}</p>
-              <h2 className="mt-2 font-heading text-base font-semibold text-text">
+              <h3 className="mt-2 font-heading text-base font-semibold text-text">
                 {s.title}
-              </h2>
+              </h3>
               <p className="mt-1 text-sm text-muted">{s.desc}</p>
             </div>
           ))}
@@ -420,7 +420,7 @@ export const ServicesAlternatingSection = () => (
 
 export const ServicesTrustSection = () => (
   <SectionContainer variant="leftGlow">
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+    <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
       {trustStats.map((stat) => (
         <div key={stat.label} className="card-premium p-6 text-center">
           <p className="font-heading text-4xl font-bold text-primary">
@@ -745,7 +745,7 @@ export const ProductShowcaseSection = () => (
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <SectionHeading
           className="mb-0"
-          eyebrow="Objects & textiles"
+          eyebrow="Obiecte & textile"
           title="Categorii populare pentru obiecte și textile"
           description="Mixăm funcționalitatea cu designul pentru produse care se remarcă imediat."
         />
@@ -754,16 +754,16 @@ export const ProductShowcaseSection = () => (
           className="btn-primary self-start"
           aria-label="Solicită o ofertă pentru obiecte și textile"
         >
-          Request quote
+          Cere ofertă
         </Link>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-[1.15fr_0.85fr]">
         <ShowcaseCard
           icon={<SparkIcon className="h-5 w-5" aria-hidden />}
           title="Colecții promoționale complete"
           description="De la pachete de onboarding la cadouri corporate, fiecare produs este coordonat vizual și livrat rapid."
-          badges={['Fast delivery', 'Durable print', 'Vibrant colors']}
+          badges={['Livrare rapidă', 'Print durabil', 'Culori vii']}
         />
         <div className="space-y-3">
           {showcaseRows.map((row) => (
