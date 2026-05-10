@@ -27,10 +27,12 @@ const highlights = [
 export function HomeHero() {
   const [prefersReduced, setPrefersReduced] = useState(false);
   const textRef = useRef<HTMLSpanElement>(null);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const posRef = useRef(ANIMATED_WORDS[0].length);
   const wordRef = useRef(0);
-  const phaseRef = useRef<'typing' | 'paused' | 'deleting' | 'waiting'>('paused');
+  const phaseRef = useRef<'typing' | 'paused' | 'deleting' | 'waiting'>(
+    'paused',
+  );
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -49,7 +51,8 @@ export function HomeHero() {
 
       if (phase === 'typing') {
         posRef.current++;
-        if (textRef.current) textRef.current.textContent = word.slice(0, posRef.current);
+        if (textRef.current)
+          textRef.current.textContent = word.slice(0, posRef.current);
         if (posRef.current >= word.length) {
           phaseRef.current = 'paused';
           timerRef.current = setTimeout(tick, PAUSE_AFTER_TYPED);
@@ -61,7 +64,8 @@ export function HomeHero() {
         timerRef.current = setTimeout(tick, DELETING_SPEED);
       } else if (phase === 'deleting') {
         posRef.current--;
-        if (textRef.current) textRef.current.textContent = word.slice(0, posRef.current);
+        if (textRef.current)
+          textRef.current.textContent = word.slice(0, posRef.current);
         if (posRef.current <= 0) {
           phaseRef.current = 'waiting';
           timerRef.current = setTimeout(tick, PAUSE_BEFORE_TYPING);
